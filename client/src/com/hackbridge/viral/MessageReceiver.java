@@ -32,6 +32,8 @@ public class MessageReceiver extends Thread {
                         // TODO: Stanoje, tell me what the 'stop round' method is!
                     } else if (mess instanceof StartMessage) {
                         NetworkTest.id = ((StartMessage) mess).getId();
+                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
+                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
                         System.out.println("My name is " + NetworkTest.id); 
                         NetworkTest.state++;
                         // TODO: Stanoje, act!

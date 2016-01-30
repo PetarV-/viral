@@ -16,14 +16,6 @@ public class NetworkTest {
         System.out.println("Starting test!!");
         String server = "172.20.10.4";
         int port = 25000;
-/*        try {
-            server = args[0];
-            port = Integer.parseInt(args[1]);
-            System.out.println(server + ":" + port);
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("O NOES, ARGS ARE BAD!!");
-            return;
-        }*/
         try {
             physState = PhysicalState.SUSCEPTIBLE;
             awareState = AwarenessState.UNAWARE;
