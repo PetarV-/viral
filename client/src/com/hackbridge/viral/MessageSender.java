@@ -1,16 +1,16 @@
 package com.hackbridge.viral;
 
 import java.io.IOException;
-import java.ObjectOutputStream;
-import java.net.socket;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
-public class LocationSender implements Runnable {
+public class MessageSender extends Thread {
     
-    private String mess;
+    private Message mess;
     private boolean updated;
     private Socket s;
     
-    public LocationSender(Socket s) {
+    public MessageSender(Socket s) {
         this.s = s;
     }
     @Override
@@ -25,10 +25,10 @@ public class LocationSender implements Runnable {
             }
         } catch (IOException e) {
             System.out.println("o noes!!");
-            break;
+            return;
         }
     }
-    public void getMessage(String m) {
+    public void sendMessage(Message m) {
         mess = m;
         updated = true;
     }
