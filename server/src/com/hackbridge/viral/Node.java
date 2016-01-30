@@ -36,4 +36,10 @@ public class Node {
     public void setConnected(boolean connected) {
         this.connected = connected;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Node id: Awareness: %d, %s, Physical: %s",
+                nodeID, awareness_state, physical_state);
+    }
 }
