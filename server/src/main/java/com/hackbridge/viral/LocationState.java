@@ -126,6 +126,21 @@ public final class LocationState {
     }
 
     /**
+     * Called when a node is vaccinated.
+     * @param nodeID
+     */
+    public boolean onVaccinate(long nodeID) {
+        Node node = nodes.get(nodeID);
+        if (node == null) {
+            // TODO exception
+            System.err.println("Error: failed to vaccinate " + nodeID + ". Node does not exist.");
+            return false;
+        }
+        node.setPhysicalState(PhysicalState.VACCINATED);
+        return true;
+    }
+
+    /**
      * Recompute distance for this nodeID
      * @param nodeID
      */
