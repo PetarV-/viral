@@ -49,7 +49,7 @@ public class Main {
             handler.sendMessage(new StopMessage());
         }
         queue = new ConcurrentLinkedQueue<Message>();
-        //locState.reset();
+        locState.reset();
         timer.schedule(startTask, delayBetweenRounds);
     }
 
