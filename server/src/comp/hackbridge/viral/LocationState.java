@@ -11,7 +11,15 @@ public class LocationState {
     private HashMap<Long, Node> nodes;  // Map from node ID to Node
     private HashMap<Long, Integer> state_position;  // Map from node ID to array pos
 
-    private int num_nodes = 0;
+    private int node_ctr = 0;  // Counts nodes to add to position
+
+    private long num_nodes = 0;
+
+    // TODO: move to separate class perhaps.
+    // TODO: tune parameters.
+    private final double INITIAL_INFECTED_PERC = 0.05;
+    private final double INITIAL_AWARENESS_PERC = 0.05;
+
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -23,10 +31,38 @@ public class LocationState {
     }
 
     /**
+     * Default: (0.0, 1.0)
+     * @return
+     */
+    private double GetRandomNumber(double max) {
+        return Math.random() * max;
+    }
+
+    private double GetRandomNumber() {
+        return Math.random();
+    }
+
+    /**
      * Called upon addition of a new node.
      */
     public StartMessage OnConnect() {
-        return null;
+        double rand_aware = GetRandomNumber(1.0);
+        double rand_physical = GetRandomNumber(1.0);
+
+        Node new_node = new Node(
+                GetRandomNumber() < INITIAL_INFECTED_PERC ?
+                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE,
+                GetRandomNumber() < INITIAL_AWARENESS_PERC ?
+                        AwarenessState.AWARE : AwarenessState.UNAWARE);
+        nodes.put(new_node.getID(), new_node);
+        state_position.put(new_node.getID(), node_ctr);
+        node_ctr++;
+
+
+
+        // TODO: random factor for susceptible, infected
+        return new StartMessage(new_node.getID(),
+                new_node.getPhysicalState(), new_node.getAwarenessState());
     }
 
     /**
