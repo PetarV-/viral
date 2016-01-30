@@ -10,43 +10,38 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Created by PetarV on 30/01/2016.
  */
 public class ClientHandler {
-    private Socket socket;
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private long id;
     private ConcurrentLinkedQueue<Message> queue;
 
-    public ClientHandler(Socket socket, long id, ConcurrentLinkedQueue<Message> queue) {
-        this.socket = socket;
-        try {
-            this.ois = new ObjectInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            this.oos = new ObjectOutputStream(socket.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ClientHandler(ObjectInputStream ois, ObjectOutputStream oos, long id, ConcurrentLinkedQueue<Message> queue) {
+        this.ois = ois;
+        this.oos = oos;
         this.id = id;
         this.queue = queue;
+    }
+
+    public ClientHandler fromSocket(Socket socket) {
+
     }
 
     public void listen() {
         try {
             while (true) {
-
+                Message m = (Message)ois.readObject();
+                queue.add(m);
             }
         } catch (Exception e) { // Treat any exception as a disconnect
-
+            queue.add(new DisconnectMessage(id));
         }
     }
 
     public void sendMessage(Message msg) {
         try {
             oos.writeObject(msg);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) { // Treat any exception as a disconnect
+            queue.add(new DisconnectMessage(id));
         }
     }
 }
