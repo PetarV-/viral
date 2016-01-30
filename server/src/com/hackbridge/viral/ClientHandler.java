@@ -30,11 +30,11 @@ public class ClientHandler {
             StartMessage smsg;
             long id;
             if (m instanceof HelloNewMessage) {
-                smsg = locState.OnConnect();
+                smsg = locState.onConnect();
                 id = smsg.getId();
             } else if (m instanceof HelloMessage) {
                 HelloMessage hm = (HelloMessage)m;
-                smsg = locState.OnConnect(hm.getId());
+                smsg = locState.onConnect(hm.getId());
                 id = hm.getId();
             } else {
                 ois.close();
