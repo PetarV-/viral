@@ -29,6 +29,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
         locState = new LocationState();
         queue = new ConcurrentLinkedQueue<>();
         Thread input = new Thread() {
