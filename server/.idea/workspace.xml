@@ -2,24 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34394869-8dfd-47de-947e-c7fc0651a61b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/ChangeMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/ClientHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/DisconnectMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/HelloMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/HelloNewMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/IdHandlerPair.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/LocationState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/LocationStateTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/LocationWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/Node.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/PositionMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/StartMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/StopMessage.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="server.iws" />
@@ -43,16 +25,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.27884614">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
               <folding>
-                <marker date="1454178106000" expanded="true" signature="38:240" placeholder="..." />
-                <marker date="1454178106000" expanded="true" signature="493:777" placeholder="{...}" />
-                <marker date="1454178106000" expanded="true" signature="834:961" placeholder="{...}" />
-                <marker date="1454178106000" expanded="true" signature="1159:3358" placeholder="{...}" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#428#449#0" expanded="true" />
+                <element signature="e#1083#1084#0" expanded="true" />
+                <element signature="e#1132#1133#0" expanded="true" />
+                <element signature="e#1297#2383#0" expanded="true" />
+                <element signature="e#1966#2201#0" expanded="true" />
+                <element signature="e#2200#2201#0" expanded="true" />
+                <element signature="e#2382#2383#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,9 +57,11 @@
       <file leaf-file-name="ClientHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/ClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0740743">
+            <state vertical-scroll-proportion="4.2222223">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,10 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AwarenessState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AwarenessState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/AwarenessState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18028846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
               <folding />
             </state>
@@ -215,6 +203,7 @@
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/ClientHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/Main.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java" />
       </list>
     </option>
   </component>
@@ -226,7 +215,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="282" />
+    <option name="x" value="44" />
     <option name="y" value="23" />
     <option name="width" value="1249" />
     <option name="height" value="730" />
@@ -723,7 +712,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454175328431</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Maven now">
+      <created>1454180820718</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1454180820718</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -736,7 +731,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="282" y="23" width="1249" height="730" extended-state="0" />
+    <frame x="44" y="23" width="1249" height="730" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -745,7 +740,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -789,7 +784,8 @@
     <MESSAGE value="Ready for testing! v2" />
     <MESSAGE value="Now calling the correct method." />
     <MESSAGE value="Removed a single blank line." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed a single blank line." />
+    <MESSAGE value="Maven now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Maven now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -815,10 +811,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454178106000" expanded="true" signature="38:240" placeholder="..." />
-            <marker date="1454178106000" expanded="true" signature="493:777" placeholder="{...}" />
-            <marker date="1454178106000" expanded="true" signature="834:961" placeholder="{...}" />
-            <marker date="1454178106000" expanded="true" signature="1159:3358" placeholder="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#428#449#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1297#2383#0" expanded="true" />
+            <element signature="e#1966#2201#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#2382#2383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -836,12 +836,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454180626000" expanded="true" signature="59:56246" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="98:191" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54421" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54439" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54452" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54467" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="59:59741" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="98:191" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57916" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57934" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57947" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57962" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -959,12 +959,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454180626000" expanded="true" signature="59:56246" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="98:191" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54421" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54439" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54452" placeholder="..." />
-            <marker date="1454180626000" expanded="true" signature="54404:54467" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="59:59741" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="98:191" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57916" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57934" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57947" placeholder="..." />
+            <marker date="1454180913000" expanded="true" signature="57899:57962" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1047,27 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/ClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0740743">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="56" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
-          <folding>
-            <marker date="1454178106000" expanded="true" signature="38:240" placeholder="..." />
-            <marker date="1454178106000" expanded="true" signature="493:777" placeholder="{...}" />
-            <marker date="1454178106000" expanded="true" signature="834:961" placeholder="{...}" />
-            <marker date="1454178106000" expanded="true" signature="1159:3358" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.75">
@@ -1086,9 +1065,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/AwarenessState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18028846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/ClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.2222223">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27884614">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#428#449#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1297#2383#0" expanded="true" />
+            <element signature="e#1966#2201#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#2382#2383#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
