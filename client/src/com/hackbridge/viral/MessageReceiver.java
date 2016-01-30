@@ -31,6 +31,7 @@ public class MessageReceiver extends Thread {
                     } else if (mess instanceof StartMessage) {
                         NetworkTest.id = ((StartMessage) mess).getId();
                         System.out.println("My name is " + NetworkTest.id); 
+                        NetworkTest.state++;
                         // TODO: Stanoje, act!
                     } else {
                         System.out.println("Unexpected Message object");
