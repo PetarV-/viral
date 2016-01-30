@@ -1,7 +1,7 @@
 package com.hackbridge.viral;
 
 import java.io.Serializable;
-import android.location.Location;
+//import android.location.Location;
 
 public class LocationWrapper  implements Serializable
 {
@@ -23,12 +23,19 @@ public class LocationWrapper  implements Serializable
     {
         return altitude;
     }
-    
+    /*
     public LocationWrapper(Location loc)
     {
         longitude = loc.getLongitude();
         latitude = loc.getLatitude();
         altitude = loc.getAltitude(); // 0.0 if not available
+    }
+    */
+    public LocationWrapper(double longitude, double latitude, double altitude)
+    {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.altitude = altitude; // 0.0 if not available
     }
     
 }

@@ -22,18 +22,45 @@ public class ClientHandler {
         this.queue = queue;
     }
 
-    public ClientHandler fromSocket(Socket socket) {
+    public static IdHandlerPair fromSocket(Socket socket, LocationState locState, ConcurrentLinkedQueue<Message> queue) {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            Message m = (Message)ois.readObject();
+            StartMessage smsg;
+            long id;
+            if (m instanceof HelloNewMessage) {
+                smsg = locState.onConnect();
+                id = smsg.getId();
+            } else if (m instanceof HelloMessage) {
+                HelloMessage hm = (HelloMessage)m;
+                smsg = locState.onConnect(hm.getId());
+                id = hm.getId();
+            } else {
+                ois.close();
+                oos.close();
+                return null;
+            }
+            oos.writeObject(smsg);
+            return new IdHandlerPair(id, new ClientHandler(ois, oos, id, queue));
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void listen() {
         try {
             while (true) {
                 Message m = (Message)ois.readObject();
-                queue.add(m);
+                queue.offer(m);
             }
         } catch (Exception e) { // Treat any exception as a disconnect
-            queue.add(new DisconnectMessage(id));
+            queue.offer(new DisconnectMessage(id));
         }
     }
 
@@ -41,7 +68,7 @@ public class ClientHandler {
         try {
             oos.writeObject(msg);
         } catch (Exception e) { // Treat any exception as a disconnect
-            queue.add(new DisconnectMessage(id));
+            queue.offer(new DisconnectMessage(id));
         }
     }
 }
