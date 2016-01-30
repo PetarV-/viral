@@ -1,12 +1,14 @@
 package com.hackbridge.viral;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Main {
-
     // Starts a round
     public static void startRound() {
 
@@ -22,19 +24,35 @@ public class Main {
 
     }
 
-
-
     public static void main(String[] args) {
         try {
-            ServerSocket ss = new ServerSocket(1500);
+            System.out.println(InetAddress.getLocalHost());
+            ServerSocket ss = new ServerSocket(25000);
             Socket s = ss.accept();
-            StartMessage msg = new StartMessage(1, PhysicalState.SUSCEPTIBLE, AwarenessState.UNAWARE);
+            InputStream is = s.getInputStream();
+            ObjectInputStream ois = new ObjectInputStream(is);
+            Message m = (Message)ois.readObject();
+            if (m instanceof HelloNewMessage) {
+                System.out.println("YAY");
+            }
+            StartMessage msg = new StartMessage(9876543, PhysicalState.SUSCEPTIBLE, AwarenessState.UNAWARE);
             System.out.println("Accepted socket!");
             ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
             oos.writeObject(msg);
-            oos.close();
+            System.out.println("KEK");
+            m = (Message)ois.readObject();
+            System.out.println("WEW");
+            if (m instanceof HelloMessage) {
+                HelloMessage hm = (HelloMessage)m;
+                System.out.println(hm.getId());
+            }
+            //ois.close();
+            //oos.close();
             System.out.println("SENT");
+            while (true) { }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         //new LocationStateTest();
