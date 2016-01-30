@@ -57,10 +57,10 @@ public class ClientHandler {
         try {
             while (true) {
                 Message m = (Message)ois.readObject();
-                queue.add(m);
+                queue.offer(m);
             }
         } catch (Exception e) { // Treat any exception as a disconnect
-            queue.add(new DisconnectMessage(id));
+            queue.offer(new DisconnectMessage(id));
         }
     }
 
@@ -68,7 +68,7 @@ public class ClientHandler {
         try {
             oos.writeObject(msg);
         } catch (Exception e) { // Treat any exception as a disconnect
-            queue.add(new DisconnectMessage(id));
+            queue.offer(new DisconnectMessage(id));
         }
     }
 }

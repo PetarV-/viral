@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -54,7 +53,17 @@ public class Main {
         input.start();
         while (true) {
             if (!queue.isEmpty()) {
-
+                Message front = queue.poll();
+                if (front instanceof PositionMessage) {
+                    System.out.println("Received PositionMessage!");
+                    PositionMessage pm = (PositionMessage)front;
+                    LocationWrapper lw = pm.getLocationWrapper();
+                    System.out.println(lw.getLatitude() + " " + lw.getLongitude() + " " + lw.getAltitude());
+                } else if (front instanceof DisconnectMessage) {
+                    System.out.println("Received DisconnectMessage!");
+                    DisconnectMessage dm = (DisconnectMessage)front;
+                    System.out.println("id = " + dm.getId());
+                }
             }
         }
     }
