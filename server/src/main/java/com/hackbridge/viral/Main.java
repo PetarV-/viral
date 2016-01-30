@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
@@ -17,6 +14,10 @@ public class Main {
     private static long roundDuration = 900000; // 15 min = 900 s = 900000 ms
     private static long delayBetweenRounds = 15000; // 15 s = 15000 ms
     private static Timer timer = new Timer();
+
+    private static Random random = new Random();
+    private static int codeSize = 7;
+    private static String code;
 
     private static TimerTask startTask = new TimerTask() {
         @Override
@@ -34,6 +35,10 @@ public class Main {
 
     // Starts a round
     public static void startRound() {
+        code = "";
+        for (int i=0;i<codeSize;i++) {
+            code += random.nextInt(10);
+        }
         for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
             long id = kvp.getKey();
             ClientHandler handler = kvp.getValue();
@@ -99,6 +104,10 @@ public class Main {
                     LocationWrapper lw = pm.getLocationWrapper();
                     locState.onLocationChange(pm.getId(), lw);
                     System.out.println(lw.getLatitude() + " " + lw.getLongitude() + " " + lw.getAltitude());
+                } else if (front instanceof CodeMessage) {
+                    System.out.println("Received CodeMessage!");
+                    CodeMessage cm = (CodeMessage)front;
+                    System.out.println("id = " + cm.getId() + ", Code = " + cm.getCode());
                 } else if (front instanceof DisconnectMessage) {
                     System.out.println("Received DisconnectMessage!");
                     DisconnectMessage dm = (DisconnectMessage)front;
