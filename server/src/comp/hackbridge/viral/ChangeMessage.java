@@ -3,18 +3,15 @@ package comp.hackbridge.viral;
 /**
  * Created by PetarV on 30/01/2016.
  */
-
 /*
-    Server -> Phone. Hello message sent on connect, or round start.
-    (new_physical_state, new_awareness_state, id)
+    Server -> Phone. Message sent when a phone's state changes.
+    (new_phys_state, new_awareness_state)
  */
-public class StartMessage extends Message {
+public class ChangeMessage extends Message {
     private PhysicalState infected;
     private AwarenessState aware;
-    private long id;
 
-    public StartMessage(long id, PhysicalState infected, AwarenessState aware) {
-        this.id = id;
+    public ChangeMessage(PhysicalState infected, AwarenessState aware) {
         this.infected = infected;
         this.aware = aware;
     }
@@ -25,9 +22,5 @@ public class StartMessage extends Message {
 
     public AwarenessState getAware() {
         return aware;
-    }
-
-    public long getId() {
-        return id;
     }
 }
