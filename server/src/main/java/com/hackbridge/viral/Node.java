@@ -23,6 +23,14 @@ public class Node {
         location_set = false;
     }
 
+    public void reset(PhysicalState ps, AwarenessState as) {
+        connected = false;
+        location_set = false;
+        location = new LocationWrapper(0.0,0.0,0.0);
+        physical_state = ps;
+        awareness_state = as;
+    }
+
     public long getID() {
         return nodeID;
     }

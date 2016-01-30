@@ -7,7 +7,7 @@ public class LocationState {
     private final boolean DEBUG = true;
 
     private final int MAX_NODES = 1000; // TODO
-    private final int array_capacity = 512;
+    private int array_capacity = 512;
     private final ArrayList<ArrayList<Double>> state; //2D state array, modify only through method
     private ArrayList<Double> distance_sums;
     private HashMap<Long, Node> nodes;  // Map from node ID to Node
@@ -173,6 +173,32 @@ public class LocationState {
         }
     }
 
+    // Resets all state other than nodeIDs
+    public void reset() {
+        array_capacity = 512;
+        state.clear();
+        distance_sums.clear();
+        distance_total = 0;
+        num_connected_nodes = 0;
+
+        for (int i = 0; i < array_capacity; ++i) {
+            ArrayList<Double> new_array = new ArrayList<Double>();
+            distance_sums.add(0.0);
+            for (int j = 0; j < array_capacity; ++j) {
+                new_array.add(0.0);
+            }
+            state.add(new_array);
+        }
+
+        for (Node node : nodes.values()) {
+            node.reset(
+                    getRandomNumber() < INITIAL_INFECTED_PROB ?
+                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE,
+                    getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                        AwarenessState.AWARE : AwarenessState.UNAWARE);
+        }
+    }
+
     /**
      * Output the current distance array, includes inactive nodes (TODO)
      */
@@ -212,7 +238,7 @@ public class LocationState {
         }
 
         if (DEBUG) {
-            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
+            System.out.format("Acetedge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
             outputNodes();
         }
         System.out.format("Edge %d <-> %d activated.\n", i, j);
@@ -273,10 +299,12 @@ public class LocationState {
 
         for (int i = array_capacity; i < new_capacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
+            distance_sums.add(0.0);
             for (int j = 0; j < new_capacity; ++j) {
                new_array.add(0.0);
             }
             state.add(new_array);
         }
+        array_capacity = new_capacity;
     }
 }

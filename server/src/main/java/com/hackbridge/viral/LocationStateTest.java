@@ -7,7 +7,8 @@ public class LocationStateTest {
     public LocationStateTest() {
         // connectionTest();
         // locationChangeTest();
-        stepTest();
+        // stepTest();
+        resetTest();
     }
 
     private void connectionTest() {
@@ -48,6 +49,17 @@ public class LocationStateTest {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void resetTest() {
+        System.out.println("Running reset test");
+        LocationState location_state = new LocationState();
+        StartMessage start_msg = location_state.onConnect();
+        location_state.onConnect(start_msg.getId());
+        location_state.reset();
+        StartMessage sm2 = location_state.onConnect(start_msg.getId());
+        System.out.println(sm2.getId());
+
     }
 
 }
