@@ -20,7 +20,7 @@
         package="com.example.android.appnavigation">
 
     <application android:label="@string/app_name">
-        <activity android:name=".app.AppNavHomeActivity"
+        <activity android:name="com.hackbridge.viral.AppNavHomeActivity"
                 android:label="@string/app_nav_home_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +28,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.SimpleUpActivity"
+        <activity android:name="com.hackbridge.viral.SimpleUpActivity"
                   android:label="@string/simple_up_label"
-                  android:parentActivityName=".app.AppNavHomeActivity">
+                  android:parentActivityName="com.hackbridge.viral.AppNavHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
@@ -39,9 +39,9 @@
                        android:value=".app.AppNavHomeActivity" />
         </activity>
 
-        <activity android:name=".app.PeerActivity"
+        <activity android:name="com.hackbridge.viral.PeerActivity"
                   android:label="@string/peer_label"
-                  android:parentActivityName=".app.AppNavHomeActivity">
+                  android:parentActivityName="com.hackbridge.viral.AppNavHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
@@ -50,9 +50,9 @@
                        android:value=".app.AppNavHomeActivity" />
         </activity>
 
-        <activity android:name=".app.ViewFromOtherTaskActivity"
+        <activity android:name="com.hackbridge.viral.ViewFromOtherTaskActivity"
                   android:label="@string/view_from_other_task_label"
-                  android:parentActivityName=".app.AppNavHomeActivity">
+                  android:parentActivityName="com.hackbridge.viral.AppNavHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
@@ -61,7 +61,7 @@
                        android:value=".app.AppNavHomeActivity" />
         </activity>
 
-        <activity android:name=".app.OutsideTaskActivity"
+        <activity android:name="com.hackbridge.viral.OutsideTaskActivity"
                   android:label="@string/outside_task_label"
                   android:theme="@style/Theme.Light"
                   android:taskAffinity="com.example.android.appnavigation.outsidetask">
@@ -71,9 +71,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".app.ContentViewActivity"
+        <activity android:name="com.hackbridge.viral.ContentViewActivity"
                   android:label="@string/content_view_label"
-                  android:parentActivityName=".app.ContentCategoryActivity">
+                  android:parentActivityName="com.hackbridge.viral.ContentCategoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -84,9 +84,9 @@
                        android:value=".app.ContentCategoryActivity" />
         </activity>
 
-        <activity android:name=".app.ContentCategoryActivity"
+        <activity android:name="com.hackbridge.viral.ContentCategoryActivity"
                   android:label="@string/content_category_label"
-                  android:parentActivityName=".app.AppNavHomeActivity">
+                  android:parentActivityName="com.hackbridge.viral.AppNavHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
@@ -95,9 +95,9 @@
                        android:value=".app.AppNavHomeActivity" />
         </activity>
 
-        <activity android:name=".app.NotificationsActivity"
+        <activity android:name="com.hackbridge.viral.NotificationsActivity"
                   android:label="@string/notifications_label"
-                  android:parentActivityName=".app.AppNavHomeActivity">
+                  android:parentActivityName="com.hackbridge.viral.AppNavHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
@@ -106,7 +106,7 @@
                        android:value=".app.AppNavHomeActivity" />
         </activity>
 
-        <activity android:name=".app.InterstitialMessageActivity"
+        <activity android:name="com.hackbridge.viral.InterstitialMessageActivity"
                   android:label="@string/interstitial_label"
                   android:theme="@style/Theme.Dialog"
                   android:launchMode="singleTask"
