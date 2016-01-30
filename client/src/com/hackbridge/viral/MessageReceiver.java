@@ -23,25 +23,26 @@ public class MessageReceiver extends Thread {
                         mess = (Message) ois.readObject();
                     }
                     if (mess instanceof ChangeMessage) {
-                        System.out.println("OBAMA CHANGE");
+                        System.out.println("Got a ChangeMessage");
                         // TODO: Stanoje, I need a method for this!
                     } else if (mess instanceof StopMessage) {
-                        System.out.println("STAHP");
+                        System.out.println("Got a StopMessage");
                         // TODO: Stanoje, tell me what the 'stop round' method is!
                     } else if (mess instanceof StartMessage) {
-                        System.out.println("GOGOGOGO");
+                        NetworkTest.id = ((StartMessage) mess).getId();
+                        System.out.println("My name is " + NetworkTest.id); 
                         // TODO: Stanoje, act!
                     } else {
-                        System.out.println("IDK");
+                        System.out.println("Unexpected Message object");
                         // TODO: do something useful
                     }
                 } catch (ClassNotFoundException e) {
-                    System.out.println("naughty unknown class");
+                    System.out.println("Unknown class received from server");
                     // we're doing this silently
                 }
             }
         } catch (IOException e) {
-            System.out.println("o noes!!");
+            System.out.println("IOException caught in MessageReceiver, thread exiting");
             return;
         }
     }
