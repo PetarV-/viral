@@ -14,8 +14,12 @@ public class MessageSender {
         this.s = s;
         oos = new ObjectOutputStream(s.getOutputStream());
     }
-    public void sendMessage(Message mess) throws IOException {
-        oos.writeObject(mess);
+    public void sendMessage(Message mess) {
+        try {
+            oos.writeObject(mess);
+        } catch (IOException e) {
+            System.out.println("Could not send message: " + mess.toString());
+        }
         return;
     }
 

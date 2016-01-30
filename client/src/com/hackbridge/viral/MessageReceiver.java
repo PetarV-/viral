@@ -24,6 +24,8 @@ public class MessageReceiver extends Thread {
                     }
                     if (mess instanceof ChangeMessage) {
                         System.out.println("Got a ChangeMessage");
+                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
+                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
                         // TODO: Stanoje, I need a method for this!
                     } else if (mess instanceof StopMessage) {
                         System.out.println("Got a StopMessage");

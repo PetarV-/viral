@@ -9,20 +9,24 @@ public class NetworkTest {
 
     public static long id = -1;
     public static int state = 0;
+    public static PhysicalState physState;
+    public static AwarenessState awareState; 
 
-    public static void main(String[] args) {
-        System.out.println("woohoo");
-        String server;
-        int port;
-        try {
+    public static void runTest() {
+        System.out.println("Starting test!!");
+        String server = "172.20.10.4";
+        int port = 25000;
+/*        try {
             server = args[0];
             port = Integer.parseInt(args[1]);
             System.out.println(server + ":" + port);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             System.out.println("O NOES, ARGS ARE BAD!!");
             return;
-        }
+        }*/
         try {
+            physState = PhysicalState.SUSCEPTIBLE;
+            awareState = AwarenessState.UNAWARE;
             System.out.println("about to create Socket");
             Socket s = new Socket(server, port);
             System.out.println("Socket created");
@@ -35,7 +39,7 @@ public class NetworkTest {
             while (true) {
                 // don't want to close anything, really
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     System.out.println("InterruptedException? What should I do?");
                 }
@@ -60,6 +64,10 @@ public class NetworkTest {
             System.out.println("Cannot connect to " + server + ", port " + port);
             return;
         }
+    }
+
+    public static void main(String[] args) {
+        runTest();
     }
 }
 
