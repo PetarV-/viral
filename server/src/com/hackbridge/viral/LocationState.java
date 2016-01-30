@@ -108,8 +108,8 @@ public class LocationState {
      * @param nodeID
      */
     public void onLocationChange(long nodeID, LocationWrapper location) {
-        double lat = 1.0;
-        double lon = 1.0;
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
         // Get lat/long from node
         Node node = nodes.get(nodeID);
         if (node == null) {
