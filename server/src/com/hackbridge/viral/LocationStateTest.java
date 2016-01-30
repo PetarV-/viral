@@ -24,9 +24,13 @@ public class LocationStateTest {
         StartMessage start1 = location_state.onConnect();
         StartMessage start2 = location_state.onConnect();
         StartMessage start3 = location_state.onConnect();
-        location_state.onLocationChange(start1.getId(), 10.000000, 15.000000);
-        location_state.onLocationChange(start2.getId(), 10.000001, 15.0000001);
-        location_state.onLocationChange(start3.getId(), 10.000000, 15.1);
+        //location_state.onLocationChange(start1.getId(), 10.0000000, 15.000000);
+        //location_state.onLocationChange(start2.getId(), 10.000001, 15.0000001);
+        //location_state.onLocationChange(start3.getId(), 10.000000, 15.1);
+    }
+
+    private void edgeTest() {
+
     }
 
 }

@@ -3,7 +3,6 @@ package com.hackbridge.viral;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class LocationState {
     private final boolean DEBUG = true;
 
@@ -23,7 +22,7 @@ public class LocationState {
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = 0.05;
     private final double INITIAL_AWARENESS_PROB = 0.05;
-    private final double ACTIVATE_EDGE_PROB = 1.0;
+    private final double ACTIVATE_EDGE_PROB = 1.0;  // TODO
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -43,7 +42,7 @@ public class LocationState {
 
     /** Called upon addition of a new node.
      *
-     *  @return StartMessage with PhysicalState and AwarenessState initialized at random
+     *  @return StartMessage with PhysicalState and AwarenessState initialized at random.
      */
     public StartMessage onConnect() {
         Node new_node = new Node(
@@ -70,9 +69,9 @@ public class LocationState {
     }
 
     /**
-     * Called upon connection of an existing node.
-     * @param id
-     * @return
+     * Called upon reconnection of an existing node.
+     * @param id - unique node identifier returned when node was first created.
+     * @return StartMessage with state, null if node with id did not exist previously.
      */
     public StartMessage onConnect(long id) {
         Node node = nodes.get(id);
@@ -104,9 +103,13 @@ public class LocationState {
 
     /**
      * TODO: argument should be PositionMessage
+     * Called upon a change in location of a node.
+     * Currently, repeated calls to this method will increase the probability of an edge being activated.
      * @param nodeID
      */
-    public void onLocationChange(long nodeID, double lat, double lon) {
+    public void onLocationChange(long nodeID, LocationWrapper location) {
+        double lat = 1.0;
+        double lon = 1.0;
         // Get lat/long from node
         Node node = nodes.get(nodeID);
         if (node == null) {
@@ -124,7 +127,7 @@ public class LocationState {
     }
 
     /**
-     * Recompute distance for this nodeID, c
+     * Recompute distance for this nodeID
      * @param nodeID
      */
     private void recomputeDistances(long nodeID) {
@@ -146,8 +149,6 @@ public class LocationState {
             }
             double distance = thisNode.getDistanceFrom(node);
             setArrayDistance(arrayPos, i, distance);
-
-            //System.out.println("Cur node: " + thisNode + " " + "ONode: " + node + " Dist: " + distance);
         }
 
         if (DEBUG) {
@@ -156,7 +157,7 @@ public class LocationState {
     }
 
     /**
-     * Array should only be set through this method.
+     * The state matrix should only be modified through this method.
      * @param i
      * @param j
      * @param dist
@@ -212,16 +213,21 @@ public class LocationState {
             total_so_far += state.get(i).get(j);
             j++;
         }
-        System.out.format("EdgeL %d <-> %d activated.\n", i, j);
+        System.out.format("Edge %d <-> %d activated.\n", i, j);
 
         if (DEBUG) {
-            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d", rand*distance_total, total_so_far, i, j);
+            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
         }
 
         // Check if action needs to be taken, ie one node is healthy and one isn't.
 
     }
 
+    /**
+     * Edge i-j is activated. If i is INFECTED and j is SUSCEPTIBLE, then j is INFECTED (and vice versa).
+     * @param i
+     * @param j
+     */
     private void activateEdge(int i, int j) {
         try {
             Node ni = nodes.get(arrayPos_to_node.get(i));
@@ -230,6 +236,7 @@ public class LocationState {
                     nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
                 // TODO: update awareness state?
                 Main.changeState(new ChangeMessage(PhysicalState.INFECTED, nj.getAwarenessState()), nj.getID());
+
             } else if (ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE &&
                     nj.getPhysicalState() == PhysicalState.INFECTED) {
                 Main.changeState(new ChangeMessage(PhysicalState.INFECTED, ni.getAwarenessState()), ni.getID());
@@ -253,8 +260,19 @@ public class LocationState {
     }
 
     private void increaseStateArrayCapacity() {
-        // TODO
+        int new_capacity = array_capacity*2;
+        for (int i = 0; i < array_capacity; ++i) {
+            for (int j = array_capacity; j < new_capacity; ++j) {
+                state.get(i).add(0.0);
+            }
+        }
+
+        for (int i = array_capacity; i < new_capacity; ++i) {
+            ArrayList<Double> new_array = new ArrayList<Double>();
+            for (int j = 0; j < new_capacity; ++j) {
+               new_array.add(0.0);
+            }
+            state.add(new_array);
+        }
     }
-
-
 }

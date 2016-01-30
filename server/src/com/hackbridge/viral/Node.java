@@ -8,8 +8,8 @@ public class Node {
     private AwarenessState awareness_state;
 
     // TEMPORARY
-    public double temp_lat;
-    public double temp_long;
+    public double lat;
+    public double lng;
 
     private boolean connected;
     private boolean location_set;
@@ -22,8 +22,8 @@ public class Node {
         connected = true;
 
         // TODO
-        temp_lat = Math.random() * 100;
-        temp_long = Math.random() * 100;
+        lat = Math.random() * 100;
+        lng = Math.random() * 100;
         location_set = false;
     }
 
@@ -35,8 +35,16 @@ public class Node {
         return awareness_state;
     }
 
+    void setAwarenessState(AwarenessState as) {
+       this.awareness_state = as;
+    }
+
     public PhysicalState getPhysicalState() {
         return physical_state;
+    }
+
+    void setPhysicalState(PhysicalState ps) {
+        this.physical_state = ps;
     }
 
     public boolean getConnected() {
@@ -61,20 +69,20 @@ public class Node {
                 nodeID, awareness_state, physical_state, getLatitude(), getLongitude());
     }
 
-    public boolean setLocation(double lat, double lon) {
+    public boolean setLocation(double lat, double lng) {
         location_set = true;
         // TODO: CHECKs
-        this.temp_lat = lat;
-        this.temp_long = lon;
+        this.lat = lat;
+        this.lng = lng;
         return true;
     }
 
     public double getLatitude() {
-        return temp_lat;
+        return lat;
     }
 
     public double getLongitude() {
-        return temp_long;
+        return lng;
     }
 
     public boolean isActive() {
