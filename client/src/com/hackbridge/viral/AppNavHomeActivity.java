@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.appnavigation.app;
+package com.hackbridge.viral;
 
 import android.app.ListActivity;
 import android.content.Intent;

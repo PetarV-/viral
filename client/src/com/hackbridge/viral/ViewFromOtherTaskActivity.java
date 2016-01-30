@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.appnavigation.app;
+
+package com.hackbridge.viral;
 
 import com.example.android.appnavigation.R;
 
@@ -22,17 +23,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class OutsideTaskActivity extends Activity {
+public class ViewFromOtherTaskActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.outside_task);
+        setContentView(R.layout.view_from_other_task);
     }
 
-    public void onViewContent(View v) {
-        Intent intent = new Intent(Intent.ACTION_VIEW)
-                .setType("application/x-example")
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-        startActivity(intent);
+    public void onLaunchOtherTask(View v) {
+        Intent target = new Intent(this, OutsideTaskActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+        startActivity(target);
     }
 }

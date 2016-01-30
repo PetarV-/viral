@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.example.android.appnavigation.app;
+package com.hackbridge.viral;
 
 import com.example.android.appnavigation.R;
 
@@ -23,15 +22,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class ContentCategoryActivity extends Activity {
+public class OutsideTaskActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_category);
+        setContentView(R.layout.outside_task);
     }
 
     public void onViewContent(View v) {
-        Intent target = new Intent(this, ContentViewActivity.class);
-        startActivity(target);
+        Intent intent = new Intent(Intent.ACTION_VIEW)
+                .setType("application/x-example")
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        startActivity(intent);
     }
 }
