@@ -1,11 +1,18 @@
 package com.hackbridge.viral;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
+    private static LocationState locState;
+    private static ConcurrentLinkedQueue<Message> queue;
+    private static Map<Long, ClientHandler> handlers = new HashMap<>();
 
     // Starts a round
     public static void startRound() {
@@ -18,26 +25,37 @@ public class Main {
     }
 
     // Send a message (ChangeMessage)
-    public static void changeState(ChangeMessage chg) {
+    public static void changeState(ChangeMessage chg, long id) {
 
     }
 
-
-
     public static void main(String[] args) {
-        try {
-            ServerSocket ss = new ServerSocket(1500);
-            Socket s = ss.accept();
-            StartMessage msg = new StartMessage(1, PhysicalState.SUSCEPTIBLE, AwarenessState.UNAWARE);
-            System.out.println("Accepted socket!");
-            ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
-            oos.writeObject(msg);
-            oos.close();
-            System.out.println("SENT");
-        } catch (IOException e) {
-            e.printStackTrace();
+        locState = new LocationState();
+        queue = new ConcurrentLinkedQueue<>();
+        Thread input = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println(InetAddress.getLocalHost());
+                    ServerSocket ss = new ServerSocket(25000);
+                    while (true) {
+                        Socket s = ss.accept();
+                        IdHandlerPair ihp = ClientHandler.fromSocket(s, locState, queue);
+                        if (ihp != null) {
+                            handlers.put(ihp.getId(), ihp.getHandler());
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        input.setDaemon(true);
+        input.start();
+        while (true) {
+            if (!queue.isEmpty()) {
+
+            }
         }
-        //new LocationStateTest();
-	// write your code here
     }
 }

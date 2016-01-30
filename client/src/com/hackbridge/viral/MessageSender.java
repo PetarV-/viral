@@ -4,33 +4,19 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class MessageSender extends Thread {
+public class MessageSender {
     
-    private Message mess;
     private boolean updated;
     private Socket s;
+    private ObjectOutputStream oos;
     
-    public MessageSender(Socket s) {
+    public MessageSender(Socket s) throws IOException {
         this.s = s;
+        oos = new ObjectOutputStream(s.getOutputStream());
     }
-    @Override
-    public void run() {
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
-            while (true) {
-                if (updated) {
-                    updated = false;
-                    oos.writeObject(mess);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("o noes!!");
-            return;
-        }
-    }
-    public void sendMessage(Message m) {
-        mess = m;
-        updated = true;
+    public void sendMessage(Message mess) throws IOException {
+        oos.writeObject(mess);
+        return;
     }
 
 }

@@ -8,5 +8,21 @@ package com.hackbridge.viral;
     (Location)
  */
 public class PositionMessage extends Message {
-    // Location goes here
+
+    private LocationWrapper loc;
+    private long id;
+
+    public PositionMessage(long id, LocationWrapper loc) {
+        this.id = id;
+        this.loc = loc;
+    }
+
+    public LocationWrapper getLocationWrapper() {
+        return loc;
+    }
+
+    public long getId() {
+        return id;
+    } 
+
 }
