@@ -107,6 +107,9 @@ public class Main {
                 } else if (front instanceof CodeMessage) {
                     System.out.println("Received CodeMessage!");
                     CodeMessage cm = (CodeMessage)front;
+                    if (code.equals(cm.getCode())) {
+                        locState.onVaccinate(cm.getId());
+                    }
                     System.out.println("id = " + cm.getId() + ", Code = " + cm.getCode());
                 } else if (front instanceof DisconnectMessage) {
                     System.out.println("Received DisconnectMessage!");
