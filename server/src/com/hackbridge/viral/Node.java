@@ -7,7 +7,12 @@ public class Node {
     private PhysicalState physical_state;
     private AwarenessState awareness_state;
 
+    // TEMPORARY
+    public double temp_lat;
+    public double temp_long;
+
     private boolean connected;
+    private boolean location_set;
 
     public Node(PhysicalState physical_s, AwarenessState awareness_s) {
         nodeID = GLOBAL_ID;
@@ -15,6 +20,11 @@ public class Node {
         this.physical_state = physical_s;
         this.awareness_state = awareness_s;
         connected = true;
+
+        // TODO
+        temp_lat = Math.random() * 100;
+        temp_long = Math.random() * 100;
+        location_set = false;
     }
 
     public long getID() {
@@ -33,13 +43,70 @@ public class Node {
         return connected;
     }
 
-    public void setConnected(boolean connected) {
+    /**
+     * True if node is connected to the server.
+     * @param connected
+     */
+    void setConnected(boolean connected) {
         this.connected = connected;
+    }
+
+    void setLocationSet(boolean location_set) {
+        this.location_set = location_set;
     }
 
     @Override
     public String toString() {
-        return String.format("Node id: Awareness: %d, %s, Physical: %s",
-                nodeID, awareness_state, physical_state);
+        return String.format("{NodeId : %d, Awareness : %s, Physical : %s," + " Latitude : %.5f, Longitude : %.5f}",
+                nodeID, awareness_state, physical_state, getLatitude(), getLongitude());
+    }
+
+    public boolean setLocation(double lat, double lon) {
+        location_set = true;
+        // TODO: CHECKs
+        this.temp_lat = lat;
+        this.temp_long = lon;
+        return true;
+    }
+
+    public double getLatitude() {
+        return temp_lat;
+    }
+
+    public double getLongitude() {
+        return temp_long;
+    }
+
+    public boolean isActive() {
+        return connected && location_set;
+    }
+
+    public double getDistanceFrom(Node o) {
+        return gps2m(getLatitude(), getLongitude(), o.getLatitude(), o.getLongitude());
+    }
+
+    /**
+     * Calculate distance from on longitude and latitude.
+     * http://stackoverflow.com/questions/8049612/calculating-distance-between-two-geographic-locations
+     * @param lat_a
+     * @param lng_a
+     * @param lat_b
+     * @param lng_b
+     * @return
+     */
+    private double gps2m(double lat_a, double lng_a, double lat_b, double lng_b) {
+        double pk = (double) (180.0/Math.PI);
+
+        double a1 = lat_a / pk;
+        double a2 = lng_a / pk;
+        double b1 = lat_b / pk;
+        double b2 = lng_b / pk;
+
+        double t1 = Math.cos(a1)*Math.cos(a2)*Math.cos(b1)*Math.cos(b2);
+        double t2 = Math.cos(a1)*Math.sin(a2)*Math.cos(b1)*Math.sin(b2);
+        double t3 = Math.sin(a1)*Math.sin(b1);
+        double tt = Math.acos(t1 + t2 + t3);
+
+        return 6366000*tt;
     }
 }
