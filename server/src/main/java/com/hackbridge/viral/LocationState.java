@@ -245,7 +245,6 @@ public final class LocationState {
 
     private void activateRandomEdge() {
         if (distance_total <= 0 || node_ctr <= 0) {
-            // TODO
             return;
         }
         double rand = getRandomNumber();
@@ -277,6 +276,11 @@ public final class LocationState {
         }
     }
 
+    /**
+     * Changes the state of the input node to infected, setting awareness based on INITIAL_AWARENESS_PROB.
+     * This method calls Main.changeState.
+     * @param node
+     */
     private void infectNode(Node node) {
         System.out.format("Node %d is now infected.", node.getID());
         node.setPhysicalState(PhysicalState.INFECTED);
@@ -285,8 +289,12 @@ public final class LocationState {
         node.setAwarenessState(new_as);
         Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), node.getID());
     }
+
     /**
      * Edge i-j is activated. If i is INFECTED and j is SUSCEPTIBLE, then j is INFECTED (and vice versa).
+     * Or if is is INFECTED and j is VACCINATED, then j is INFECTED with probability INFECTED_IF_VACCINATED_PROB.
+     *
+     * This method calls Main.changeState if a node changes state.
      * @param i
      * @param j
      */
@@ -306,7 +314,7 @@ public final class LocationState {
                 }
             } else if (nj.getPhysicalState() == PhysicalState.INFECTED) {
                 if ((ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
-                        ((nj.getPhysicalState() == PhysicalState.VACCINATED) &&
+                        ((ni.getPhysicalState() == PhysicalState.VACCINATED) &&
                                 getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
                     infectNode(ni);
                 }
