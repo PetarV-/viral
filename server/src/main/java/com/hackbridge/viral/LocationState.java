@@ -130,6 +130,7 @@ public final class LocationState {
     /**
      * Called when a node is vaccinated.
      * @param nodeID
+     * @return True if node was vaccinated, false otherwise.
      */
     public boolean onVaccinate(long nodeID) {
         Node node = nodes.get(nodeID);
@@ -138,9 +139,12 @@ public final class LocationState {
             System.err.println("Error: failed to vaccinate " + nodeID + ". Node does not exist.");
             return false;
         }
-        node.setPhysicalState(PhysicalState.VACCINATED);
-        Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), nodeID);
-        return true;
+        if (node.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
+            node.setPhysicalState(PhysicalState.VACCINATED);
+            Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), nodeID);
+            return true;
+        }
+        return false;
     }
 
     /**
