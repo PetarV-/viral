@@ -41,9 +41,16 @@ public class ClientHandler {
                 oos.close();
                 return null;
             }
+            if (smsg == null) {
+                ois.close();
+                oos.close();
+                return null;
+            }
+            if (smsg.getAware() == AwarenessState.AWARE) {
+                smsg.setCode(Main.getCode());
+            }
             oos.writeObject(smsg);
             return new IdHandlerPair(id, new ClientHandler(ois, oos, id, queue));
-
         } catch (IOException e) {
             e.printStackTrace();
             return null;

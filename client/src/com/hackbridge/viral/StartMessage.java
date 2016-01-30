@@ -11,12 +11,14 @@ package com.hackbridge.viral;
 public class StartMessage extends Message {
     private PhysicalState infected;
     private AwarenessState aware;
+    private String code;
     private long id;
 
     public StartMessage(long id, PhysicalState infected, AwarenessState aware) {
         this.id = id;
         this.infected = infected;
         this.aware = aware;
+        this.code = "";
     }
 
     public PhysicalState getInfected() {
@@ -29,5 +31,13 @@ public class StartMessage extends Message {
 
     public long getId() {
         return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

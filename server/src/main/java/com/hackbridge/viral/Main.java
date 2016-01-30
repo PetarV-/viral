@@ -33,6 +33,10 @@ public class Main {
         }
     };
 
+    public static String getCode() {
+        return code;
+    }
+
     // Starts a round
     public static void startRound() {
         code = "";
@@ -60,6 +64,9 @@ public class Main {
 
     // Send a message (ChangeMessage)
     public static void changeState(ChangeMessage chg, long id) {
+        if (chg.getAware() == AwarenessState.AWARE) {
+            chg.setCode(code);
+        }
         handlers.get(id).sendMessage(chg);
     }
 
@@ -107,6 +114,9 @@ public class Main {
                 } else if (front instanceof CodeMessage) {
                     System.out.println("Received CodeMessage!");
                     CodeMessage cm = (CodeMessage)front;
+                    if (code.equals(cm.getCode())) {
+                        locState.onVaccinate(cm.getId());
+                    }
                     System.out.println("id = " + cm.getId() + ", Code = " + cm.getCode());
                 } else if (front instanceof DisconnectMessage) {
                     System.out.println("Received DisconnectMessage!");

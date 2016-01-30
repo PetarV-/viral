@@ -8,8 +8,10 @@ public class MessageReceiver extends Thread {
     
     private Message mess;
     private Socket s;
+    private MainActivity ma;
 
-    public MessageReceiver(Socket s) {
+    public MessageReceiver(MainActivity ma, Socket s) {
+        this.ma = ma;
         this.s = s;
     }
     @Override
@@ -24,22 +26,20 @@ public class MessageReceiver extends Thread {
                     }
                     if (mess instanceof ChangeMessage) {
                         System.out.println("Got a ChangeMessage");
-                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
-                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
-                        // TODO: Stanoje, I need a method for this!
+                        ma.setAwareness(((ChangeMessage) mess).getAware());
+                        ma.setInfected(((ChangeMessage) mess).getInfected());
                     } else if (mess instanceof StopMessage) {
                         System.out.println("Got a StopMessage");
-                        // TODO: Stanoje, tell me what the 'stop round' method is!
+                        ma.setRoundOn(false);
                     } else if (mess instanceof StartMessage) {
-                        NetworkTest.id = ((StartMessage) mess).getId();
-                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
-                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
-                        System.out.println("My name is " + NetworkTest.id); 
-                        NetworkTest.state++;
-                        // TODO: Stanoje, act!
+                        System.out.println("Got a StartMessage"); 
+                        ma.setIdentity(((StartMessage) mess).getId());
+                        ma.setAwareness(((StartMessage) mess).getAware());
+                        ma.setInfected(((StartMessage) mess).getInfected());
+                        ma.setRoundOn(((StartMessage) mess).isRunning());
                     } else {
                         System.out.println("Unexpected Message object");
-                        // TODO: do something useful
+                        // treated silently
                     }
                 } catch (ClassNotFoundException e) {
                     System.out.println("Unknown class received from server");
