@@ -71,7 +71,7 @@ public class Main {
                     System.out.println("Received PositionMessage!");
                     PositionMessage pm = (PositionMessage)front;
                     LocationWrapper lw = pm.getLocationWrapper();
-                    //locState.onLocationChange(pm.getId(), lw);
+                    locState.onLocationChange(pm.getId(), lw);
                     System.out.println(lw.getLatitude() + " " + lw.getLongitude() + " " + lw.getAltitude());
                 } else if (front instanceof DisconnectMessage) {
                     System.out.println("Received DisconnectMessage!");
