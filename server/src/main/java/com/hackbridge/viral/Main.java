@@ -64,10 +64,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new LocationStateTest();
-    }
-
-    public static void main2(String[] args) {
         locState = new LocationState();
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();
