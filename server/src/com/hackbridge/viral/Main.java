@@ -43,6 +43,12 @@ public class Main {
                         IdHandlerPair ihp = ClientHandler.fromSocket(s, locState, queue);
                         if (ihp != null) {
                             handlers.put(ihp.getId(), ihp.getHandler());
+                            new Thread() {
+                                @Override
+                                public void run() {
+                                    ihp.getHandler().listen();
+                                }
+                            }.start();
                         }
                     }
                 } catch (IOException e) {
@@ -64,6 +70,7 @@ public class Main {
                     System.out.println("Received DisconnectMessage!");
                     DisconnectMessage dm = (DisconnectMessage)front;
                     System.out.println("id = " + dm.getId());
+                    handlers.remove(dm.getId());
                 }
             }
         }
