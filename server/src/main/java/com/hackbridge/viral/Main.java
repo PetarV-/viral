@@ -6,20 +6,41 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
     private static LocationState locState;
     private static ConcurrentLinkedQueue<Message> queue;
     private static Map<Long, ClientHandler> handlers = new HashMap<Long, ClientHandler>();
+    private static long roundDuration = 900000; // 15 min = 900 s = 900000 ms
+    private static long delayBetweenRounds = 15000; // 15 s = 15000 ms
+    private static Timer timer = new Timer();
+
+    private static TimerTask startTask = new TimerTask() {
+        @Override
+        public void run() {
+            startRound();
+        }
+    };
+
+    private static TimerTask stopTask = new TimerTask() {
+        @Override
+        public void run() {
+            stopRound();
+        }
+    };
 
     // Starts a round
     public static void startRound() {
         for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
             long id = kvp.getKey();
             ClientHandler handler = kvp.getValue();
-            handler.sendMessage(new StartMessage(id, PhysicalState.SUSCEPTIBLE, AwarenessState.UNAWARE));
+            StartMessage sm = locState.onConnect(id);
+            handler.sendMessage(sm);
         }
+        timer.schedule(stopTask, roundDuration);
     }
 
     // Stop a round
@@ -27,6 +48,9 @@ public class Main {
         for (ClientHandler handler : handlers.values()) {
             handler.sendMessage(new StopMessage());
         }
+        queue = new ConcurrentLinkedQueue<Message>();
+        //locState.reset();
+        timer.schedule(startTask, delayBetweenRounds);
     }
 
     // Send a message (ChangeMessage)
@@ -37,6 +61,7 @@ public class Main {
     public static void main(String[] args) {
         locState = new LocationState();
         queue = new ConcurrentLinkedQueue<Message>();
+        startRound();
         Thread input = new Thread() {
             @Override
             public void run() {
