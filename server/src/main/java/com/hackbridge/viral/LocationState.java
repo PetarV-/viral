@@ -7,25 +7,27 @@ public final class LocationState {
     private final boolean DEBUG = true;
 
     private int array_capacity = 512;
-    private final ArrayList<ArrayList<Double>> state; //2D state array, modify only through method
-    private ArrayList<Double> distance_sums;
+    private final ArrayList<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
+    private ArrayList<Double> distance_sums;  // Internal calculation: sum of a row of state
     private HashMap<Long, Node> nodes;  // Map from node ID to Node
     private HashMap<Long, Integer> state_position;  // Map from node ID to array pos
-    private HashMap<Integer, Node> arrayPos_to_node; // (Bad): maps position in state array to nodeID
+    private HashMap<Integer, Node> position_to_node; // Maps position in state array to node
 
-    private double distance_total = 0;
+    private double distance_total = 0;  // Total distances (= 2 * value of all biredirectional edges)
     private int node_ctr = 0;  // Counts nodes to add to position
 
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = DEBUG ? 0.30 : 0.20;
     private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
+    private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.01;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
+    private final double LAMBDA_FACTOR = 0.15;
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
         state_position = new HashMap<Long, Integer>();
-        arrayPos_to_node = new HashMap<Integer, Node>();
+        position_to_node = new HashMap<Integer, Node>();
         distance_sums = new ArrayList<Double>();
         for (int i = 0; i < array_capacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
@@ -57,7 +59,7 @@ public final class LocationState {
 
         nodes.put(new_node.getID(), new_node);
         state_position.put(new_node.getID(), node_ctr);
-        arrayPos_to_node.put(node_ctr, new_node);
+        position_to_node.put(node_ctr, new_node);
 
         if (node_ctr >= array_capacity) {
             increaseStateArrayCapacity();
@@ -158,11 +160,11 @@ public final class LocationState {
             if (i == arrayPos) {
                 continue;
             }
-            Node node = arrayPos_to_node.get(i);
+            Node node = position_to_node.get(i);
             if (!node.isActive()) {
                 continue;
             }
-            double distance = thisNode.getDistanceFrom(node);
+            double distance = Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
             setArrayDistance(arrayPos, i, distance);
         }
 
@@ -170,6 +172,7 @@ public final class LocationState {
             outputArray();
         }
     }
+
 
     /**
      * The state matrix should only be modified through this method.
@@ -263,15 +266,24 @@ public final class LocationState {
         if (DEBUG) {
             System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
             outputNodes();
+            System.out.format("Edge %d <-> %d activated.\n", i, j);
         }
-        System.out.format("Edge %d <-> %d activated.\n", i, j);
         activateEdge(i, j);
     }
 
     private void outputNodes() {
         for (int i = 0; i < node_ctr; ++i) {
-            System.out.println(arrayPos_to_node.get(i));
+            System.out.println(position_to_node.get(i));
         }
+    }
+
+    private void infectNode(Node node) {
+        System.out.format("Node %d is now infected.", node.getID());
+        node.setPhysicalState(PhysicalState.INFECTED);
+        AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                AwarenessState.AWARE : AwarenessState.UNAWARE;
+        node.setAwarenessState(new_as);
+        Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), node.getID());
     }
     /**
      * Edge i-j is activated. If i is INFECTED and j is SUSCEPTIBLE, then j is INFECTED (and vice versa).
@@ -280,25 +292,24 @@ public final class LocationState {
      */
     private void activateEdge(int i, int j) {
         try {
-            Node ni = arrayPos_to_node.get(i);
-            Node nj = arrayPos_to_node.get(j);
-            if (ni.getPhysicalState() == PhysicalState.INFECTED &&
-                    nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
-                System.out.format("Node %d is now infected.", nj.getID());
-                nj.setPhysicalState(PhysicalState.INFECTED);
-                AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                    AwarenessState.AWARE : AwarenessState.UNAWARE;
-                nj.setAwarenessState(new_as);
-                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), nj.getID());
+            Node ni = position_to_node.get(i);
+            Node nj = position_to_node.get(j);
+            if (!ni.isActive() || !nj.isActive()) {
+                return;
+            }
 
-            } else if (ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE &&
-                    nj.getPhysicalState() == PhysicalState.INFECTED) {
-                ni.setPhysicalState(PhysicalState.INFECTED);
-                System.out.format("Node %d is now infected.", ni.getID());
-                AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                    AwarenessState.AWARE : AwarenessState.UNAWARE;
-                ni.setAwarenessState(new_as);
-                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), ni.getID());
+            if (ni.getPhysicalState() == PhysicalState.INFECTED) {
+                if ((nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
+                        ((nj.getPhysicalState() == PhysicalState.VACCINATED) &&
+                                getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
+                    infectNode(nj);
+                }
+            } else if (nj.getPhysicalState() == PhysicalState.INFECTED) {
+                if ((ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
+                        ((nj.getPhysicalState() == PhysicalState.VACCINATED) &&
+                                getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
+                    infectNode(ni);
+                }
             }
         } catch (Exception e) {
             // TODO

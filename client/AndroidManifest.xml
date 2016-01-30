@@ -18,10 +18,18 @@
         android:versionName="1"
         xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.example.android.appnavigation">
-
+	
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
     <application android:label="@string/app_name">
-        <activity android:name="com.hackbridge.viral.AppNavHomeActivity"
-                android:label="@string/app_nav_home_label">
+        <activity android:name="com.hackbridge.viral.MainActivity"
+                android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

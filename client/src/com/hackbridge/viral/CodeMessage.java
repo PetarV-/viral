@@ -5,23 +5,26 @@ package com.hackbridge.viral;
  */
 
 /*
-    Phone -> Server. When typing in a code.
-    (id, code)
+ * Phone -> Server. When typing in a code. (id, code)
  */
-public class CodeMessage extends Message {
-    private long id;
+public class CodeMessage extends Message
+{
+    private long   id;
     private String code;
 
-    public CodeMessage(long id, String code) {
+    public CodeMessage(long id, String code)
+    {
         this.id = id;
         this.code = code;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public String getCode() {
+    public String getCode()
+    {
         return code;
     }
 }

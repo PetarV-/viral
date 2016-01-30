@@ -16,12 +16,13 @@
 
 package com.hackbridge.viral;
 
-import com.example.android.appnavigation.R;
-
+//import android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.android.appnavigation.R;
 
 public class ContentCategoryActivity extends Activity {
     @Override
