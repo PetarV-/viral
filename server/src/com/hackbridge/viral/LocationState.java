@@ -21,6 +21,7 @@ public class LocationState {
     private final double INITIAL_AWARENESS_PERC = 0.05;
 
 
+
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
@@ -30,25 +31,7 @@ public class LocationState {
         }
     }
 
-    /**
-     * Default: (0.0, 1.0)
-     * @return
-     */
-    private double GetRandomNumber(double max) {
-        return Math.random() * max;
-    }
-
-    private double GetRandomNumber() {
-        return Math.random();
-    }
-
-    private void IncreaseStateArrayCapacity() {
-        // TODO
-    }
-
-    /**
-     * Called upon addition of a new node.
-     * @return StartMessage with PhysicalState and AwarenessState initialized at random
+    /** * Called upon addition of a new node. * @return StartMessage with PhysicalState and AwarenessState initialized at random
      */
     public StartMessage OnConnect() {
         Node new_node = new Node(
@@ -82,10 +65,11 @@ public class LocationState {
         Node node = nodes.get(id);
         if (node == null) {
             System.err.println("Error: failured to reconnect node " + id);
+            return null;
         }
-
-        System.out.println("Reconnected " + id);
-        return null;
+        System.out.println("Reconnected " + node);
+        return new StartMessage(
+                node.getID(), node.getPhysicalState(), node.getAwarenessState());
     }
 
     /**
@@ -109,7 +93,26 @@ public class LocationState {
      * @param nodeID
      */
     public void OnLocationChange(long nodeID) {
+        // Get lat/long from node
+
         System.out.println("Location Changed");
     }
+
+    /**
+     * Default: (0.0, 1.0)
+     * @return
+     */
+    private double GetRandomNumber(double max) {
+        return Math.random() * max;
+    }
+
+    private double GetRandomNumber() {
+        return Math.random();
+    }
+
+    private void IncreaseStateArrayCapacity() {
+        // TODO
+    }
+
 
 }
