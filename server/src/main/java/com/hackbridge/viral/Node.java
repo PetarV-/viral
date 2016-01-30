@@ -7,9 +7,7 @@ public class Node {
     private PhysicalState physical_state;
     private AwarenessState awareness_state;
 
-    // TEMPORARY
-    public double lat;
-    public double lng;
+    LocationWrapper location;
 
     private boolean connected;
     private boolean location_set;
@@ -21,9 +19,7 @@ public class Node {
         this.awareness_state = awareness_s;
         connected = true;
 
-        // TODO
-        lat = Math.random() * 100;
-        lng = Math.random() * 100;
+        location = new LocationWrapper(0.0,0.0,0.0);
         location_set = false;
     }
 
@@ -66,23 +62,30 @@ public class Node {
     @Override
     public String toString() {
         return String.format("{NodeId : %d, Awareness : %s, Physical : %s," + " Latitude : %.5f, Longitude : %.5f}",
-                nodeID, awareness_state, physical_state, getLatitude(), getLongitude());
+                nodeID, awareness_state, physical_state,
+                location_set ? getLatitude() :  0.0, location_set ? getLongitude() : 0.0);
     }
 
-    public boolean setLocation(double lat, double lng) {
+    public boolean setLocation(LocationWrapper location) {
         location_set = true;
-        // TODO: CHECKs
-        this.lat = lat;
-        this.lng = lng;
+        this.location = location;
         return true;
     }
 
     public double getLatitude() {
-        return lat;
+        if (!location_set) {
+            System.err.println("Location for " + nodeID + " not set");
+            return 0.0;
+        }
+        return location.getLatitude();
     }
 
     public double getLongitude() {
-        return lng;
+        if (!location_set) {
+            System.err.println("Location for " + nodeID + " not set");
+            return 0.0;
+        }
+        return location.getLongitude();
     }
 
     public boolean isActive() {

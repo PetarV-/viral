@@ -5,8 +5,9 @@ package com.hackbridge.viral;
  */
 public class LocationStateTest {
     public LocationStateTest() {
-        connectionTest();
-        locationChangeTest();
+        // connectionTest();
+        // locationChangeTest();
+        stepTest();
     }
 
     private void connectionTest() {
@@ -24,13 +25,29 @@ public class LocationStateTest {
         StartMessage start1 = location_state.onConnect();
         StartMessage start2 = location_state.onConnect();
         StartMessage start3 = location_state.onConnect();
-        //location_state.onLocationChange(start1.getId(), 10.0000000, 15.000000);
-        //location_state.onLocationChange(start2.getId(), 10.000001, 15.0000001);
-        //location_state.onLocationChange(start3.getId(), 10.000000, 15.1);
+        location_state.onLocationChange(start1.getId(), new LocationWrapper(10.0000000, 15.000000, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(10.000001, 15.0000001, 0.0));
+        location_state.onLocationChange(start3.getId(), new LocationWrapper(10.000000, 15.1, 0.0));
     }
 
-    private void edgeTest() {
-
+    private void stepTest() {
+        System.out.println("Running location step test");
+        LocationState location_state = new LocationState();
+        StartMessage sms[] = new StartMessage[3];
+        sms[0] = location_state.onConnect();
+        sms[1] = location_state.onConnect();
+        sms[2] = location_state.onConnect();
+        for (int i = 0; i < 100; ++i) {
+            int rand = (int) Math.floor(Math.random() * 3);
+            location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.0000000, 15.000000, 0.0));
+            location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.000001, 15.0000001, 0.0));
+            location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.000000, 15.1, 0.0));
+            try {
+                System.in.read();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
