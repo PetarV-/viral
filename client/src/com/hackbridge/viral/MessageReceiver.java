@@ -24,12 +24,16 @@ public class MessageReceiver extends Thread {
                     }
                     if (mess instanceof ChangeMessage) {
                         System.out.println("Got a ChangeMessage");
+                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
+                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
                         // TODO: Stanoje, I need a method for this!
                     } else if (mess instanceof StopMessage) {
                         System.out.println("Got a StopMessage");
                         // TODO: Stanoje, tell me what the 'stop round' method is!
                     } else if (mess instanceof StartMessage) {
                         NetworkTest.id = ((StartMessage) mess).getId();
+                        NetworkTest.awareState = ((ChangeMessage) mess).getAware();
+                        NetworkTest.physState = ((ChangeMessage) mess).getInfected();
                         System.out.println("My name is " + NetworkTest.id); 
                         NetworkTest.state++;
                         // TODO: Stanoje, act!
