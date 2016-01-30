@@ -137,6 +137,7 @@ public final class LocationState {
             return false;
         }
         node.setPhysicalState(PhysicalState.VACCINATED);
+        Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), nodeID);
         return true;
     }
 
