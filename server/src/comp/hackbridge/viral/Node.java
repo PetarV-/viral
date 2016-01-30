@@ -7,11 +7,14 @@ public class Node {
     private PhysicalState physical_state;
     private AwarenessState awareness_state;
 
+    private boolean connected;
+
     public Node(PhysicalState physical_s, AwarenessState awareness_s) {
         nodeID = GLOBAL_ID;
         GLOBAL_ID++;
         this.physical_state = physical_s;
         this.awareness_state = awareness_s;
+        connected = true;
     }
 
     public long getID() {
@@ -24,5 +27,13 @@ public class Node {
 
     public PhysicalState getPhysicalState() {
         return physical_state;
+    }
+
+    public boolean getConnected() {
+        return connected;
+    }
+
+    public void setConnected(boolean connected) {
+        this.connected = connected;
     }
 }
