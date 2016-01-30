@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34394869-8dfd-47de-947e-c7fc0651a61b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/AwarenessState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/ChangeMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/HelloMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/HelloNewMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/LocationState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/LocationStateTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/Node.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/PhysicalState.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/PositionMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/StartMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/comp/hackbridge/viral/StopMessage.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/ChangeMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/HelloMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/HelloNewMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/LocationState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/LocationStateTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/Main.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/Message.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/Node.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/PositionMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/StartMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/StopMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="server.iws" />
@@ -36,7 +36,108 @@
     <favorites_list name="server" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LocationState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationStateTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationStateTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicalState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PositionMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PositionMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StartMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/StartMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StopMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/StopMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AwarenessState.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.18028846">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,6 +171,19 @@
         <option value="$PROJECT_DIR$/src/comp/hackbridge/viral/LocationStateTest.java" />
         <option value="$PROJECT_DIR$/src/comp/hackbridge/viral/LocationState.java" />
         <option value="$PROJECT_DIR$/src/comp/hackbridge/viral/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/ChangeMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/HelloMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/HelloNewMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/LocationState.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/LocationStateTest.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/Message.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/Node.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/PositionMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/StartMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/StopMessage.java" />
       </list>
     </option>
   </component>
@@ -434,7 +548,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454159805408</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed the package.">
+      <created>1454160684382</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1454160684382</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -483,7 +603,8 @@
     <MESSAGE value="States implemented" />
     <MESSAGE value="Add LocationState method stubs." />
     <MESSAGE value="Some functions in main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some functions in main." />
+    <MESSAGE value="Changed the package." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the package." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -498,6 +619,110 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.19181585">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/ChangeMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/HelloMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/HelloNewMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationStateTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PositionMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/StartMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/StopMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18028846">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>
