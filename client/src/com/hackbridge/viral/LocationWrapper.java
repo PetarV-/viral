@@ -5,16 +5,30 @@ import android.location.Location;
 
 public class LocationWrapper  implements Serializable
 {
-    private Location l;
+    private double longitude;
+    private double latitude;
+    private double altitude; // 0.0 if not available
     
-    public Location getLocation()
+    public double getLongitude()
     {
-        return l;
+        return longitude;
+    }
+    
+    public double getLatitude()
+    {
+        return latitude;
+    }
+    
+    public double getAltitude()
+    {
+        return altitude;
     }
     
     public LocationWrapper(Location loc)
     {
-        l = loc;
+        longitude = loc.getLongitude();
+        latitude = loc.getLatitude();
+        altitude = loc.getAltitude(); // 0.0 if not available
     }
     
 }
