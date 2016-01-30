@@ -13,12 +13,14 @@ public class StartMessage extends Message {
     private AwarenessState aware;
     private String code;
     private long id;
+    private boolean isRunning;
 
     public StartMessage(long id, PhysicalState infected, AwarenessState aware) {
         this.id = id;
         this.infected = infected;
         this.aware = aware;
         this.code = "";
+        this.isRunning = false;
     }
 
     public PhysicalState getInfected() {
@@ -39,5 +41,13 @@ public class StartMessage extends Message {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setIsRunning(boolean isRunning) {
+        this.isRunning = isRunning;
     }
 }
