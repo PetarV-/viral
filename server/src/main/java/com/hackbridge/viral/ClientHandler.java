@@ -49,6 +49,7 @@ public class ClientHandler {
             if (smsg.getAware() == AwarenessState.AWARE) {
                 smsg.setCode(Main.getCode());
             }
+            smsg.setIsRunning(Main.isRunning());
             oos.writeObject(smsg);
             return new IdHandlerPair(id, new ClientHandler(ois, oos, id, queue));
         } catch (IOException e) {

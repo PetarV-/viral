@@ -11,6 +11,8 @@ public class Main {
     private static LocationState locState;
     private static ConcurrentLinkedQueue<Message> queue;
     private static Map<Long, ClientHandler> handlers = new HashMap<Long, ClientHandler>();
+
+    private static boolean isRunning = false;
     private static long roundDuration = 900000; // 15 min = 900 s = 900000 ms
     private static long delayBetweenRounds = 15000; // 15 s = 15000 ms
     private static Timer timer = new Timer();
@@ -37,8 +39,13 @@ public class Main {
         return code;
     }
 
+    public static boolean isRunning() {
+        return isRunning;
+    }
+
     // Starts a round
     public static void startRound() {
+        isRunning = true;
         code = "";
         for (int i=0;i<codeSize;i++) {
             code += random.nextInt(10);
@@ -47,6 +54,7 @@ public class Main {
             long id = kvp.getKey();
             ClientHandler handler = kvp.getValue();
             StartMessage sm = locState.onConnect(id);
+            sm.setIsRunning(true);
             handler.sendMessage(sm);
         }
         timer.schedule(stopTask, roundDuration);
@@ -54,6 +62,7 @@ public class Main {
 
     // Stop a round
     public static void stopRound() {
+        isRunning = false;
         for (ClientHandler handler : handlers.values()) {
             handler.sendMessage(new StopMessage());
         }
