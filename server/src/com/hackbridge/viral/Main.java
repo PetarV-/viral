@@ -15,17 +15,23 @@ public class Main {
 
     // Starts a round
     public static void startRound() {
-
+        for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
+            long id = kvp.getKey();
+            ClientHandler handler = kvp.getValue();
+            handler.sendMessage(new StartMessage(id, PhysicalState.SUSCEPTIBLE, AwarenessState.UNAWARE));
+        }
     }
 
     // Stop a round
     public static void stopRound() {
-
+        for (ClientHandler handler : handlers.values()) {
+            handler.sendMessage(new StopMessage());
+        }
     }
 
     // Send a message (ChangeMessage)
     public static void changeState(ChangeMessage chg, long id) {
-
+        handlers.get(id).sendMessage(chg);
     }
 
     public static void main(String[] args) {
@@ -65,12 +71,14 @@ public class Main {
                     System.out.println("Received PositionMessage!");
                     PositionMessage pm = (PositionMessage)front;
                     LocationWrapper lw = pm.getLocationWrapper();
+                    //locState.onLocationChange(pm.getId(), lw);
                     System.out.println(lw.getLatitude() + " " + lw.getLongitude() + " " + lw.getAltitude());
                 } else if (front instanceof DisconnectMessage) {
                     System.out.println("Received DisconnectMessage!");
                     DisconnectMessage dm = (DisconnectMessage)front;
                     System.out.println("id = " + dm.getId());
                     handlers.remove(dm.getId());
+                    locState.onDisconnect(dm.getId());
                 }
             }
         }
