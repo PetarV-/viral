@@ -14,17 +14,24 @@
  * limitations under the License.
  */
 
-package com.example.android.appnavigation.app;
+package com.hackbridge.viral;
 
 import com.example.android.appnavigation.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-public class SimpleUpActivity extends Activity {
+public class ContentCategoryActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_up);
+        setContentView(R.layout.content_category);
+    }
+
+    public void onViewContent(View v) {
+        Intent target = new Intent(this, ContentViewActivity.class);
+        startActivity(target);
     }
 }

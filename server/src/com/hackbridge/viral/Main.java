@@ -1,4 +1,4 @@
-package comp.hackbridge.viral;
+package com.hackbridge.viral;
 
 public class Main {
 

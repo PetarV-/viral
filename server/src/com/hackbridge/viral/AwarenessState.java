@@ -1,4 +1,4 @@
-package comp.hackbridge.viral;
+package com.hackbridge.viral;
 
 /**
  * Created by PetarV on 30/01/2016.
