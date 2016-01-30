@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 public class NetworkTest {
 
     public static long id = -1;
-    public static boolean sentAlready = false;
+    public static int state = 0;
 
     public static void main(String[] args) {
         System.out.println("woohoo");
@@ -32,22 +32,28 @@ public class NetworkTest {
             System.out.println("about to start threads");
             mr.start();
             System.out.println("about to send message");
-            ms.sendMessage(new HelloNewMessage());
             while (true) {
                 // don't want to close anything, really
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     System.out.println("InterruptedException? What should I do?");
                 }
-                if (id != -1) {
-                    System.out.println("I have an ID");
-                    if (!sentAlready) {
-                        System.out.println("about to send new hello");
-                        sentAlready = true;
-                        ms.sendMessage(new HelloMessage(id));
-                        System.out.println("new Hello sent");
-                    }
+                switch (state) {
+                    case 0:
+                        ms.sendMessage(new HelloNewMessage());
+                        break;
+                    case 1: case 2: case 3: case 4:
+                        if (id != -1) {
+                            System.out.println("about to send location");
+                            ms.sendMessage(new PositionMessage(id,
+                                           new LocationWrapper(state + 0.0,
+                                               state * 1.5, (state + 3.0) * 0.73)));
+                            state++;
+                        }
+                        break;
+                    default:
+                        return;
                 }
             }
         } catch (IOException e) {
