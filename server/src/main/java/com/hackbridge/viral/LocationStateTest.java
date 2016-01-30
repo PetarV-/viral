@@ -5,10 +5,10 @@ package com.hackbridge.viral;
  */
 public class LocationStateTest {
     public LocationStateTest() {
-        // connectionTest();
+        //  connectionTest();
         // locationChangeTest();
-        // stepTest();
-        resetTest();
+        stepTest();
+        // resetTest();
     }
 
     private void connectionTest() {
@@ -34,14 +34,14 @@ public class LocationStateTest {
     private void stepTest() {
         System.out.println("Running location step test");
         LocationState location_state = new LocationState();
-        StartMessage sms[] = new StartMessage[3];
-        sms[0] = location_state.onConnect();
-        sms[1] = location_state.onConnect();
-        sms[2] = location_state.onConnect();
+        int nMsgs = 10;
+        StartMessage sms[] = new StartMessage[nMsgs];
+        for (int i = 0; i < 10; ++i) {
+            sms[i] = location_state.onConnect();
+        }
+
         for (int i = 0; i < 100; ++i) {
-            int rand = (int) Math.floor(Math.random() * 3);
-            location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.0000000, 15.000000, 0.0));
-            location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.000001, 15.0000001, 0.0));
+            int rand = (int) Math.floor(Math.random() * nMsgs);
             location_state.onLocationChange(sms[rand].getId(), new LocationWrapper(10.000000, 15.1, 0.0));
             try {
                 System.in.read();
@@ -59,7 +59,6 @@ public class LocationStateTest {
         location_state.reset();
         StartMessage sm2 = location_state.onConnect(start_msg.getId());
         System.out.println(sm2.getId());
-
     }
 
 }

@@ -3,10 +3,9 @@ package com.hackbridge.viral;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LocationState {
+public final class LocationState {
     private final boolean DEBUG = true;
 
-    private final int MAX_NODES = 1000; // TODO
     private int array_capacity = 512;
     private final ArrayList<ArrayList<Double>> state; //2D state array, modify only through method
     private ArrayList<Double> distance_sums;
@@ -16,13 +15,11 @@ public class LocationState {
 
     private double distance_total = 0;
     private int node_ctr = 0;  // Counts nodes to add to position
-    private long num_connected_nodes = 0; // Number of active nodes; will probably be deprecated.
 
-    // TODO: move to separate class perhaps.
     // TODO: tune parameters.
-    private final double INITIAL_INFECTED_PROB = 0.30;
-    private final double INITIAL_AWARENESS_PROB = 0.05;
-    private final double ACTIVATE_EDGE_PROB = 1.0;  // TODO
+    private final double INITIAL_INFECTED_PROB = DEBUG ? 0.30 : 0.20;
+    private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
+    private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -45,11 +42,18 @@ public class LocationState {
      *  @return StartMessage with PhysicalState and AwarenessState initialized at random.
      */
     public StartMessage onConnect() {
-        Node new_node = new Node(
+        PhysicalState new_ps =
                 getRandomNumber() < INITIAL_INFECTED_PROB ?
-                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE,
-                getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                        AwarenessState.AWARE : AwarenessState.UNAWARE);
+                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
+        AwarenessState new_as;
+        if (new_ps == PhysicalState.INFECTED) {
+            new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                    AwarenessState.AWARE : AwarenessState.UNAWARE;
+        } else {
+            new_as = AwarenessState.UNAWARE;
+        }
+
+        Node new_node = new Node(new_ps, new_as);
 
         nodes.put(new_node.getID(), new_node);
         state_position.put(new_node.getID(), node_ctr);
@@ -60,7 +64,6 @@ public class LocationState {
         }
 
         node_ctr++;
-        num_connected_nodes++; // TODO: starts counting in calculations even when no location exists
 
         System.out.println("New node connected. " + new_node);
 
@@ -96,7 +99,6 @@ public class LocationState {
             return false;
         }
         node.setConnected(false);
-        num_connected_nodes--;
         System.out.println("Disconnected node " + id);
         return true;
     }
@@ -179,7 +181,6 @@ public class LocationState {
         state.clear();
         distance_sums.clear();
         distance_total = 0;
-        num_connected_nodes = 0;
 
         for (int i = 0; i < array_capacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
@@ -191,11 +192,17 @@ public class LocationState {
         }
 
         for (Node node : nodes.values()) {
-            node.reset(
-                    getRandomNumber() < INITIAL_INFECTED_PROB ?
-                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE,
-                    getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                        AwarenessState.AWARE : AwarenessState.UNAWARE);
+            PhysicalState new_ps =
+                getRandomNumber() < INITIAL_INFECTED_PROB ?
+                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
+            AwarenessState new_as;
+            if (new_ps == PhysicalState.INFECTED) {
+                new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                        AwarenessState.AWARE : AwarenessState.UNAWARE;
+            } else {
+                new_as = AwarenessState.UNAWARE;
+            }
+            node.reset(new_ps, new_as);
         }
     }
 
@@ -238,7 +245,7 @@ public class LocationState {
         }
 
         if (DEBUG) {
-            System.out.format("Acetedge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
+            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
             outputNodes();
         }
         System.out.format("Edge %d <-> %d activated.\n", i, j);
@@ -263,13 +270,19 @@ public class LocationState {
                     nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
                 System.out.format("Node %d is now infected.", nj.getID());
                 nj.setPhysicalState(PhysicalState.INFECTED);
-                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, nj.getAwarenessState()), nj.getID());
+                AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                    AwarenessState.AWARE : AwarenessState.UNAWARE;
+                nj.setAwarenessState(new_as);
+                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), nj.getID());
 
             } else if (ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE &&
                     nj.getPhysicalState() == PhysicalState.INFECTED) {
                 ni.setPhysicalState(PhysicalState.INFECTED);
                 System.out.format("Node %d is now infected.", ni.getID());
-                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, ni.getAwarenessState()), ni.getID());
+                AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                    AwarenessState.AWARE : AwarenessState.UNAWARE;
+                ni.setAwarenessState(new_as);
+                Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), ni.getID());
             }
         } catch (Exception e) {
             // TODO
