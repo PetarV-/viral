@@ -25,7 +25,7 @@ public class Main {
     }
 
     // Send a message (ChangeMessage)
-    public static void changeState(ChangeMessage chg) {
+    public static void changeState(ChangeMessage chg, long id) {
 
     }
 
@@ -52,6 +52,10 @@ public class Main {
         };
         input.setDaemon(true);
         input.start();
+        while (true) {
+            if (!queue.isEmpty()) {
 
+            }
+        }
     }
 }
