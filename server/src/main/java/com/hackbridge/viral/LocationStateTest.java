@@ -63,6 +63,7 @@ public class LocationStateTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            System.out.println("Percentage infected: " + location_state.getPercentageInfected());
         }
     }
 

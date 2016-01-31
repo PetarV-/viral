@@ -58,7 +58,7 @@ public class Main {
         System.out.println("Round is ending!");
         isRunning = false;
         for (ClientHandler handler : handlers.values()) {
-            handler.sendMessage(new StopMessage());
+            handler.sendMessage(new StopMessage(false));
         }
         queue = new ConcurrentLinkedQueue<Message>();
         locState.reset();
@@ -80,6 +80,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        new LocationStateTest();
+    }
+
+    public static void main2(String[] args) {
         locState = new LocationState();
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();

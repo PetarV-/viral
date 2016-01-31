@@ -207,6 +207,15 @@ public final class LocationState {
         return node.getRoleState();
     }
 
+    public PhysicalState getPhysicalState(long nodeID) {
+        Node node = nodes.get(nodeID);
+        if (node == null) {
+            System.err.println("Error: failed to get physical state for node " + nodeID + ". Node does not exist.");
+            return null;
+        }
+        return node.getPhysicalState();
+    }
+
     /**
      * Returns the percentage of active nodes (those that are connected and have sent at least one location update)
      * that are infected.
@@ -216,10 +225,10 @@ public final class LocationState {
         int num_infected_nodes = 0;
         int total_active_nodes = 0;
         for (Node node : nodes.values()) {
-            if (!node.isActive()) {
+            if (!node.getConnected()) {
                 continue;
             }
-            if (node.getRoleState() == RoleState.INFECTOR) {
+            if (node.getPhysicalState() == PhysicalState.INFECTED) {
                 num_infected_nodes++;
             }
             total_active_nodes++;
