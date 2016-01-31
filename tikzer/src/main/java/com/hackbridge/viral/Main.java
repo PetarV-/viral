@@ -19,15 +19,19 @@ public class Main {
                 In an ideal world, this guy would handle multiple sockets.
                 But in demoreality™, only one thing will ever attempt to connect here.
              */
+            System.out.println("Listening...");
             Socket s = ss.accept();
+            System.out.println("Accepted socket!");
             OutputStream outStream = s.getOutputStream();
             while (true) {
                 File file = new File("ret.png");
                 BufferedImage buffImg = ImageIO.read(file);
+                System.out.println("Read image!");
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 ImageIO.write(buffImg, "png", baos);
                 baos.flush();
                 outStream.write(baos.toByteArray());
+                System.out.println("Sent image!");
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
