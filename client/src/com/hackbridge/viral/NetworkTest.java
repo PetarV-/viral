@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class NetworkTest
 {
-
+/*
     public static long           id    = -1;
     public static int            state = 0;
     public static PhysicalState  physState;
@@ -80,4 +80,5 @@ public class NetworkTest
     {
         runTest();
     }
+    */
 }
