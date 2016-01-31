@@ -4,15 +4,20 @@ import java.io.IOException;
 import java.net.Socket;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -25,31 +30,53 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
-    private ImageView          orb;
-    private ImageView          leftSyringe;
-    private ImageView          rightSyringe;
-    private EditText           codeInputTextBox;
-    private TextView           vaccCodeLabel;
-    private Button             submitButton;
-    private TextView           stateLabel;
-    private LocationManager    locationManager;
-    private String             provider;
-    private MyLocationListener mylistener;
-    private Criteria           criteria;
+    private LocationManager        locationManager;
+    private String                 provider;
+    private MyLocationListener     mylistener;
+    private Criteria               criteria;
 
-    private boolean            round_on;
-    private AwarenessState     awareness;
-    private PhysicalState      physical;
-    private long               identity;
-    private String             server = "188.166.154.60";
-    private int                port   = 25000;
-    private MessageSender      ms;
-    private MessageReceiver    mr;
-    private Socket             sock;
+    private boolean                round_on;
+    private AwarenessState         awareness;
+    private PhysicalState          physical;
+    private long                   identity;
+    private String                 server = "188.166.154.60";
+    private int                    port   = 25000;
+    private static MessageSender   ms;
+    private static MessageReceiver mr;
+    private Socket                 sock;
+
+    public static Handler          handle;
 
     public void setRoundOn(boolean isOn)
     {
         round_on = isOn;
+    }
+
+    public void writeNotification(String title, String body)
+    {
+        Notification.Builder mBuilder =
+            new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.icon_syringe_left)
+                    .setContentTitle(title)
+                    .setContentText(body);
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        //
+        // // The stack builder object will contain an artificial back stack for the
+        // // started Activity.
+        // // This ensures that navigating backward from the Activity leads out of
+        // // your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        // // Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(MainActivity.class);
+        // // Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+            stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
     }
 
     public PhysicalState loadPhysicalState()
@@ -57,7 +84,6 @@ public class MainActivity extends Activity
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         // identity reading and init switch
         int phys = sharedPref.getInt("physical", -1);
-        Drawable drawable;
         switch (phys)
         {
             case -1:
@@ -66,23 +92,23 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 editor.commit();
                 physical = PhysicalState.SUSCEPTIBLE;
-                //orb.setImageResource(R.drawable.circle_blue);
-                //stateLabel.setText("SUSCEPTIBLE");
+                // orb.setImageResource(R.drawable.circle_blue);
+                // stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 0:
                 physical = PhysicalState.SUSCEPTIBLE;
-                //orb.setImageResource(R.drawable.circle_blue);
-                //stateLabel.setText("SUSCEPTIBLE");
+                // orb.setImageResource(R.drawable.circle_blue);
+                // stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 1:
                 physical = PhysicalState.VACCINATED;
-                //orb.setImageResource(R.drawable.circle_green);
-                //stateLabel.setText("VACCINATED");
+                // orb.setImageResource(R.drawable.circle_green);
+                // stateLabel.setText("VACCINATED");
                 break;
             case 2:
                 physical = PhysicalState.INFECTED;
-                //orb.setImageResource(R.drawable.circle_red);
-                //stateLabel.setText("INFECTED");
+                // orb.setImageResource(R.drawable.circle_red);
+                // stateLabel.setText("INFECTED");
                 break;
         }
         Log.d("LAG-LOGIC", "Loaded Physiscal State is: " + physical);
@@ -100,15 +126,16 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
-               /* if (oldState != PhysicalState.VACCINATED) Toast.makeText(
-                        MainActivity.this, "Successful vaccination!",
-                        Toast.LENGTH_SHORT).show();*/
+                if (oldState != PhysicalState.VACCINATED) writeNotification("Success!",
+                        "Your vaccination has been successful!");
                 editor.putInt("physical", 1);
                 break;
             case INFECTED:
-                /*if (oldState != PhysicalState.INFECTED) Toast.makeText(MainActivity.this,
-                        "You have been infected",
-                        Toast.LENGTH_SHORT).show();*/
+                /*
+                 * if (oldState != PhysicalState.INFECTED)
+                 * Toast.makeText(MainActivity.this, "You have been infected",
+                 * Toast.LENGTH_SHORT).show();
+                 */
                 editor.putInt("physical", 2);
                 break;
         }
@@ -117,47 +144,22 @@ public class MainActivity extends Activity
         physical = physicalState;
     }
 
-    private AwarenessState loadAwareness()
+    private String loadCode()
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         // identity reading and init switch
-        int avr = sharedPref.getInt("aware", -1);
-        switch (avr)
-        {
-            case -1:
-                // writes start state and initialises awareness
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("aware", 0);
-                editor.commit();
-                awareness = AwarenessState.UNAWARE;
-                break;
-            case 0:
-                awareness = AwarenessState.UNAWARE;
-                break;
-            case 1:
-                awareness = AwarenessState.AWARE;
-                break;
-        }
-        Log.d("LAG-LOGIC", "Loaded awareness is: " + awareness);
-        return awareness;
+        String code = sharedPref.getString("code", "");
+        Log.d("LAG-LOGIC", "Loaded code is: " + code);
+        return code;
     }
 
-    public void setAwareness(AwarenessState aware, String code)
+    public void setCode(String code)
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        switch (aware)
-        {
-            case UNAWARE:
-                editor.putInt("aware", 0);
-                break;
-            case AWARE:
-                editor.putInt("aware", 1);
-                break;
-        }
+        editor.putString("code", code);
         editor.commit();
-        awareness = aware;
-        Log.d("LAG-LOGIC", "Awareness is: " + awareness);
+        Log.d("LAG-LOGIC", "Code is: " + code);
         // TODO
     }
 
@@ -189,19 +191,17 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        orb = (ImageView) findViewById(R.id.orb);
-        leftSyringe = (ImageView) findViewById(R.id.leftSyringe);
-        rightSyringe = (ImageView) findViewById(R.id.rightSyringe);
-        codeInputTextBox = (EditText) findViewById(R.id.codeInputTextBox);
-        vaccCodeLabel = (TextView) findViewById(R.id.vaccCodeLabel);
-        submitButton = (Button) findViewById(R.id.submitButton);
-        stateLabel = (TextView) findViewById(R.id.stateLabel);
-        
-        // Get the location manager
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        // Define the criteria how to select the location provider
-        criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_LOW); // default
+        final ImageView orb = (ImageView) findViewById(R.id.orb);
+        final ImageView leftSyringe = (ImageView) findViewById(R.id.leftSyringe);
+        final ImageView rightSyringe =
+            (ImageView) findViewById(R.id.rightSyringe);
+        final EditText codeInputTextBox =
+            (EditText) findViewById(R.id.codeInputTextBox);
+        final TextView vaccCodeLabel =
+            (TextView) findViewById(R.id.vaccCodeLabel);
+        final Button submitButton = (Button) findViewById(R.id.submitButton);
+        final TextView stateLabel = (TextView) findViewById(R.id.stateLabel);
+        final EditText codeGiver = (EditText) findViewById(R.id.codeGiver);
 
         // bear with this for now
         submitButton.setOnClickListener(new OnClickListener() {
@@ -209,11 +209,65 @@ public class MainActivity extends Activity
             public void onClick(View v)
             {
                 if (ms != null)
-                ms.sendMessage(new CodeMessage(identity, codeInputTextBox.getText()
+                ms.sendMessage(new CodeMessage(identity, codeInputTextBox
+                        .getText()
                         .toString()));
-                codeInputTextBox.setText("");
             }
         });
+
+        handle = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(android.os.Message inputMessage)
+            {
+                ChangeMessage front = (ChangeMessage) inputMessage.obj;
+                PhysicalState physical = front.getInfected();
+                String code = front.getCode();
+
+                PhysicalState oldPhysical = loadPhysicalState();
+
+                if (oldPhysical != physical)
+                {
+                    switch (physical)
+                    {
+                        case SUSCEPTIBLE:
+                            orb.setImageResource(R.drawable.circle_blue);
+                            stateLabel.setText("SUSCEPTIBLE");
+                            break;
+                        case VACCINATED:
+                            orb.setImageResource(R.drawable.circle_green);
+                            stateLabel.setText("VACCINATED");
+                            break;
+                        case INFECTED:
+                            orb.setImageResource(R.drawable.circle_red);
+                            stateLabel.setText("INFECTED");
+                            writeNotification("You are INFECTED!",
+                                    "Visit Viral, and !");
+                            break;
+                    }
+                    setPhysicalState(physical);
+                }
+
+                String oldCode = loadCode();
+                if (!code.equals(oldCode))
+                {
+                    // azurirati lable
+                    setCode(code);
+                    codeGiver.setText(code);
+                    if (!code.equals(""))
+                    {
+                        // sibni notifikaciju da upoznat sa sranjem
+                        writeNotification("You are AWARE!",
+                                "Visit Viral for your vaccination code!");
+                    }
+                }
+            }
+        };
+
+        // Get the location manager
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // Define the criteria how to select the location provider
+        criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_LOW); // default
 
         criteria.setCostAllowed(false);
         // get the best provider depending on the criteria
@@ -241,8 +295,6 @@ public class MainActivity extends Activity
         locationManager.requestLocationUpdates(provider, 100, 0.5f, mylistener);
 
         round_on = false;
-        awareness = loadAwareness();
-        physical = loadPhysicalState();
         identity = loadIdentity();
 
         final MainActivity ma = this;

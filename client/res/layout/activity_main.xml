@@ -81,17 +81,18 @@
             android:layout_centerHorizontal="true"
             android:text="Submit vaccination code" />
         
-		<EditText 
-            android:id="@+id/codeGiver"
+		<EditText
+		    android:id="@+id/codeGiver"
+		    style="?android:attr/textViewStyle"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_below="@+id/submitButton"
-    		android:textIsSelectable="true"
-		    android:editable="false"
-		    style="?android:attr/textViewStyle"
-		    android:textAppearance="@android:style/TextAppearance.Medium"
+		    android:background="@null"
 		    android:cursorVisible="false"
-		    android:background="@null" />
+		    android:editable="false"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:textAppearance="@android:style/TextAppearance.Medium"
+		    android:textIsSelectable="true" />
 
 		<TextView
 		    android:id="@+id/stateLabel"
