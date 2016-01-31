@@ -222,7 +222,7 @@ public class MainActivity extends Activity
                             case VACCINATED:
                                 orb.setImageResource(R.drawable.circle_green);
                                 stateLabel.setText("VACCINATED");
-                                writeNotification("Success!",
+                                writeNotification("You are VACCINATED!",
                                         "Your vaccination has been successful!");
                                 break;
                             case INFECTED:
