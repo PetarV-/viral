@@ -21,12 +21,12 @@ public final class LocationState {
     private HashMap<Long, Integer> state_position;  // Map from node ID to array pos
     private HashMap<Integer, Node> position_to_node; // Maps position in state array to node
 
-    private double distance_total = 0;  // Total distances (= 2 * value of all biredirectional edges)
+    private double distance_total = 0;  // Total distances (= 2 * value of all bidirectional edges)
     private int node_ctr = 0;  // Counts nodes to add to position
 
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = 0.20;
-    private final double INITIAL_AWARENESS_PROB = .20;
+    private final double INITIAL_AWARENESS_PROB = 0.20;
     private final double INFECTED_IF_VACCINATED_PROB = 0.01;
     private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
     private final double ACTIVATE_EDGE_PROB = 0.40;
@@ -69,13 +69,8 @@ public final class LocationState {
         PhysicalState new_ps =
                 getRandomNumber() < INITIAL_INFECTED_PROB ?
                         PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
-        AwarenessState new_as;
-        if (new_ps == PhysicalState.INFECTED) {
-            new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+        AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
                     AwarenessState.AWARE : AwarenessState.UNAWARE;
-        } else {
-            new_as = AwarenessState.UNAWARE;
-        }
 
         RoleState new_rs =
                 getRandomNumber() < EVIL_PROB ?
@@ -313,13 +308,8 @@ public final class LocationState {
             PhysicalState new_ps =
                 getRandomNumber() < INITIAL_INFECTED_PROB ?
                         PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
-            AwarenessState new_as;
-            if (new_ps == PhysicalState.INFECTED) {
-                new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+            AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
                         AwarenessState.AWARE : AwarenessState.UNAWARE;
-            } else {
-                new_as = AwarenessState.UNAWARE;
-            }
             RoleState new_rs =
                     getRandomNumber() < EVIL_PROB ?
                             RoleState.INFECTOR : RoleState.HUMAN;
