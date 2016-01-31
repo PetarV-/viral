@@ -25,12 +25,12 @@ public final class LocationState {
     private int node_ctr = 0;  // Counts nodes to add to position
 
     // TODO: tune parameters.
-    private final double INITIAL_INFECTED_PROB = DEBUG ? 0.30 : 0.20;
-    private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
-    private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.03;
-    private final double SPONTANEOUS_RECOVERY_PROB  = 0.001;
-    private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
-    private final double EVIL_PROB = DEBUG ? 0.30 : 0.20;
+    private final double INITIAL_INFECTED_PROB = 0.20;
+    private final double INITIAL_AWARENESS_PROB = .20;
+    private final double INFECTED_IF_VACCINATED_PROB = 0.01;
+    private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
+    private final double ACTIVATE_EDGE_PROB = 0.40;
+    private final double EVIL_PROB =  0.30;
 
     // Parameters used in exponentiating to invert the distance.
     // Inverted distance = EXPO_MULTIPLER*e^(-LAMBDA_FACTOR*distance)
