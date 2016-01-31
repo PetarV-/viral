@@ -29,7 +29,7 @@ public final class LocationState {
     private final double INITIAL_AWARENESS_PROB = 0.20;
     private final double INFECTED_IF_VACCINATED_PROB = 0.01;
     private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
-    private final double ACTIVATE_EDGE_PROB = 0.40;
+    private final double ACTIVATE_EDGE_PROB = 0.10;
     private final double EVIL_PROB =  0.30;
 
     // Parameters used in exponentiating to invert the distance.
