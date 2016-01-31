@@ -105,6 +105,14 @@
 		    android:text="Susceptible"
 		    android:textAppearance="?android:attr/textAppearanceMedium"
 		    android:textStyle="bold" />
+		
+		<TextView
+		    android:id="@+id/instructionsLabel"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:layout_below="@+id/codeGiver"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:textAppearance="?android:attr/textAppearanceMedium" />
 
 		<Space
 		    android:layout_width="wrap_content"
