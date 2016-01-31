@@ -27,7 +27,8 @@ public final class LocationState {
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = DEBUG ? 0.30 : 0.20;
     private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
-    private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.01;
+    private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.03;
+    private final double SPONTANEOUS_RECOVERY_PROB  = 0.005;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
     private final double LAMBDA_FACTOR = 0.002;
     private final double EXPO_MULTIPLIER = 1000.0;
@@ -140,6 +141,15 @@ public final class LocationState {
         // With some probability, activate edge
         if (getRandomNumber() < ACTIVATE_EDGE_PROB) {
             activateRandomEdge();
+        }
+
+        // Kind of bad: if node sends more location changes, then more likely to recover.
+        if (node.getPhysicalState() == PhysicalState.INFECTED) {
+            if (getRandomNumber() < SPONTANEOUS_RECOVERY_PROB) {
+                System.out.println("Node " + node.getID() + " is not susceptible.");
+                node.setPhysicalState(PhysicalState.SUSCEPTIBLE);
+                Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), node.getID());
+            }
         }
 
         logState();
