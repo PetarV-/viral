@@ -43,6 +43,12 @@ public class MessageReceiver extends Thread
                     {
                         Log.d("LAG-INPUT", "Got a StopMessage");
                         ma.setRoundOn(false);
+                        
+                        // fill out with dummy data
+                        ChangeMessage tmp =
+                                new ChangeMessage(PhysicalState.SUSCEPTIBLE, AwarenessState.AWARE);
+                        tmp.setCode("~");
+                        MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
                     }
                     else if (mess instanceof StartMessage)
                     {
@@ -53,8 +59,18 @@ public class MessageReceiver extends Thread
                         StartMessage sm = (StartMessage) mess;
                         ChangeMessage tmp =
                             new ChangeMessage(sm.getInfected(), sm.getAware());
-                        tmp.setCode(sm.getCode());
-                        MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
+                        if(sm.isRunning())
+                        {
+                            // regular start message
+                            tmp.setCode(sm.getCode());
+                            MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
+                        }
+                        else
+                        {
+                            // round is not on
+                            tmp.setCode("~");
+                            MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
+                        }
                     }
                     else
                     {

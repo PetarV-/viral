@@ -86,13 +86,6 @@ public class MainActivity extends Activity
         int phys = sharedPref.getInt("physical", -1);
         switch (phys)
         {
-            case -1:
-                // writes start state and initialises physical state
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("physical", 0);
-                editor.commit();
-                physical = PhysicalState.SUSCEPTIBLE;
-                break;
             case 0:
                 physical = PhysicalState.SUSCEPTIBLE;
                 break;
@@ -118,16 +111,9 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
-                if (oldState != PhysicalState.VACCINATED) writeNotification("Success!",
-                        "Your vaccination has been successful!");
-                editor.putInt("physical", 1);
+                if (oldState != PhysicalState.VACCINATED) editor.putInt("physical", 1);
                 break;
             case INFECTED:
-                /*
-                 * if (oldState != PhysicalState.INFECTED)
-                 * Toast.makeText(MainActivity.this, "You have been infected",
-                 * Toast.LENGTH_SHORT).show();
-                 */
                 editor.putInt("physical", 2);
                 break;
         }
@@ -206,7 +192,7 @@ public class MainActivity extends Activity
                         .toString()));
             }
         });
-        
+
         handle = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(android.os.Message inputMessage)
@@ -215,40 +201,52 @@ public class MainActivity extends Activity
                 PhysicalState physical = front.getInfected();
                 String code = front.getCode();
 
-                PhysicalState oldPhysical = loadPhysicalState();
-
-                if (oldPhysical != physical)
+                if (code.equals("~"))
                 {
-                    switch (physical)
-                    {
-                        case SUSCEPTIBLE:
-                            orb.setImageResource(R.drawable.circle_blue);
-                            stateLabel.setText("SUSCEPTIBLE");
-                            break;
-                        case VACCINATED:
-                            orb.setImageResource(R.drawable.circle_green);
-                            stateLabel.setText("VACCINATED");
-                            break;
-                        case INFECTED:
-                            orb.setImageResource(R.drawable.circle_red);
-                            stateLabel.setText("INFECTED");
-                            writeNotification("You are INFECTED!",
-                                    "Visit Viral, and don't lose hope!");
-                            break;
-                    }
-                    setPhysicalState(physical);
+                    orb.setImageResource(R.drawable.circle_blue);
+                    stateLabel.setText("ROUND OFF");
+                    setCode("");
                 }
-
-                String oldCode = loadCode();
-                if (!code.equals(oldCode))
+                else
                 {
-                    // azurirati lable
-                    setCode(code);
-                    codeGiver.setText("Your Viral code is:\n\n" + code + "\n\nShare with care!");
-                    if (!code.equals(""))
+                    PhysicalState oldPhysical = loadPhysicalState();
+
+                    if (oldPhysical != physical)
                     {
-                        writeNotification("You are AWARE!",
-                                "Visit Viral for your vaccination code!");
+                        switch (physical)
+                        {
+                            case SUSCEPTIBLE:
+                                orb.setImageResource(R.drawable.circle_blue);
+                                stateLabel.setText("SUSCEPTIBLE");
+                                break;
+                            case VACCINATED:
+                                orb.setImageResource(R.drawable.circle_green);
+                                stateLabel.setText("VACCINATED");
+                                writeNotification("Success!",
+                                        "Your vaccination has been successful!");
+                                break;
+                            case INFECTED:
+                                orb.setImageResource(R.drawable.circle_red);
+                                stateLabel.setText("INFECTED");
+                                writeNotification("You are INFECTED!",
+                                        "Visit Viral, and don't lose hope!");
+                                break;
+                        }
+                        setPhysicalState(physical);
+                    }
+
+                    String oldCode = loadCode();
+                    if (!code.equals(oldCode))
+                    {
+                        // azurirati lable
+                        setCode(code);
+                        codeGiver.setText("Your Viral code is:\n\n" + code
+                                          + "\n\nShare with care!");
+                        if (!code.equals(""))
+                        {
+                            writeNotification("You are AWARE!",
+                                    "Visit Viral for your vaccination code!");
+                        }
                     }
                 }
             }
