@@ -21,18 +21,21 @@
             android:id="@+id/leftSyringe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
             android:layout_toLeftOf="@+id/vaccCodeLabel"
+            android:layout_toRightOf="@+id/orb"
             android:layout_below="@+id/orb"
+            android:adjustViewBounds="true"
+            android:clickable="false"
             android:src="@drawable/icon_syringe_left" />
 
         <ImageView
             android:id="@+id/rightSyringe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
+            android:layout_below="@+id/orb"
+            android:layout_alignRight="@+id/submitButton"
             android:layout_toRightOf="@+id/vaccCodeLabel"
-            android:layout_alignTop="@+id/leftSyringe"
+            android:adjustViewBounds="true"
             android:src="@drawable/icon_syringe_right" />
 
         <EditText
@@ -51,7 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/rightSyringe"
+            android:layout_alignTop="@+id/leftSyringe"
             android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
             android:text="Vaccination code"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -67,7 +72,7 @@
             android:layout_below="@+id/codeInputTextBox"
             android:layout_marginLeft="23dp"
             android:layout_marginTop="46dp" />
-
+        
         <Button
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
@@ -75,16 +80,37 @@
             android:layout_below="@+id/codeInputTextBox"
             android:layout_centerHorizontal="true"
             android:text="Submit vaccination code" />
+        
+		<EditText 
+            android:id="@+id/codeGiver"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/submitButton"
+    		android:textIsSelectable="true"
+		    android:editable="false"
+		    style="?android:attr/textViewStyle"
+		    android:textAppearance="@android:style/TextAppearance.Medium"
+		    android:cursorVisible="false"
+		    android:background="@null" />
 
-        <TextView
-            android:id="@+id/stateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/leftSyringe"
-            android:layout_alignLeft="@+id/submitButton"
-            android:text="Susceptible"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+		<TextView
+		    android:id="@+id/stateLabel"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/leftSyringe"
+		    android:layout_alignLeft="@+id/submitButton"
+		    android:layout_alignParentTop="true"
+		    android:gravity="center_vertical"
+		    android:text="Susceptible"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:textStyle="bold" />
 
+		<Space
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/codeInputTextBox"
+		    android:layout_below="@+id/stateLabel" />
+		
     </RelativeLayout>
 
 </LinearLayout>

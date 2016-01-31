@@ -28,7 +28,7 @@ public class MessageReceiver extends Thread {
                     }
                     if (mess instanceof ChangeMessage) {
                         Log.d("LAG-INPUT", "Got a ChangeMessage");
-                        ma.setAwareness(((ChangeMessage) mess).getAware());
+                        ma.setAwareness(((ChangeMessage) mess).getAware(), ((ChangeMessage) mess).getCode());
                         ma.setPhysicalState(((ChangeMessage) mess).getInfected());
                     } else if (mess instanceof StopMessage) {
                         Log.d("LAG-INPUT", "Got a StopMessage");
@@ -36,7 +36,7 @@ public class MessageReceiver extends Thread {
                     } else if (mess instanceof StartMessage) {
                         Log.d("LAG-INPUT", "Got a StartMessage"); 
                         ma.setIdentity(((StartMessage) mess).getId());
-                        ma.setAwareness(((StartMessage) mess).getAware());
+                        ma.setAwareness(((StartMessage) mess).getAware(), ((StartMessage) mess).getCode());
                         ma.setPhysicalState(((StartMessage) mess).getInfected());
                         ma.setRoundOn(((StartMessage) mess).isRunning());
                     } else {

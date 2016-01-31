@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -17,13 +18,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.android.appnavigation.R;
 
 public class MainActivity extends Activity
 {
@@ -59,6 +57,7 @@ public class MainActivity extends Activity
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         // identity reading and init switch
         int phys = sharedPref.getInt("physical", -1);
+        Drawable drawable;
         switch (phys)
         {
             case -1:
@@ -67,15 +66,23 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 editor.commit();
                 physical = PhysicalState.SUSCEPTIBLE;
+                orb.setImageResource(R.drawable.circle_blue);
+                stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 0:
                 physical = PhysicalState.SUSCEPTIBLE;
+                orb.setImageResource(R.drawable.circle_blue);
+                stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 1:
                 physical = PhysicalState.VACCINATED;
+                orb.setImageResource(R.drawable.circle_green);
+                stateLabel.setText("VACCINATED");
                 break;
             case 2:
                 physical = PhysicalState.INFECTED;
+                orb.setImageResource(R.drawable.circle_red);
+                stateLabel.setText("INFECTED");
                 break;
         }
         Log.d("LAG-LOGIC", "Loaded Physiscal State is: " + physical);
@@ -106,7 +113,6 @@ public class MainActivity extends Activity
                 break;
         }
         editor.commit();
-
         Log.d("LAG-LOGIC", "Physiscal State is: " + physical);
         physical = physicalState;
     }
@@ -136,7 +142,7 @@ public class MainActivity extends Activity
         return awareness;
     }
 
-    public void setAwareness(AwarenessState aware)
+    public void setAwareness(AwarenessState aware, String code)
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -190,7 +196,7 @@ public class MainActivity extends Activity
         vaccCodeLabel = (TextView) findViewById(R.id.vaccCodeLabel);
         submitButton = (Button) findViewById(R.id.submitButton);
         stateLabel = (TextView) findViewById(R.id.stateLabel);
-
+        
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the location provider
@@ -205,6 +211,7 @@ public class MainActivity extends Activity
                 if (ms != null)
                 ms.sendMessage(new CodeMessage(identity, codeInputTextBox.getText()
                         .toString()));
+                codeInputTextBox.setText("");
             }
         });
 
