@@ -6,9 +6,9 @@ package com.hackbridge.viral;
 public class LocationStateTest {
     public LocationStateTest() {
         //  connectionTest();
-        locationChangeTest();
+        // locationChangeTest();
         // locationValueTest();
-        //stepTest();
+        stepTest();
         // resetTest();
     }
 
@@ -49,9 +49,9 @@ public class LocationStateTest {
     private void stepTest() {
         System.out.println("Running location step test");
         LocationState location_state = new LocationState();
-        int nMsgs = 10;
+        int nMsgs = 20;
         StartMessage sms[] = new StartMessage[nMsgs];
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < nMsgs; ++i) {
             sms[i] = location_state.onConnect();
         }
 

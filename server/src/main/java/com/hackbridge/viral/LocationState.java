@@ -28,11 +28,16 @@ public final class LocationState {
     private final double INITIAL_INFECTED_PROB = DEBUG ? 0.30 : 0.20;
     private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
     private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.03;
-    private final double SPONTANEOUS_RECOVERY_PROB  = 0.005;
+    private final double SPONTANEOUS_RECOVERY_PROB  = 0.001;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
+    private final double EVIL_PROB = 0.20;
+
+    // Parameters used in exponentiating to invert the distance.
+    // Inverted distance = EXPO_MULTIPLER*e^(-LAMBDA_FACTOR*distance)
     private final double LAMBDA_FACTOR = 0.002;
     private final double EXPO_MULTIPLIER = 1000.0;
 
+    // Logfile vars.
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private BufferedWriter logfile;
     private String logfile_name;
@@ -152,7 +157,9 @@ public final class LocationState {
             }
         }
 
-        logState();
+        if (LOG) {
+            logState();
+        }
     }
 
     /**
@@ -213,7 +220,6 @@ public final class LocationState {
             outputArray();
         }
     }
-
 
     /**
      * The state matrix should only be modified through this method.
