@@ -21,7 +21,7 @@ public final class LocationState {
     private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
     private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.01;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
-    private final double LAMBDA_FACTOR = 0.15;
+    private final double LAMBDA_FACTOR = 0.005;
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -169,6 +169,9 @@ public final class LocationState {
                 continue;
             }
             double distance = Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
+            if (DEBUG) {
+                System.out.println(thisNode.getDistanceFrom(node) + " " + distance);
+            }
             setArrayDistance(arrayPos, i, distance);
         }
 
@@ -303,11 +306,17 @@ public final class LocationState {
      * @param j
      */
     private void activateEdge(int i, int j) {
+        if (i == j) {
+            return;
+        }
         try {
             Node ni = position_to_node.get(i);
             Node nj = position_to_node.get(j);
             if (!ni.isActive() || !nj.isActive()) {
                 return;
+            }
+            if (ni == null || nj == null) {
+                System.err.println("Tried to active null nodes " + i + " " + j);
             }
 
             if (ni.getPhysicalState() == PhysicalState.INFECTED) {

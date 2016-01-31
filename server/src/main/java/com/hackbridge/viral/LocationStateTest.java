@@ -27,11 +27,11 @@ public class LocationStateTest {
         StartMessage start1 = location_state.onConnect();
         StartMessage start2 = location_state.onConnect();
         StartMessage start3 = location_state.onConnect();
-        location_state.onLocationChange(start1.getId(), new LocationWrapper(52.2040783, 0.1198373, 0.0));
-        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.203878, 0.1203195, 0.0));
-        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.203878, 0.1203195, 0.0));
-        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.203878, 0.1203195, 0.0));
-        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.203878, 0.1203195, 0.0));
+        location_state.onLocationChange(start1.getId(), new LocationWrapper(52.2008, 00.1198373,0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
 
     }
 
