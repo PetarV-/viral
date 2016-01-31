@@ -202,6 +202,15 @@ public class MainActivity extends Activity
             }
         });
 
+        // bear with this for now
+        buttonSendVacc.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if (ms != null)
+                    ms.send(new CodeMessage(id, tvCode.getText().toString()));
+            }
+        }
         criteria.setCostAllowed(false);
         // get the best provider depending on the criteria
         provider = locationManager.getBestProvider(criteria, false);
