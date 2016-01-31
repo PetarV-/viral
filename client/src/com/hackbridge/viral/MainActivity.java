@@ -92,23 +92,15 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 editor.commit();
                 physical = PhysicalState.SUSCEPTIBLE;
-                // orb.setImageResource(R.drawable.circle_blue);
-                // stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 0:
                 physical = PhysicalState.SUSCEPTIBLE;
-                // orb.setImageResource(R.drawable.circle_blue);
-                // stateLabel.setText("SUSCEPTIBLE");
                 break;
             case 1:
                 physical = PhysicalState.VACCINATED;
-                // orb.setImageResource(R.drawable.circle_green);
-                // stateLabel.setText("VACCINATED");
                 break;
             case 2:
                 physical = PhysicalState.INFECTED;
-                // orb.setImageResource(R.drawable.circle_red);
-                // stateLabel.setText("INFECTED");
                 break;
         }
         Log.d("LAG-LOGIC", "Loaded Physiscal State is: " + physical);
@@ -214,7 +206,7 @@ public class MainActivity extends Activity
                         .toString()));
             }
         });
-
+        
         handle = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(android.os.Message inputMessage)
@@ -241,7 +233,7 @@ public class MainActivity extends Activity
                             orb.setImageResource(R.drawable.circle_red);
                             stateLabel.setText("INFECTED");
                             writeNotification("You are INFECTED!",
-                                    "Visit Viral, and !");
+                                    "Visit Viral, and don't lose hope!");
                             break;
                     }
                     setPhysicalState(physical);
@@ -252,10 +244,9 @@ public class MainActivity extends Activity
                 {
                     // azurirati lable
                     setCode(code);
-                    codeGiver.setText(code);
+                    codeGiver.setText("Your Viral code is:\n\n" + code + "\n\nShare with care!");
                     if (!code.equals(""))
                     {
-                        // sibni notifikaciju da upoznat sa sranjem
                         writeNotification("You are AWARE!",
                                 "Visit Viral for your vaccination code!");
                     }
@@ -291,7 +282,7 @@ public class MainActivity extends Activity
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(intent);
         }
-        // location updates: at least 1 meter and 200millsecs change
+        // location updates: at least 1 meter and 100millsecs change
         locationManager.requestLocationUpdates(provider, 100, 0.5f, mylistener);
 
         round_on = false;
@@ -319,8 +310,6 @@ public class MainActivity extends Activity
                 catch (IOException e)
                 {
                     Log.d("LAG", "Cannot connect to " + server + ", port " + port);
-                    // TODO
-                    // handle this better!
                     return;
                 }
             }
