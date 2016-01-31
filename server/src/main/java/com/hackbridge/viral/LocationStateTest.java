@@ -7,7 +7,8 @@ public class LocationStateTest {
     public LocationStateTest() {
         //  connectionTest();
         // locationChangeTest();
-        stepTest();
+        locationValueTest();
+        //stepTest();
         // resetTest();
     }
 
@@ -18,6 +19,20 @@ public class LocationStateTest {
         location_state.onDisconnect(start_msg.getId());
         location_state.onDisconnect(0);
         location_state.onConnect(0);
+    }
+
+    private void locationValueTest() {
+        System.out.println("Running location value test");
+        LocationState location_state = new LocationState();
+        StartMessage start1 = location_state.onConnect();
+        StartMessage start2 = location_state.onConnect();
+        StartMessage start3 = location_state.onConnect();
+        location_state.onLocationChange(start1.getId(), new LocationWrapper(52.2008, 00.1198373,0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+        location_state.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
+
     }
 
     private void locationChangeTest() {
