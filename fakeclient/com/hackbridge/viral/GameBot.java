@@ -95,11 +95,18 @@ public class GameBot extends Thread
 
     public static void main(String[] args)
     {
-        for (int i = 0; i < 10; i++)
+        try
         {
-            GameBot bot = new GameBot();
-            bot.setDaemon(false);
-            bot.start();
+            for (int i = 0; i < Integer.parseInt(args[0]); i++)
+            {
+                GameBot bot = new GameBot();
+                bot.setDaemon(false);
+                bot.start();
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException | IntegerParseException e)
+        {
+            System.out.println("Usage: java com.hackbridge.viral.GameBot <#bots>");
         }
     }
 }
