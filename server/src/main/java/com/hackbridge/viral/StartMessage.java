@@ -11,14 +11,16 @@ package com.hackbridge.viral;
 public class StartMessage extends Message {
     private PhysicalState infected;
     private AwarenessState aware;
+    private RoleState role;
     private String code;
     private long id;
     private boolean isRunning;
 
-    public StartMessage(long id, PhysicalState infected, AwarenessState aware) {
+    public StartMessage(long id, PhysicalState infected, AwarenessState aware, RoleState role) {
         this.id = id;
         this.infected = infected;
         this.aware = aware;
+        this.role = role;
         this.code = "";
         this.isRunning = false;
     }
@@ -49,5 +51,9 @@ public class StartMessage extends Message {
 
     public void setIsRunning(boolean isRunning) {
         this.isRunning = isRunning;
+    }
+
+    public RoleState getRole() {
+        return role;
     }
 }
