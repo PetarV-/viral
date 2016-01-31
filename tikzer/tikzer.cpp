@@ -64,7 +64,7 @@ inline void gen_tikz()
 inline void build_tikz()
 {
     system("exec pdflatex ret.tex &> /dev/null");
-    system("exec convert -density 1200 ret.pdf -quality 90 ret.png &> /dev/null");
+    system("exec convert -density 300 ret.pdf -quality 90 ret.png &> /dev/null");
 }
 
 int main()
