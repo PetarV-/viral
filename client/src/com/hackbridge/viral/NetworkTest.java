@@ -3,48 +3,64 @@ package com.hackbridge.viral;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.io.ObjectOutputStream;
 
-public class NetworkTest {
+import android.util.Log;
 
-    public static long id = -1;
-    public static int state = 0;
-    public static PhysicalState physState;
-    public static AwarenessState awareState; 
+public class NetworkTest
+{
+/*
+    public static long           id    = -1;
+    public static int            state = 0;
+    public static PhysicalState  physState;
+    public static AwarenessState awareState;
 
-    public static void runTest() {
-        System.out.println("Starting test!!");
-        String server = "172.20.10.4";
+    public static void runTest()
+    {
+        Log.d("LAG", "Starting test!!");
+        String server = "188.166.154.60";//"94.197.120.86";//"172.20.10.4";
         int port = 25000;
-        try {
+        try
+        {
             physState = PhysicalState.SUSCEPTIBLE;
             awareState = AwarenessState.UNAWARE;
-            System.out.println("about to create Socket");
+            Log.d("LAG", "about to create Socket");
             Socket s = new Socket(server, port);
-            System.out.println("Socket created");
+            Log.d("LAG", "Socket created");
             MessageSender ms = new MessageSender(s);
             MessageReceiver mr = new MessageReceiver(s);
             mr.setDaemon(true);
-            System.out.println("about to start threads");
+            Log.d("LAG", "about to start threads");
             mr.start();
-            System.out.println("about to send message");
-            while (true) {
+            Log.d("LAG", "about to send message");
+            while (true)
+            {
                 // don't want to close anything, really
-                try {
+                Log.d("LAG", "looping");
+                try
+                {
                     Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    System.out.println("InterruptedException? What should I do?");
                 }
-                switch (state) {
+                catch (InterruptedException e)
+                {
+                    Log.d("LAG", "InterruptedException? What should I do?");
+                }
+                switch (state)
+                {
                     case 0:
+                        Log.d("LAG", "about to send");
                         ms.sendMessage(new HelloNewMessage());
+                        Log.d("LAG", "sent");
                         break;
-                    case 1: case 2: case 3: case 4:
-                        if (id != -1) {
-                            System.out.println("about to send location");
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        if (id != -1)
+                        {
+                            Log.d("LAG", "about to send location");
                             ms.sendMessage(new PositionMessage(id,
-                                           new LocationWrapper(state + 0.0,
-                                               state * 1.5, (state + 3.0) * 0.73)));
+                                    new LocationWrapper(state + 0.0,
+                                            state * 1.5, (state + 3.0) * 0.73)));
                             state++;
                         }
                         break;
@@ -52,14 +68,17 @@ public class NetworkTest {
                         return;
                 }
             }
-        } catch (IOException e) {
-            System.out.println("Cannot connect to " + server + ", port " + port);
+        }
+        catch (IOException e)
+        {
+            Log.d("LAG", "Cannot connect to " + server + ", port " + port);
             return;
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         runTest();
     }
+    */
 }
-
