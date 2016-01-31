@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public final class LocationState {
     private final boolean DEBUG = true;
-    private final boolean LOG = true;
+    private final boolean TIKZ_LOG = true;
 
     private int array_capacity = 512;
     private final ArrayList<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
@@ -41,6 +41,7 @@ public final class LocationState {
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private BufferedWriter logfile;
     private String logfile_name;
+    private final String tikzfile_name = "../tikzer/final_log_log";
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -58,7 +59,6 @@ public final class LocationState {
         }
         Date today = Calendar.getInstance().getTime();
         logfile_name = dateFormat.format(today) + ".log";
-
     }
 
     /** Called upon addition of a new node.
@@ -157,8 +157,10 @@ public final class LocationState {
             }
         }
 
-        if (LOG) {
-            logState();
+        if (TIKZ_LOG) {
+            logState(tikzfile_name);
+        } else {
+            logState(logfile_name);
         }
     }
 
@@ -279,9 +281,9 @@ public final class LocationState {
      * (A for aware, U for unaware), and P is the physical state (I for infected, V for vaccinated, S for susceptible).
      * This is followed by a M*M matrix of node distance floats, followed by END.
      */
-    private void logState() {
+    private void logState(String filename) {
         try {
-            logfile = new BufferedWriter(new FileWriter(logfile_name));
+            logfile = new BufferedWriter(new FileWriter(filename));
             logfile.write("START\n");
             logfile.write(String.format("%d %d\n", nodes.size(), node_ctr));
             for (Node node : nodes.values()) {
