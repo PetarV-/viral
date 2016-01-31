@@ -57,8 +57,17 @@ public class Main {
     public static void stopRound() {
         System.out.println("Round is ending!");
         isRunning = false;
-        for (ClientHandler handler : handlers.values()) {
-            handler.sendMessage(new StopMessage());
+        for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
+            long id = kvp.getKey();
+            ClientHandler handler = kvp.getValue();
+            RoleState role = locState.getRoleState(id);
+            boolean hasWon = false;
+            if (role == RoleState.HUMAN) {
+                //hasWon = (locState.getPhysicalState(id) != PhysicalState.INFECTED);
+            } else if (role == RoleState.INFECTOR) {
+                hasWon = (locState.getPercentageInfected() >= 0.5);
+            }
+            handler.sendMessage(new StopMessage(hasWon));
         }
         queue = new ConcurrentLinkedQueue<Message>();
         locState.reset();
