@@ -30,7 +30,7 @@ public final class LocationState {
     private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.03;
     private final double SPONTANEOUS_RECOVERY_PROB  = 0.001;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
-    private final double EVIL_PROB = 0.20;
+    private final double EVIL_PROB = DEBUG ? 0.30 : 0.20;
 
     // Parameters used in exponentiating to invert the distance.
     // Inverted distance = EXPO_MULTIPLER*e^(-LAMBDA_FACTOR*distance)
@@ -77,7 +77,11 @@ public final class LocationState {
             new_as = AwarenessState.UNAWARE;
         }
 
-        Node new_node = new Node(new_ps, new_as);
+        RoleState new_rs =
+                getRandomNumber() < EVIL_PROB ?
+                        RoleState.INFECTOR : RoleState.HUMAN;
+
+        Node new_node = new Node(new_ps, new_as, new_rs);
 
         nodes.put(new_node.getID(), new_node);
         state_position.put(new_node.getID(), node_ctr);
@@ -92,7 +96,7 @@ public final class LocationState {
         System.out.println("New node connected. " + new_node);
 
         return new StartMessage(new_node.getID(),
-                new_node.getPhysicalState(), new_node.getAwarenessState());
+                new_node.getPhysicalState(), new_node.getAwarenessState(), new_node.getRoleState());
     }
 
     /**
@@ -108,7 +112,7 @@ public final class LocationState {
         }
         System.out.println("Reconnected " + node);
         return new StartMessage(
-                node.getID(), node.getPhysicalState(), node.getAwarenessState());
+                node.getID(), node.getPhysicalState(), node.getAwarenessState(), node.getRoleState());
     }
 
     /**
@@ -187,6 +191,43 @@ public final class LocationState {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Returns the RoleState of the node.
+     * @param nodeID
+     * @return RoleState, or null if the nodeID does not exist.
+     */
+    public RoleState getRoleState(long nodeID) {
+        Node node = nodes.get(nodeID);
+        if (node == null) {
+            System.err.println("Error: failed to get role state for node " + nodeID + ". Node does not exist.");
+            return null;
+        }
+        return node.getRoleState();
+    }
+
+    /**
+     * Returns the percentage of active nodes (those that are connected and have sent at least one location update)
+     * that are infected.
+     * @return
+     */
+    public double getPercentageInfected() {
+        int num_infected_nodes = 0;
+        int total_active_nodes = 0;
+        for (Node node : nodes.values()) {
+            if (!node.isActive()) {
+                continue;
+            }
+            if (node.getRoleState() == RoleState.INFECTOR) {
+                num_infected_nodes++;
+            }
+            total_active_nodes++;
+        }
+        if (total_active_nodes == 0) {
+            return 0.0;
+        }
+        return (double) num_infected_nodes / (double) total_active_nodes;
     }
 
     /**
@@ -270,7 +311,10 @@ public final class LocationState {
             } else {
                 new_as = AwarenessState.UNAWARE;
             }
-            node.reset(new_ps, new_as);
+            RoleState new_rs =
+                    getRandomNumber() < EVIL_PROB ?
+                            RoleState.INFECTOR : RoleState.HUMAN;
+            node.reset(new_ps, new_as, new_rs);
         }
     }
 

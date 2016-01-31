@@ -1,5 +1,7 @@
 package com.hackbridge.viral;
 
+import javax.management.relation.Role;
+
 public class Node {
     private static long GLOBAL_ID = 1;
     private final long nodeID;
@@ -12,23 +14,27 @@ public class Node {
     private boolean connected;
     private boolean location_set;
 
-    public Node(PhysicalState physical_s, AwarenessState awareness_s) {
+    private RoleState role_state;
+
+    public Node(PhysicalState physical_s, AwarenessState awareness_s, RoleState role) {
         nodeID = GLOBAL_ID;
         GLOBAL_ID++;
         this.physical_state = physical_s;
         this.awareness_state = awareness_s;
+        this.role_state = role;
         connected = true;
 
         location = new LocationWrapper(0.0,0.0,0.0);
         location_set = false;
     }
 
-    public void reset(PhysicalState ps, AwarenessState as) {
+    public void reset(PhysicalState ps, AwarenessState as, RoleState rs) {
         connected = false;
         location_set = false;
         location = new LocationWrapper(0.0,0.0,0.0);
         physical_state = ps;
         awareness_state = as;
+        role_state = rs;
     }
 
     public long getID() {
@@ -51,6 +57,9 @@ public class Node {
         this.physical_state = ps;
     }
 
+    RoleState getRoleState() {
+        return role_state;
+    }
     public boolean getConnected() {
         return connected;
     }
