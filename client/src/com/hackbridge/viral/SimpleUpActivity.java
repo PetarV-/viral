@@ -16,8 +16,6 @@
 
 package com.hackbridge.viral;
 
-import com.example.android.appnavigation.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 
