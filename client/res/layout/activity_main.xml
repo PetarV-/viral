@@ -13,32 +13,33 @@
             android:id="@+id/orb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="@android:drawable/btn_star_big_on" />
+            android:adjustViewBounds="true"
+			android:layout_toLeftOf="@+id/stateLabel"
+            android:src="@drawable/circle_blue" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/leftSyringe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/imageView1"
-            android:src="@android:drawable/btn_dialog" />
+            android:adjustViewBounds="true"
+            android:layout_toLeftOf="@+id/vaccCodeLabel"
+            android:layout_below="@+id/orb"
+            android:src="@drawable/icon_syringe_left" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/rightSyringe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/imageView2"
-            android:src="@android:drawable/btn_dialog" />
+            android:adjustViewBounds="true"
+            android:layout_toRightOf="@+id/vaccCodeLabel"
+            android:layout_alignTop="@+id/leftSyringe"
+            android:src="@drawable/icon_syringe_right" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/codeInputTextBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView3"
+            android:layout_below="@+id/rightSyringe"
             android:layout_centerHorizontal="true"
             android:ems="10" >
 
@@ -46,10 +47,10 @@
         </EditText>
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/vaccCodeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView3"
+            android:layout_alignBottom="@+id/rightSyringe"
             android:layout_centerHorizontal="true"
             android:text="Vaccination code"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -58,22 +59,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/imageView2" />
+            android:layout_alignTop="@+id/leftSyringe" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText1"
+            android:layout_below="@+id/codeInputTextBox"
             android:layout_marginLeft="23dp"
             android:layout_marginTop="46dp" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText1"
+            android:layout_below="@+id/codeInputTextBox"
             android:layout_centerHorizontal="true"
             android:text="Submit vaccination code" />
+
+        <TextView
+            android:id="@+id/stateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/leftSyringe"
+            android:layout_alignLeft="@+id/submitButton"
+            android:text="Susceptible"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
 
