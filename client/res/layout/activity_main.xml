@@ -4,54 +4,87 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-     <TextView
-            android:id="@+id/textView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="Do you want a fine accuracy or not?" />
-     
-     <TextView
-            android:id="@+id/choice"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="coarse accuracy selected (default)" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.28" >
 
-     <CheckBox
-         android:id="@+id/fineAccuracy"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="fine accuracy" />
-
-     <Button
-         android:id="@+id/chooseRadio"
-         style="?android:attr/buttonStyleSmall"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="OK" />
-
-      <TextView
-            android:id="@+id/prov"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="No provider selected yet"
-            android:layout_marginTop="10dp"
-            android:textSize="20dp" />
-        
-        <TextView
-            android:id="@+id/lat"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Latitude: -"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/lon"
+        <ImageView
+            android:id="@+id/orb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Longitude: -"
-            android:textSize="20dp" />
-       
-</LinearLayout> 
+            android:adjustViewBounds="true"
+			android:layout_toLeftOf="@+id/stateLabel"
+            android:src="@drawable/circle_blue" />
+
+        <ImageView
+            android:id="@+id/leftSyringe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_toLeftOf="@+id/vaccCodeLabel"
+            android:layout_below="@+id/orb"
+            android:src="@drawable/icon_syringe_left" />
+
+        <ImageView
+            android:id="@+id/rightSyringe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_toRightOf="@+id/vaccCodeLabel"
+            android:layout_alignTop="@+id/leftSyringe"
+            android:src="@drawable/icon_syringe_right" />
+
+        <EditText
+            android:id="@+id/codeInputTextBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rightSyringe"
+            android:layout_centerHorizontal="true"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/vaccCodeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rightSyringe"
+            android:layout_centerHorizontal="true"
+            android:text="Vaccination code"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/leftSyringe" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/codeInputTextBox"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="46dp" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/codeInputTextBox"
+            android:layout_centerHorizontal="true"
+            android:text="Submit vaccination code" />
+
+        <TextView
+            android:id="@+id/stateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/leftSyringe"
+            android:layout_alignLeft="@+id/submitButton"
+            android:text="Susceptible"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+</LinearLayout>

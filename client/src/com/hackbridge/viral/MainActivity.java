@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +27,13 @@ import com.example.android.appnavigation.R;
 
 public class MainActivity extends Activity
 {
-    private TextView           latitude;
-    private TextView           longitude;
-    private TextView           choice;
-    private CheckBox           fineAcc;
-    private Button             choose;
-    private TextView           provText;
+    private ImageView          orb;
+    private ImageView          leftSyringe;
+    private ImageView          rightSyringe;
+    private EditText           codeInputTextBox;
+    private TextView           vaccCodeLabel;
+    private Button             submitButton;
+    private TextView           stateLabel;
     private LocationManager    locationManager;
     private String             provider;
     private MyLocationListener mylistener;
@@ -81,6 +84,7 @@ public class MainActivity extends Activity
 
     public void setPhysicalState(PhysicalState physicalState)
     {
+        PhysicalState oldState = loadPhysicalState();
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         switch (physicalState)
@@ -89,13 +93,20 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
+                if (oldState != PhysicalState.VACCINATED) Toast.makeText(
+                        MainActivity.this, "Successful vaccination!",
+                        Toast.LENGTH_SHORT).show();
                 editor.putInt("physical", 1);
                 break;
             case INFECTED:
+                if (oldState != PhysicalState.INFECTED) Toast.makeText(MainActivity.this,
+                        "You have been infected",
+                        Toast.LENGTH_SHORT).show();
                 editor.putInt("physical", 2);
                 break;
         }
         editor.commit();
+
         Log.d("LAG-LOGIC", "Physiscal State is: " + physical);
         physical = physicalState;
     }
@@ -171,34 +182,29 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        latitude = (TextView) findViewById(R.id.lat);
-        longitude = (TextView) findViewById(R.id.lon);
-        provText = (TextView) findViewById(R.id.prov);
-        choice = (TextView) findViewById(R.id.choice);
-        fineAcc = (CheckBox) findViewById(R.id.fineAccuracy);
-        choose = (Button) findViewById(R.id.chooseRadio);
+
+        orb = (ImageView) findViewById(R.id.orb);
+        leftSyringe = (ImageView) findViewById(R.id.leftSyringe);
+        rightSyringe = (ImageView) findViewById(R.id.rightSyringe);
+        codeInputTextBox = (EditText) findViewById(R.id.codeInputTextBox);
+        vaccCodeLabel = (TextView) findViewById(R.id.vaccCodeLabel);
+        submitButton = (Button) findViewById(R.id.submitButton);
+        stateLabel = (TextView) findViewById(R.id.stateLabel);
+
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the location provider
         criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_LOW); // default
 
-        // user defines the criteria
-        choose.setOnClickListener(new OnClickListener() {
+        // bear with this for now
+        submitButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                // TODO Auto-generated method stub
-                if (fineAcc.isChecked())
-                {
-                    criteria.setAccuracy(Criteria.ACCURACY_FINE);
-                    choice.setText("fine accuracy selected");
-                }
-                else
-                {
-                    criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-                    choice.setText("coarse accuracy selected");
-                }
+                if (ms != null)
+                ms.sendMessage(new CodeMessage(identity, codeInputTextBox.getText()
+                        .toString()));
             }
         });
 
@@ -270,14 +276,6 @@ public class MainActivity extends Activity
         @Override
         public void onLocationChanged(Location location)
         {
-            // Initialize the location fields
-            latitude.setText("Latitude: " + String.valueOf(location.getLatitude()));
-            longitude.setText("Longitude: " + String.valueOf(location.getLongitude()));
-            provText.setText(provider + " provider has been selected.");
-
-            Toast.makeText(MainActivity.this, "Location changed!",
-                    Toast.LENGTH_SHORT).show();
-
             if (round_on && ms != null) ms.sendMessage(new PositionMessage(identity,
                     new LocationWrapper(location.getLongitude(),
                             location.getLatitude(),
