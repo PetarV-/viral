@@ -6,8 +6,8 @@ package com.hackbridge.viral;
 public class LocationStateTest {
     public LocationStateTest() {
         //  connectionTest();
-        // locationChangeTest();
-        locationValueTest();
+        locationChangeTest();
+        // locationValueTest();
         //stepTest();
         // resetTest();
     }

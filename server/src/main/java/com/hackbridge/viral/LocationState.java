@@ -1,10 +1,18 @@
 package com.hackbridge.viral;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public final class LocationState {
     private final boolean DEBUG = true;
+    private final boolean LOG = true;
 
     private int array_capacity = 512;
     private final ArrayList<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
@@ -21,7 +29,12 @@ public final class LocationState {
     private final double INITIAL_AWARENESS_PROB = DEBUG ? 0.50 : 0.10;
     private final double INFECTED_IF_VACCINATED_PROB = DEBUG ? 0.10 : 0.01;
     private final double ACTIVATE_EDGE_PROB = DEBUG ? 1.0 : 0.05;
-    private final double LAMBDA_FACTOR = 0.005;
+    private final double LAMBDA_FACTOR = 0.002;
+    private final double EXPO_MULTIPLIER = 1000.0;
+
+    private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    private BufferedWriter logfile;
+    private String logfile_name;
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
@@ -37,6 +50,9 @@ public final class LocationState {
             }
             state.add(new_array);
         }
+        Date today = Calendar.getInstance().getTime();
+        logfile_name = dateFormat.format(today) + ".log";
+
     }
 
     /** Called upon addition of a new node.
@@ -125,6 +141,8 @@ public final class LocationState {
         if (getRandomNumber() < ACTIVATE_EDGE_PROB) {
             activateRandomEdge();
         }
+
+        logState();
     }
 
     /**
@@ -141,7 +159,12 @@ public final class LocationState {
         }
         if (node.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
             node.setPhysicalState(PhysicalState.VACCINATED);
-            Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), nodeID);
+            node.setAwarenessState(AwarenessState.AWARE);
+            Main.changeState(new ChangeMessage(node.getPhysicalState(), AwarenessState.AWARE), nodeID);
+            return true;
+        } else if (node.getAwarenessState() != AwarenessState.AWARE) {
+            node.setAwarenessState(AwarenessState.AWARE);
+            Main.changeState(new ChangeMessage(node.getPhysicalState(), AwarenessState.AWARE), nodeID);
             return true;
         }
         return false;
@@ -168,9 +191,10 @@ public final class LocationState {
             if (!node.isActive()) {
                 continue;
             }
-            double distance = Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
+            double distance = EXPO_MULTIPLIER*Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
             if (DEBUG) {
-                System.out.println(thisNode.getDistanceFrom(node) + " " + distance);
+                System.out.println(
+                        "Actual distance: " + thisNode.getDistanceFrom(node) + ", Exponentiated: " + distance);
             }
             setArrayDistance(arrayPos, i, distance);
         }
@@ -233,10 +257,41 @@ public final class LocationState {
     }
 
     /**
+     * Logs the current stage with the following format:
+     * START followed by two integers N, M representing the number of nodes and dimension of the distance matrix.
+     * This is followed by N lines in the format "ID A P", where ID is the nodeID, A is the awareness state
+     * (A for aware, U for unaware), and P is the physical state (I for infected, V for vaccinated, S for susceptible).
+     * This is followed by a M*M matrix of node distance floats, followed by END.
+     */
+    private void logState() {
+        try {
+            logfile = new BufferedWriter(new FileWriter(logfile_name));
+            logfile.write("START\n");
+            logfile.write(String.format("%d %d\n", nodes.size(), node_ctr));
+            for (Node node : nodes.values()) {
+                logfile.write(String.format(
+                        "%d %s %s\n", node.getID(), node.getAwarenessState().toString().charAt(0),
+                        node.getPhysicalState().toString().charAt(0)));
+            }
+            for (int i = 0; i < node_ctr; ++i) {
+                String line = "";
+                for (int j = 0; j < node_ctr; ++j) {
+                    line += String.format("%.7f ", state.get(i).get(j));
+                }
+                logfile.write(line + "\n");
+            }
+            logfile.write("END\n");
+            logfile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Output the current distance array, includes inactive nodes (TODO)
      */
     private void outputArray() {
-        System.out.println("===============\nOuputting current stage");
+        System.out.println("===============\nOutputting current stage");
         for (int i = 0; i < node_ctr; ++i) {
             String line = "";
             for (int j = 0; j < node_ctr; ++j) {
