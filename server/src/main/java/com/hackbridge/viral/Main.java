@@ -63,7 +63,7 @@ public class Main {
             RoleState role = locState.getRoleState(id);
             boolean hasWon = false;
             if (role == RoleState.HUMAN) {
-                //hasWon = (locState.getPhysicalState(id) != PhysicalState.INFECTED);
+                hasWon = (locState.getPhysicalState(id) != PhysicalState.INFECTED);
             } else if (role == RoleState.INFECTOR) {
                 hasWon = (locState.getPercentageInfected() >= 0.5);
             }
