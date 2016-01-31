@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="34394869-8dfd-47de-947e-c7fc0651a61b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java" />
     </list>
     <ignored path="server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +28,13 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.352518">
-              <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.43165466">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#400#421#0" expanded="true" />
+                <element signature="e#2502#2627#0" expanded="true" />
+                <element signature="e#2626#2627#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/LocationState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="201" column="21" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
+              <caret line="210" column="21" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/LocationStateTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -733,7 +735,19 @@
       <option name="project" value="LOCAL" />
       <updated>1454228198103</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Main method updated to process roles.">
+      <created>1454229905163</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1454229905163</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Main method updated to process roles, v2.">
+      <created>1454229941459</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1454229941459</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -809,8 +823,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="States implemented" />
-    <MESSAGE value="Add LocationState method stubs." />
     <MESSAGE value="Some functions in main." />
     <MESSAGE value="Changed the package." />
     <MESSAGE value="Made the methods static" />
@@ -834,7 +846,9 @@
     <MESSAGE value="Add logging 2" />
     <MESSAGE value="Initial roles commit." />
     <MESSAGE value="Stop message updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Stop message updated." />
+    <MESSAGE value="Main method updated to process roles." />
+    <MESSAGE value="Main method updated to process roles, v2." />
+    <option name="LAST_COMMIT_MESSAGE" value="Main method updated to process roles, v2." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -946,6 +960,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#400#421#0" expanded="true" />
+            <element signature="e#2502#2627#0" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1036,6 +1053,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#400#421#0" expanded="true" />
+            <element signature="e#2502#2627#0" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1242,7 +1262,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/LocationStateTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1278,7 +1298,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/LocationState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="201" column="21" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
+          <caret line="210" column="21" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1306,10 +1326,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.352518">
-          <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.43165466">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#400#421#0" expanded="true" />
+            <element signature="e#2502#2627#0" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
           </folding>
         </state>
       </provider>
