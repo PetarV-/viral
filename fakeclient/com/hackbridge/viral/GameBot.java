@@ -104,7 +104,7 @@ public class GameBot extends Thread
                 bot.start();
             }
         }
-        catch (ArrayIndexOutOfBoundsException | IntegerParseException e)
+        catch (ArrayIndexOutOfBoundsException | NumberFormatException e)
         {
             System.out.println("Usage: java com.hackbridge.viral.GameBot <#bots>");
         }
