@@ -21,20 +21,6 @@ public class Main {
     private static int codeSize = 7;
     private static String code;
 
-    private static TimerTask startTask = new TimerTask() {
-        @Override
-        public void run() {
-            startRound();
-        }
-    };
-
-    private static TimerTask stopTask = new TimerTask() {
-        @Override
-        public void run() {
-            stopRound();
-        }
-    };
-
     public static String getCode() {
         return code;
     }
@@ -45,6 +31,7 @@ public class Main {
 
     // Starts a round
     public static void startRound() {
+        System.out.println("Round is starting!");
         isRunning = true;
         code = "";
         for (int i=0;i<codeSize;i++) {
@@ -57,17 +44,30 @@ public class Main {
             sm.setIsRunning(true);
             handler.sendMessage(sm);
         }
+        TimerTask stopTask = new TimerTask() {
+            @Override
+            public void run() {
+                stopRound();
+            }
+        };
         timer.schedule(stopTask, roundDuration);
     }
 
     // Stop a round
     public static void stopRound() {
+        System.out.println("Round is ending!");
         isRunning = false;
         for (ClientHandler handler : handlers.values()) {
             handler.sendMessage(new StopMessage());
         }
         queue = new ConcurrentLinkedQueue<Message>();
         locState.reset();
+        TimerTask startTask = new TimerTask() {
+            @Override
+            public void run() {
+                startRound();
+            }
+        };
         timer.schedule(startTask, delayBetweenRounds);
     }
 
