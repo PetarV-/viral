@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -111,7 +112,7 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
-                if (oldState != PhysicalState.VACCINATED) editor.putInt("physical", 1);
+                editor.putInt("physical", 1);
                 break;
             case INFECTED:
                 editor.putInt("physical", 2);
@@ -180,6 +181,7 @@ public class MainActivity extends Activity
         final Button submitButton = (Button) findViewById(R.id.submitButton);
         final TextView stateLabel = (TextView) findViewById(R.id.stateLabel);
         final EditText codeGiver = (EditText) findViewById(R.id.codeGiver);
+        final TextView instructionsLabel = (TextView) findViewById(R.id.instructionsLabel);
 
         // bear with this for now
         submitButton.setOnClickListener(new OnClickListener() {
@@ -203,12 +205,48 @@ public class MainActivity extends Activity
 
                 if (code.equals("~"))
                 {
-                    orb.setImageResource(R.drawable.circle_blue);
-                    stateLabel.setText("ROUND OFF");
+                    orb.setImageResource(R.drawable.circle_gray);
+                    stateLabel.setText("ROUND NOT STARTED");
+                    instructionsLabel.setText("");
+                    codeGiver.setText("");
+                    setCode("");
+                }
+                else if(code.equals("-"))
+                {
+                    orb.setImageResource(R.drawable.circle_gray);
+                    stateLabel.setText("ROUND FINISHED");
+                    instructionsLabel.setText("");
+                    codeGiver.setText("");
+                    writeNotification("You have lost!",
+                            "You were unsuccessful in accomplishing your objective. Better luck next time!");
+                    setCode("");
+                }
+                else if(code.equals("+"))
+                {
+                    orb.setImageResource(R.drawable.circle_gray);
+                    stateLabel.setText("ROUND FINISHED");
+                    instructionsLabel.setText("");
+                    codeGiver.setText("");
+                    writeNotification("You have won!",
+                            "You have successfully accomplished your objective! Good work!");
                     setCode("");
                 }
                 else
                 {
+                    if(inputMessage.what == 1)
+                    {
+                        // human
+                        String s = "You are a <b>HUMAN</b>!<br>Your objective is to finish the round without getting infected.";
+                        instructionsLabel.setText(Html.fromHtml(s));
+                    }
+                    else if(inputMessage.what == 2)
+                    {
+                        // infector
+
+                        String s = "You are an <b>INFECTOR</b>!<br>Your objective is to help infect at least half of the population by the end of the round.";
+                        instructionsLabel.setText(Html.fromHtml(s));
+                    }
+                    
                     PhysicalState oldPhysical = loadPhysicalState();
 
                     if (oldPhysical != physical)

@@ -37,17 +37,26 @@ public class MessageReceiver extends Thread
                     if (mess instanceof ChangeMessage)
                     {
                         Log.d("LAG-INPUT", "Got a ChangeMessage");
-                        MainActivity.handle.obtainMessage(0, (ChangeMessage)mess).sendToTarget();
+                        MainActivity.handle.obtainMessage(0, (ChangeMessage) mess)
+                                .sendToTarget();
                     }
                     else if (mess instanceof StopMessage)
                     {
                         Log.d("LAG-INPUT", "Got a StopMessage");
                         ma.setRoundOn(false);
-                        
+
                         // fill out with dummy data
                         ChangeMessage tmp =
-                                new ChangeMessage(PhysicalState.SUSCEPTIBLE, AwarenessState.AWARE);
-                        tmp.setCode("~");
+                            new ChangeMessage(PhysicalState.SUSCEPTIBLE,
+                                    AwarenessState.AWARE);
+                        if (((StopMessage) mess).isHasWon())
+                        {
+                            tmp.setCode("+");
+                        }
+                        else
+                        {
+                            tmp.setCode("-");
+                        }
                         MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
                     }
                     else if (mess instanceof StartMessage)
@@ -59,11 +68,18 @@ public class MessageReceiver extends Thread
                         StartMessage sm = (StartMessage) mess;
                         ChangeMessage tmp =
                             new ChangeMessage(sm.getInfected(), sm.getAware());
-                        if(sm.isRunning())
+                        if (sm.isRunning())
                         {
                             // regular start message
                             tmp.setCode(sm.getCode());
-                            MainActivity.handle.obtainMessage(0, tmp).sendToTarget();
+                            if(sm.getRole() == RoleState.HUMAN)
+                            {
+                                MainActivity.handle.obtainMessage(1, tmp).sendToTarget();
+                            }
+                            else
+                            {
+                                MainActivity.handle.obtainMessage(2, tmp).sendToTarget();
+                            }
                         }
                         else
                         {
