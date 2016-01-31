@@ -41,7 +41,7 @@ public final class LocationState {
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private BufferedWriter logfile;
     private String logfile_name;
-    private final String tikzfile_name = "../tikzer/final_log_log";
+    private final String tikzfile_name = "../tikzer/final_log_log.log";
 
     public LocationState() {
         state = new ArrayList<ArrayList<Double>>();
