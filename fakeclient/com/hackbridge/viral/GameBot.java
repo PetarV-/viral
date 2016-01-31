@@ -78,7 +78,7 @@ public class GameBot extends Thread
                 }
                 try
                 {
-                    Thread.sleep(7000 + (int)(6000 * Math.random()));
+                    Thread.sleep(15000 + (int)(5000 * Math.random()));
                 }
                 catch (InterruptedException e)
                 {
