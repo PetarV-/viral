@@ -81,6 +81,7 @@ public class MainActivity extends Activity
 
     public void setPhysicalState(PhysicalState physicalState)
     {
+        PhysicalState oldState = loadPhysicalState();
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         switch (physicalState)
@@ -89,13 +90,20 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
+                if (oldState != PhysicalState.VACCINATED) Toast.makeText(
+                        MainActivity.this, "Successful vaccination!",
+                        Toast.LENGTH_SHORT).show();
                 editor.putInt("physical", 1);
                 break;
             case INFECTED:
+                if (oldState != PhysicalState.INFECTED) Toast.makeText(MainActivity.this,
+                        "You have been infected",
+                        Toast.LENGTH_SHORT).show();
                 editor.putInt("physical", 2);
                 break;
         }
         editor.commit();
+
         Log.d("LAG-LOGIC", "Physiscal State is: " + physical);
         physical = physicalState;
     }
@@ -274,9 +282,6 @@ public class MainActivity extends Activity
             latitude.setText("Latitude: " + String.valueOf(location.getLatitude()));
             longitude.setText("Longitude: " + String.valueOf(location.getLongitude()));
             provText.setText(provider + " provider has been selected.");
-
-            Toast.makeText(MainActivity.this, "Location changed!",
-                    Toast.LENGTH_SHORT).show();
 
             if (round_on && ms != null) ms.sendMessage(new PositionMessage(identity,
                     new LocationWrapper(location.getLongitude(),
