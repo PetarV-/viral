@@ -158,5 +158,9 @@ public class GameBot extends Thread {
             }
         }
         // TODO: friendlier interface?
+        catch (ArrayIndexOutOfBoundsException | NumberFormatException e)
+        {
+            System.out.println("Usage: java com.hackbridge.viral.GameBot <#bots>");
+        }
     }
 }
