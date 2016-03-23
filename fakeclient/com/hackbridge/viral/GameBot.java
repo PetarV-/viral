@@ -8,7 +8,7 @@
 package com.hackbridge.viral;
 
 import java.io.IOException;
-import java.net.InetAddress;
+import java.io.FileInputStream;
 import java.net.Socket;
 
 public class GameBot extends Thread {
@@ -32,7 +32,7 @@ public class GameBot extends Thread {
     // constructors
 
     // input is bot's initial position
-    public GameBot(double mLongit, mLatit) {
+    public GameBot(double mLongit, double mLatit) {
         longit = mLongit;
         latit = mLatit;
         // default parameters
@@ -124,10 +124,23 @@ public class GameBot extends Thread {
     }
 
     public static void main(String[] args) {
-        FileInputStream fis;
+        if (args.length != 3) {
+            // wrong usage
+            System.out.println("Usage: java com.hackbridge.viral.GameBot "
+                             + "<bot parameter file> <server> <port>");
+            return;
+        }
         try {
+            String filename;
             server = args[1];
             port = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            // wrong usage
+            System.out.println("Usage: java com.hackbridge.viral.GameBot "
+                             + "<bot parameter file> <server> <port>");
+        }
+        FileInputStream fis = null;
+        try {
             fis = new FileInputStream(args[0]);
             // TODO: actually read from file and use it
             for (int i = 0; i < 10; i++) {
@@ -135,9 +148,6 @@ public class GameBot extends Thread {
                 bot.setDaemon(false); // JVM must not exit!
                 bot.start();
             }
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-            System.out.println("Usage: java com.hackbridge.viral.GameBot "
-                             + "<bot parameter file> <server> <port>");
         } catch (IOException e) {
             System.out.println("Error reading from file " + args[0]);
         } finally {
