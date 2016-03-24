@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Main {
-    private static LocationState locState;
+    private static StateManager stateManager;
     private static ConcurrentLinkedQueue<Message> queue;
     private static Map<Long, ClientHandler> handlers = new HashMap<Long, ClientHandler>();
 
@@ -40,7 +40,7 @@ public class Main {
         for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
             long id = kvp.getKey();
             ClientHandler handler = kvp.getValue();
-            StartMessage sm = locState.onConnect(id);
+            StartMessage sm = stateManager.onConnect(id);
             sm.setIsRunning(true);
             handler.sendMessage(sm);
         }
@@ -60,17 +60,17 @@ public class Main {
         for (Map.Entry<Long, ClientHandler> kvp : handlers.entrySet()) {
             long id = kvp.getKey();
             ClientHandler handler = kvp.getValue();
-            RoleState role = locState.getRoleState(id);
+            RoleState role = stateManager.getRoleState(id);
             boolean hasWon = false;
             if (role == RoleState.HUMAN) {
-                hasWon = (locState.getPhysicalState(id) != PhysicalState.INFECTED);
+                hasWon = (stateManager.getPhysicalState(id) != PhysicalState.INFECTED);
             } else if (role == RoleState.INFECTOR) {
-                hasWon = (locState.getPercentageInfected() >= 0.5);
+                hasWon = (stateManager.getPercentageInfected() >= 0.5);
             }
             handler.sendMessage(new StopMessage(hasWon));
         }
         queue = new ConcurrentLinkedQueue<Message>();
-        locState.reset();
+        stateManager.reset();
         TimerTask startTask = new TimerTask() {
             @Override
             public void run() {
@@ -89,7 +89,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        locState = new LocationState();
+        stateManager = new StateManager();
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();
         Thread input = new Thread() {
@@ -102,7 +102,7 @@ public class Main {
                         System.out.println("Accepting...");
                         Socket s = ss.accept();
                         System.out.println("Socket accepted!");
-                        final IdHandlerPair ihp = ClientHandler.fromSocket(s, locState, queue);
+                        final IdHandlerPair ihp = ClientHandler.fromSocket(s, stateManager, queue);
                         if (ihp != null) {
                             handlers.put(ihp.getId(), ihp.getHandler());
                             new Thread() {
@@ -127,13 +127,13 @@ public class Main {
                     System.out.println("Received PositionMessage!");
                     PositionMessage pm = (PositionMessage)front;
                     LocationWrapper lw = pm.getLocationWrapper();
-                    locState.onLocationChange(pm.getId(), lw);
+                    stateManager.onLocationChange(pm.getId(), lw);
                     System.out.println(lw.getLatitude() + " " + lw.getLongitude() + " " + lw.getAltitude());
                 } else if (front instanceof CodeMessage) {
                     System.out.println("Received CodeMessage!");
                     CodeMessage cm = (CodeMessage)front;
                     if (code.equals(cm.getCode())) {
-                        locState.onVaccinate(cm.getId());
+                        stateManager.onVaccinate(cm.getId());
                     }
                     System.out.println("id = " + cm.getId() + ", Code = " + cm.getCode());
                 } else if (front instanceof DisconnectMessage) {
@@ -141,7 +141,7 @@ public class Main {
                     DisconnectMessage dm = (DisconnectMessage)front;
                     System.out.println("id = " + dm.getId());
                     handlers.remove(dm.getId());
-                    locState.onDisconnect(dm.getId());
+                    stateManager.onDisconnect(dm.getId());
                 }
             }
         }

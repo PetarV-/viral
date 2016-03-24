@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-public final class LocationState {
+public final class StateManager {
     private final boolean DEBUG = true;
     private final boolean TIKZ_LOG = true;
 
@@ -43,7 +43,7 @@ public final class LocationState {
     private String logfile_name;
     private final String tikzfile_name = "../tikzer/final_log.log";
 
-    public LocationState() {
+    public StateManager() {
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
         state_position = new HashMap<Long, Integer>();

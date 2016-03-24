@@ -22,7 +22,7 @@ public class ClientHandler {
         this.queue = queue;
     }
 
-    public static IdHandlerPair fromSocket(Socket socket, LocationState locState, ConcurrentLinkedQueue<Message> queue) {
+    public static IdHandlerPair fromSocket(Socket socket, StateManager stateManager, ConcurrentLinkedQueue<Message> queue) {
         try {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -30,11 +30,11 @@ public class ClientHandler {
             StartMessage smsg;
             long id;
             if (m instanceof HelloNewMessage) {
-                smsg = locState.onConnect();
+                smsg = stateManager.onConnect();
                 id = smsg.getId();
             } else if (m instanceof HelloMessage) {
                 HelloMessage hm = (HelloMessage)m;
-                smsg = locState.onConnect(hm.getId());
+                smsg = stateManager.onConnect(hm.getId());
                 id = hm.getId();
             } else {
                 ois.close();
