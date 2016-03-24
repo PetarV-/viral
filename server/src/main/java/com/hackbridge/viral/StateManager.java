@@ -61,26 +61,35 @@ public final class StateManager {
         logfile_name = dateFormat.format(today) + ".log";
     }
 
-    /** Called upon addition of a new node.
+    /**
+     * This method should be called on addition of a new node to the network. If a node is
+     * reconnecting to the network, onConnect(long id) should be called instead.
      *
-     *  @return StartMessage with PhysicalState and AwarenessState initialized at random.
+     * A new node in the network is created with its PhysicalState, AwarenessState, and
+     * RoleState initialized at random based on StateManager's probability configuration.
+     *
+     * @return StartMessage with PhysicalState, AwarenessState, and RoleState initialized at
+     * random.
      */
     public StartMessage onConnect() {
-        PhysicalState new_ps =
+        // Get random PhysicalState, AwarenessState, and RoleState for the new node.
+        PhysicalState physicalState =
                 getRandomNumber() < INITIAL_INFECTED_PROB ?
                         PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
-        AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
+
+        AwarenessState awarenessState =
+                getRandomNumber() < INITIAL_AWARENESS_PROB ?
                     AwarenessState.AWARE : AwarenessState.UNAWARE;
 
-        RoleState new_rs =
+        RoleState roleState =
                 getRandomNumber() < EVIL_PROB ?
                         RoleState.INFECTOR : RoleState.HUMAN;
 
-        Node new_node = new Node(new_ps, new_as, new_rs);
+        Node newNode = new Node(physicalState, awarenessState, roleState);
 
-        nodes.put(new_node.getID(), new_node);
-        state_position.put(new_node.getID(), node_ctr);
-        position_to_node.put(node_ctr, new_node);
+        nodes.put(newNode.getID(), newNode);
+        state_position.put(newNode.getID(), node_ctr);
+        position_to_node.put(node_ctr, newNode);
 
         if (node_ctr >= array_capacity) {
             increaseStateArrayCapacity();
@@ -88,10 +97,10 @@ public final class StateManager {
 
         node_ctr++;
 
-        System.out.println("New node connected. " + new_node);
+        System.out.println("New node connected. " + newNode);
 
-        return new StartMessage(new_node.getID(),
-                new_node.getPhysicalState(), new_node.getAwarenessState(), new_node.getRoleState());
+        return new StartMessage(newNode.getID(),
+                newNode.getPhysicalState(), newNode.getAwarenessState(), newNode.getRoleState());
     }
 
     /**
