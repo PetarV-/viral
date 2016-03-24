@@ -1,65 +1,80 @@
 package com.hackbridge.viral;
 
-import javax.management.relation.Role;
-
 public class Node {
-    private static long GLOBAL_ID = 1;
-    private final long nodeID;
+    private static long GLOBAL_ID = 1;  // The next available unique id.
 
-    private PhysicalState physical_state;
-    private AwarenessState awareness_state;
+    private final long nodeID;  // The node's unique id.
 
-    LocationWrapper location;
+    private PhysicalState physicalState;
+    private AwarenessState awarenessState;
+    private RoleState roleState;
 
-    private boolean connected;
-    private boolean location_set;
+    private LocationWrapper location;  // The last known location of the node.
 
-    private RoleState role_state;
+    private boolean connected;  // True if the node is currently connected to the network.
+    private boolean hasLocation;  // True if a location was ever known for the node.
 
-    public Node(PhysicalState physical_s, AwarenessState awareness_s, RoleState role) {
+    public Node(PhysicalState physicalState, AwarenessState awarenessState, RoleState roleState) {
         nodeID = GLOBAL_ID;
         GLOBAL_ID++;
-        this.physical_state = physical_s;
-        this.awareness_state = awareness_s;
-        this.role_state = role;
+
+        this.physicalState = physicalState;
+        this.awarenessState = awarenessState;
+        this.roleState = roleState;
+
         connected = true;
-
         location = new LocationWrapper(0.0,0.0,0.0);
-        location_set = false;
+        hasLocation = false;
     }
 
-    public void reset(PhysicalState ps, AwarenessState as, RoleState rs) {
+    /**
+     * Resets the node's state, but preserves its unique id.
+     * @param physicalState
+     * @param awarenessState
+     * @param roleState
+     */
+    public void reset(PhysicalState physicalState,
+                      AwarenessState awarenessState, RoleState roleState) {
         connected = false;
-        location_set = false;
+        hasLocation = false;
         location = new LocationWrapper(0.0,0.0,0.0);
-        physical_state = ps;
-        awareness_state = as;
-        role_state = rs;
+        this.physicalState = physicalState;
+        this.awarenessState = awarenessState;
+        this.roleState = roleState;
     }
 
+    /**
+     * Returns the node's unique id.
+     * @return
+     */
     public long getID() {
         return nodeID;
     }
 
     public AwarenessState getAwarenessState() {
-        return awareness_state;
+        return awarenessState;
     }
 
-    void setAwarenessState(AwarenessState as) {
-       this.awareness_state = as;
+    void setAwarenessState(AwarenessState awarenessState) {
+       this.awarenessState = awarenessState;
     }
 
     public PhysicalState getPhysicalState() {
-        return physical_state;
+        return physicalState;
     }
 
-    void setPhysicalState(PhysicalState ps) {
-        this.physical_state = ps;
+    void setPhysicalState(PhysicalState physicalState) {
+        this.physicalState = physicalState;
     }
 
-    RoleState getRoleState() {
-        return role_state;
+    public RoleState getRoleState() {
+        return roleState;
     }
+
+    /**
+     * Returns true if the node is currently connected to the network.
+     * @return
+     */
     public boolean getConnected() {
         return connected;
     }
@@ -72,49 +87,60 @@ public class Node {
         this.connected = connected;
     }
 
-    void setLocationSet(boolean location_set) {
-        this.location_set = location_set;
-    }
-
     @Override
     public String toString() {
-        return String.format("{NodeId : %d, Awareness : %s, Physical : %s," + " Latitude : %.5f, Longitude : %.5f}",
-                nodeID, awareness_state, physical_state,
-                location_set ? getLatitude() :  0.0, location_set ? getLongitude() : 0.0);
+        return String.format(
+                "{NodeId : %d, Awareness : %s, Physical : %s," +
+                " Latitude : %.5f, Longitude : %.5f}",
+                nodeID, awarenessState, physicalState,
+                hasLocation ? getLatitude() :  0.0, hasLocation ? getLongitude() : 0.0);
     }
 
     public boolean setLocation(LocationWrapper location) {
-        location_set = true;
+        hasLocation = true;
         this.location = location;
         return true;
     }
 
     public double getLatitude() {
-        if (!location_set) {
-            System.err.println("Location for " + nodeID + " not set");
+        if (!hasLocation) {
+            Logger.logError(3, "Location for " + nodeID + " not set.");
             return 0.0;
         }
         return location.getLatitude();
     }
 
     public double getLongitude() {
-        if (!location_set) {
-            System.err.println("Location for " + nodeID + " not set");
+        if (!hasLocation) {
+            Logger.logError(3, "Location for " + nodeID + " not set.");
             return 0.0;
         }
         return location.getLongitude();
     }
 
+    /**
+     * Returns true if the node is active. A node is active in the network if it is both
+     * connected to the network and has reported its location.
+     *
+     * @return
+     */
     public boolean isActive() {
-        return connected && location_set;
+        return connected && hasLocation;
     }
 
+    /**
+     * Gets the distance (in metres) from another node.
+     * @param o
+     * @return
+     */
     public double getDistanceFrom(Node o) {
         return gps2m(getLatitude(), getLongitude(), o.getLatitude(), o.getLongitude());
     }
 
     /**
-     * Calculate distance from on longitude and latitude.
+     * Calculate the distance between two points specified by longitude and latitude.
+     *
+     * Taken from:
      * http://stackoverflow.com/questions/8049612/calculating-distance-between-two-geographic-locations
      * @param lat_a
      * @param lng_a

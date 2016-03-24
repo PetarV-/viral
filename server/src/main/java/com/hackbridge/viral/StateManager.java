@@ -5,25 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 public final class StateManager {
     private final boolean DEBUG = true;
     private final boolean TIKZ_LOG = true;
-
-    private int array_capacity = 512;
-    private final ArrayList<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
-    private ArrayList<Double> distance_sums;  // Internal calculation: sum of a row of state
-    private HashMap<Long, Node> nodes;  // Map from node ID to Node
-    private HashMap<Long, Integer> state_position;  // Map from node ID to array pos
-    private HashMap<Integer, Node> position_to_node; // Maps position in state array to node
-
-    private double distance_total = 0;  // Total distances (= 2 * value of all bidirectional edges)
-    private int node_ctr = 0;  // Counts nodes to add to position
-
+    private final List<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = 0.20;
     private final double INITIAL_AWARENESS_PROB = 0.20;
@@ -31,34 +18,39 @@ public final class StateManager {
     private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
     private final double ACTIVATE_EDGE_PROB = 0.10;
     private final double EVIL_PROB =  0.30;
-
     // Parameters used in exponentiating to invert the distance.
     // Inverted distance = EXPO_MULTIPLER*e^(-LAMBDA_FACTOR*distance)
     private final double LAMBDA_FACTOR = 0.002;
     private final double EXPO_MULTIPLIER = 1000.0;
-
+    private final String tikzFileName = "../tikzer/final_log.log";
+    private int arrayCapacity = 512;
+    private List<Double> distanceSums;  // Internal calculation: sum of a row of state
+    private Map<Long, Node> nodes;  // Map from node ID to Node
+    private Map<Long, Integer> statePosition;  // Map from node ID to array pos
+    private Map<Integer, Node> positionToNode; // Maps position in state array to node
+    private double distanceTotal = 0;  // Total distances (= 2 * value of all bidirectional edges)
+    private int nodeCtr = 0;  // Counts nodes to add to position
     // Logfile vars.
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private BufferedWriter logfile;
-    private String logfile_name;
-    private final String tikzfile_name = "../tikzer/final_log.log";
+    private String logfileName;
 
     public StateManager() {
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
-        state_position = new HashMap<Long, Integer>();
-        position_to_node = new HashMap<Integer, Node>();
-        distance_sums = new ArrayList<Double>();
-        for (int i = 0; i < array_capacity; ++i) {
+        statePosition = new HashMap<Long, Integer>();
+        positionToNode = new HashMap<Integer, Node>();
+        distanceSums = new ArrayList<Double>();
+        for (int i = 0; i < arrayCapacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
-            distance_sums.add(0.0);
-            for (int j = 0; j < array_capacity; ++j) {
+            distanceSums.add(0.0);
+            for (int j = 0; j < arrayCapacity; ++j) {
                 new_array.add(0.0);
             }
             state.add(new_array);
         }
         Date today = Calendar.getInstance().getTime();
-        logfile_name = dateFormat.format(today) + ".log";
+        logfileName = dateFormat.format(today) + ".log";
     }
 
     /**
@@ -72,32 +64,23 @@ public final class StateManager {
      * random.
      */
     public StartMessage onConnect() {
-        // Get random PhysicalState, AwarenessState, and RoleState for the new node.
-        PhysicalState physicalState =
-                getRandomNumber() < INITIAL_INFECTED_PROB ?
-                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
-
-        AwarenessState awarenessState =
-                getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                    AwarenessState.AWARE : AwarenessState.UNAWARE;
-
-        RoleState roleState =
-                getRandomNumber() < EVIL_PROB ?
-                        RoleState.INFECTOR : RoleState.HUMAN;
+        PhysicalState physicalState = getRandomPhysicalState();
+        AwarenessState awarenessState = getRandomAwarenessState();
+        RoleState roleState = getRandomRoleState();
 
         Node newNode = new Node(physicalState, awarenessState, roleState);
 
         nodes.put(newNode.getID(), newNode);
-        state_position.put(newNode.getID(), node_ctr);
-        position_to_node.put(node_ctr, newNode);
+        statePosition.put(newNode.getID(), nodeCtr);
+        positionToNode.put(nodeCtr, newNode);
 
-        if (node_ctr >= array_capacity) {
+        if (nodeCtr >= arrayCapacity) {
             increaseStateArrayCapacity();
         }
 
-        node_ctr++;
+        nodeCtr++;
 
-        System.out.println("New node connected. " + newNode);
+        Logger.log(3, "New node connected. " + newNode);
 
         return new StartMessage(newNode.getID(),
                 newNode.getPhysicalState(), newNode.getAwarenessState(), newNode.getRoleState());
@@ -105,107 +88,134 @@ public final class StateManager {
 
     /**
      * Called upon reconnection of an existing node.
+     *
+     * This method registers the reconnection and returns a StartMessage with the node's current
+     * state.
+     *
      * @param id - unique node identifier returned when node was first created.
-     * @return StartMessage with state, null if node with id did not exist previously.
+     * @return StartMessage with state, null if a node with id did not exist previously.
      */
     public StartMessage onConnect(long id) {
         Node node = nodes.get(id);
         if (node == null) {
-            System.err.println("Error: failured to reconnect node " + id);
+            Logger.logError(2, "Failed to reconnect node " + id + ".");
             return null;
         }
-        System.out.println("Reconnected " + node);
-        return new StartMessage(
-                node.getID(), node.getPhysicalState(), node.getAwarenessState(), node.getRoleState());
+        Logger.log(3, "Reconnected: " + node);
+        return new StartMessage(node.getID(),
+                node.getPhysicalState(), node.getAwarenessState(), node.getRoleState());
     }
 
     /**
      * Called upon disconnection of an existing node.
-     * @return True if suscessfull
+     *
+     * This disconnects the node but preserves the PhysicalState, AwarenessState, and RoleState
+     * of the node.
+     *
+     * @return True if disconnect was successful, false otherwise.
      */
     public boolean onDisconnect(long id) {
         Node node = nodes.get(id);
         if (node == null) {
-            // TODO exception
-            System.err.println("Error: failed to disconnect " + id);
+            Logger.logError(3, "Failed to disconnect node " + id + ".");
             return false;
         }
         node.setConnected(false);
-        System.out.println("Disconnected node " + id);
+        Logger.log(3, "Disconnected node " + id + ".");
         return true;
     }
 
     /**
-     * Called upon a change in location of a node.
-     * Currently, repeated calls to this method will increase the probability of an edge being activated.
+     * Called upon a change in the location of a node.
+     *
+     * This updates the node's location and recalculates its distance from its neighbouring nodes.
+     * The StateManager may then activate an edge based on ACTIVATE_EDGE_PROB.
+     *
+     * Currently, repeated calls to this method will increase the probability of an edge being
+     * activated.
+     *
      * @param nodeID
      */
     public void onLocationChange(long nodeID, LocationWrapper location) {
-        // Get lat/long from node
         Node node = nodes.get(nodeID);
         if (node == null) {
-            // TODO exception
-            System.err.println("Error: failed to update location " + nodeID + ". Node does not exist");
+            Logger.logError(2, "Failed to update location of node '" + nodeID +
+                            "'. The node does not exist.");
             return;
         }
         node.setLocation(location);
-        recomputeDistances(nodeID);
 
-        // With some probability, activate edge
+        recomputeNeighbouringDistances(nodeID);
+
+        // With probability ACTIVATE_EDGE_PROB, activate a random edge of the graph.
         if (getRandomNumber() < ACTIVATE_EDGE_PROB) {
             activateRandomEdge();
         }
 
-        // Kind of bad: if node sends more location changes, then more likely to recover.
+        // If the node is infected, with probability SPONTANEOUS_RECOVERY_PROB, the
+        // node will spontaneously recover from the infection.
         if (node.getPhysicalState() == PhysicalState.INFECTED) {
             if (getRandomNumber() < SPONTANEOUS_RECOVERY_PROB) {
-                System.out.println("Node " + node.getID() + " is not susceptible.");
+                Logger.log(3, "Node " + node.getID() + " has recovered and is now susceptible.");
                 node.setPhysicalState(PhysicalState.SUSCEPTIBLE);
-                Main.changeState(new ChangeMessage(node.getPhysicalState(), node.getAwarenessState()), node.getID());
+                Main.changeState(new ChangeMessage(
+                        node.getPhysicalState(), node.getAwarenessState()), node.getID());
             }
         }
 
         if (TIKZ_LOG) {
-            logState(tikzfile_name);
+            logState(tikzFileName);
         } else {
-            logState(logfile_name);
+            logState(logfileName);
         }
     }
 
     /**
-     * Called when a node is vaccinated.
+     * This method is called when a node is vaccinated.
+     *
+     * If the node is susceptible, its state changes to vaccinated and the node is now aware of
+     * the virus.
+     *
+     * If the node were previously unaware of the virus, it is now aware.
+     *
      * @param nodeID
      * @return True if node was vaccinated, false otherwise.
      */
     public boolean onVaccinate(long nodeID) {
         Node node = nodes.get(nodeID);
         if (node == null) {
-            // TODO exception
-            System.err.println("Error: failed to vaccinate " + nodeID + ". Node does not exist.");
+            Logger.logError(3, "Failed to vaccinate node '" + nodeID + "'. The node does not " +
+                    "exist.");
             return false;
         }
         if (node.getPhysicalState() == PhysicalState.SUSCEPTIBLE) {
             node.setPhysicalState(PhysicalState.VACCINATED);
             node.setAwarenessState(AwarenessState.AWARE);
-            Main.changeState(new ChangeMessage(node.getPhysicalState(), AwarenessState.AWARE), nodeID);
+            Main.changeState(new ChangeMessage(
+                    node.getPhysicalState(), AwarenessState.AWARE), nodeID);
             return true;
-        } else if (node.getAwarenessState() != AwarenessState.AWARE) {
+        }
+
+        if (node.getAwarenessState() != AwarenessState.AWARE) {
             node.setAwarenessState(AwarenessState.AWARE);
-            Main.changeState(new ChangeMessage(node.getPhysicalState(), AwarenessState.AWARE), nodeID);
-            return true;
+            Main.changeState(new ChangeMessage(
+                    node.getPhysicalState(), AwarenessState.AWARE), nodeID);
+            return false;
         }
         return false;
     }
 
     /**
      * Returns the RoleState of the node.
+     *
      * @param nodeID
      * @return RoleState, or null if the nodeID does not exist.
      */
     public RoleState getRoleState(long nodeID) {
         Node node = nodes.get(nodeID);
         if (node == null) {
-            System.err.println("Error: failed to get role state for node " + nodeID + ". Node does not exist.");
+            Logger.logError(3, "Failed to get the role state of node '" + nodeID + "'. The node " +
+                    "does not exist.");
             return null;
         }
         return node.getRoleState();
@@ -214,61 +224,64 @@ public final class StateManager {
     public PhysicalState getPhysicalState(long nodeID) {
         Node node = nodes.get(nodeID);
         if (node == null) {
-            System.err.println("Error: failed to get physical state for node " + nodeID + ". Node does not exist.");
+            Logger.logError(3, "Failed to get the physical state of node '" + nodeID + "'. The " +
+                    "node does not exist.");
             return null;
         }
         return node.getPhysicalState();
     }
 
     /**
-     * Returns the percentage of active nodes (those that are connected and have sent at least one location update)
-     * that are infected.
+     * Returns the percentage of active nodes (those that are connected and have sent at least one
+     * location update) that are infected.
      * @return
      */
     public double getPercentageInfected() {
-        int num_infected_nodes = 0;
-        int total_active_nodes = 0;
+        int numInfectedNodes = 0;
+        int totalActiveNodes = 0;
         for (Node node : nodes.values()) {
             if (!node.getConnected()) {
                 continue;
             }
             if (node.getPhysicalState() == PhysicalState.INFECTED) {
-                num_infected_nodes++;
+                numInfectedNodes++;
             }
-            total_active_nodes++;
+            totalActiveNodes++;
         }
-        if (total_active_nodes == 0) {
+        if (totalActiveNodes == 0) {
             return 0.0;
         }
-        return (double) num_infected_nodes / (double) total_active_nodes;
+        return (double) numInfectedNodes / (double) totalActiveNodes;
     }
 
     /**
-     * Recompute distance for this nodeID
+     * Recompute the distances from the node's neighbouring nodes.
+     *
      * @param nodeID
      */
-    private void recomputeDistances(long nodeID) {
+    private void recomputeNeighbouringDistances(long nodeID) {
         Node thisNode = nodes.get(nodeID);
         if (thisNode == null) {
-            System.err.println("Node id " + nodeID + " does not exist.");
+            Logger.logError(3, "Failed to recompute distances. Node id " + nodeID + " does not " +
+                    "exist.");
             return;
         }
 
-        int arrayPos = state_position.get(nodeID);
+        int arrayPos = statePosition.get(nodeID);
 
-        for (int i = 0; i < node_ctr; ++i) {
+        for (int i = 0; i < nodeCtr; ++i) {
             if (i == arrayPos) {
                 continue;
             }
-            Node node = position_to_node.get(i);
+            Node node = positionToNode.get(i);
             if (!node.isActive()) {
                 continue;
             }
-            double distance = EXPO_MULTIPLIER*Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
-            if (DEBUG) {
-                System.out.println(
-                        "Actual distance: " + thisNode.getDistanceFrom(node) + ", Exponentiated: " + distance);
-            }
+            double distance =
+                    EXPO_MULTIPLIER*Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
+
+            debugPrint("Actual distance: " + thisNode.getDistanceFrom(node) + ", Exponentiated: " +
+                    distance);
             setArrayDistance(arrayPos, i, distance);
         }
 
@@ -277,7 +290,16 @@ public final class StateManager {
         }
     }
 
+    private void debugPrint(String s) {
+        if (DEBUG) {
+            Logger.log(1, s);
+        }
+    }
+
     /**
+     * Sets the distance between nodes i and j to dist. Note that i and j refer to internal
+     * indices of the state matrix and do not necessarily correspond to the node's identifiers.
+     *
      * The state matrix should only be modified through this method.
      * @param i
      * @param j
@@ -285,67 +307,64 @@ public final class StateManager {
      */
     private void setArrayDistance(int i, int j, double dist) {
         try {
-            distance_sums.set(i, distance_sums.get(i) + dist - state.get(i).get(j));
-            distance_total += dist - state.get(i).get(j);
+            distanceSums.set(i, distanceSums.get(i) + dist - state.get(i).get(j));
+            distanceTotal += dist - state.get(i).get(j);
             state.get(i).set(j, dist);
 
-            distance_sums.set(j, distance_sums.get(j) + dist - state.get(j).get(i));
-            distance_total += dist - state.get(j).get(i);
+            distanceSums.set(j, distanceSums.get(j) + dist - state.get(j).get(i));
+            distanceTotal += dist - state.get(j).get(i);
             state.get(j).set(i, dist);
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
     }
 
-    // Resets all state other than nodeIDs
+    /**
+     * Resets the network's state by resetting the state matrices and each node's state. The
+     * nodes' unique ids are preserved.
+     */
     public void reset() {
-        array_capacity = 512;
+        arrayCapacity = 512;
         state.clear();
-        distance_sums.clear();
-        distance_total = 0;
+        distanceSums.clear();
+        distanceTotal = 0;
 
-        for (int i = 0; i < array_capacity; ++i) {
-            ArrayList<Double> new_array = new ArrayList<Double>();
-            distance_sums.add(0.0);
-            for (int j = 0; j < array_capacity; ++j) {
-                new_array.add(0.0);
+        for (int i = 0; i < arrayCapacity; ++i) {
+            ArrayList<Double> newRow = new ArrayList<Double>();
+            distanceSums.add(0.0);
+            for (int j = 0; j < arrayCapacity; ++j) {
+                newRow.add(0.0);
             }
-            state.add(new_array);
+            state.add(newRow);
         }
 
         for (Node node : nodes.values()) {
-            PhysicalState new_ps =
-                getRandomNumber() < INITIAL_INFECTED_PROB ?
-                        PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
-            AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                        AwarenessState.AWARE : AwarenessState.UNAWARE;
-            RoleState new_rs =
-                    getRandomNumber() < EVIL_PROB ?
-                            RoleState.INFECTOR : RoleState.HUMAN;
-            node.reset(new_ps, new_as, new_rs);
+            node.reset(getRandomPhysicalState(), getRandomAwarenessState(), getRandomRoleState());
         }
     }
 
     /**
-     * Logs the current stage with the following format:
-     * START followed by two integers N, M representing the number of nodes and dimension of the distance matrix.
-     * This is followed by N lines in the format "ID A P", where ID is the nodeID, A is the awareness state
-     * (A for aware, U for unaware), and P is the physical state (I for infected, V for vaccinated, S for susceptible).
-     * This is followed by a M*M matrix of node distance floats, followed by END.
+     * Logs the current state with the following format:
+     *
+     * START followed by two integers N, M representing the number of nodes and dimension of the
+     * distance matrix. This is followed by N lines in the format "ID A P", where ID is the
+     * nodeID, A is the awareness state (A for aware, U for unaware), and P is the physical state
+     * (I for infected, V for vaccinated, S for susceptible). This is followed by a M*M matrix of
+     * node distance floats, followed by END.
      */
     private void logState(String filename) {
         try {
             logfile = new BufferedWriter(new FileWriter(filename));
             logfile.write("START\n");
-            logfile.write(String.format("%d %d\n", nodes.size(), node_ctr));
+            logfile.write(String.format("%d %d\n", nodes.size(), nodeCtr));
             for (Node node : nodes.values()) {
                 logfile.write(String.format(
                         "%d %s %s\n", node.getID(), node.getAwarenessState().toString().charAt(0),
                         node.getPhysicalState().toString().charAt(0)));
             }
-            for (int i = 0; i < node_ctr; ++i) {
+            for (int i = 0; i < nodeCtr; ++i) {
                 String line = "";
-                for (int j = 0; j < node_ctr; ++j) {
+                for (int j = 0; j < nodeCtr; ++j) {
                     line += String.format("%.7f ", state.get(i).get(j));
                 }
                 logfile.write(line + "\n");
@@ -358,73 +377,67 @@ public final class StateManager {
     }
 
     /**
-     * Output the current distance array, includes inactive nodes (TODO)
+     * Output the current distance array, including inactive nodes.
      */
     private void outputArray() {
-        System.out.println("===============\nOutputting current stage");
-        for (int i = 0; i < node_ctr; ++i) {
+        Logger.log(3, "===============\nOutputting current stage");
+        for (int i = 0; i < nodeCtr; ++i) {
             String line = "";
-            for (int j = 0; j < node_ctr; ++j) {
+            for (int j = 0; j < nodeCtr; ++j) {
                 line += String.format("%.5f\t", state.get(i).get(j));
             }
 
-            line += "\t | \t RowDistance: " + String.format("%.5f", distance_sums.get(i));
-            System.out.println(line);
+            line += "\t | \t RowDistance: " + String.format("%.5f", distanceSums.get(i));
+            Logger.log(3, line);
         }
-        System.out.format("Total distance: %.5f\n", distance_total);
-        System.out.println("====================");
+        Logger.log(3, String.format("Total distance: %.5f", distanceTotal));
+        Logger.log(3, "====================");
     }
 
+    /**
+     * Activates a random edge in the network.
+     */
     private void activateRandomEdge() {
-        if (distance_total <= 0 || node_ctr <= 0) {
+        if (distanceTotal <= 0 || nodeCtr <= 0) {
             return;
         }
+
+        // Pick an edge based on a random number and the accumulative normalized edge distances.
         double rand = getRandomNumber();
-        double total_so_far = 0.0;
+
+        // Tracks the accumulate distance at the current row/column in the state matrix.
+        double totalDistSoFar = 0.0;
         int i = 0, j = 0;
 
-        // Let's pretend we're being efficient...
-        while (total_so_far + distance_sums.get(i) <= rand*distance_total && i < node_ctr) {
-            total_so_far += distance_sums.get(i);
+        // Add row distances.
+        while (totalDistSoFar + distanceSums.get(i) <= rand * distanceTotal && i < nodeCtr) {
+            totalDistSoFar += distanceSums.get(i);
             i++;
         }
 
-        while (total_so_far + state.get(i).get(j) <= rand*distance_total && j < node_ctr) {
-            total_so_far += state.get(i).get(j);
+        // Look at column distances.
+        while (totalDistSoFar + state.get(i).get(j) <= rand* distanceTotal && j < nodeCtr) {
+            totalDistSoFar += state.get(i).get(j);
             j++;
         }
 
         if (DEBUG) {
-            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n", rand*distance_total, total_so_far, i, j);
+            System.out.format("Ack edge. Rand: %.5f total: %.5f Nodes: %d %d\n",
+                    rand * distanceTotal, totalDistSoFar, i, j);
             outputNodes();
             System.out.format("Edge %d <-> %d activated.\n", i, j);
         }
         activateEdge(i, j);
     }
 
-    private void outputNodes() {
-        for (int i = 0; i < node_ctr; ++i) {
-            System.out.println(position_to_node.get(i));
-        }
-    }
-
     /**
-     * Changes the state of the input node to infected, setting awareness based on INITIAL_AWARENESS_PROB.
-     * This method calls Main.changeState.
-     * @param node
-     */
-    private void infectNode(Node node) {
-        System.out.format("Node %d is now infected.", node.getID());
-        node.setPhysicalState(PhysicalState.INFECTED);
-        AwarenessState new_as = getRandomNumber() < INITIAL_AWARENESS_PROB ?
-                AwarenessState.AWARE : AwarenessState.UNAWARE;
-        node.setAwarenessState(new_as);
-        Main.changeState(new ChangeMessage(PhysicalState.INFECTED, new_as), node.getID());
-    }
-
-    /**
-     * Edge i-j is activated. If i is INFECTED and j is SUSCEPTIBLE, then j is INFECTED (and vice versa).
-     * Or if is is INFECTED and j is VACCINATED, then j is INFECTED with probability INFECTED_IF_VACCINATED_PROB.
+     * Activates edge i-j as follows. All operations are commutative. The edge is activated only
+     * if both i and j are active nodes.
+     *
+     * The PhysicalStates (A,B) of i and j change as follows:
+     * - (INFECTED, SUSCEPTIBLE) -> (INFECTED, INFECTED)
+     * - (INFECTED, VACCINATED) -> (INFECTED, INFECTED) if a random number is greater than
+     * INFECTED_IF_VACCINATED_PROB
      *
      * This method calls Main.changeState if a node changes state.
      * @param i
@@ -435,13 +448,14 @@ public final class StateManager {
             return;
         }
         try {
-            Node ni = position_to_node.get(i);
-            Node nj = position_to_node.get(j);
+            Node ni = positionToNode.get(i);
+            Node nj = positionToNode.get(j);
             if (!ni.isActive() || !nj.isActive()) {
                 return;
             }
             if (ni == null || nj == null) {
-                System.err.println("Tried to active null nodes " + i + " " + j);
+                Logger.logError(3, "Tried to active null nodes " + i + " " + j);
+                return;
             }
 
             if (ni.getPhysicalState() == PhysicalState.INFECTED) {
@@ -458,39 +472,89 @@ public final class StateManager {
                 }
             }
         } catch (Exception e) {
-            // TODO
             e.printStackTrace();
         }
     }
 
+    private void outputNodes() {
+        for (int i = 0; i < nodeCtr; ++i) {
+            System.out.println(positionToNode.get(i));
+        }
+    }
+
     /**
-     * Default: (0.0, 1.0)
-     * @return
+     * Changes the state of the input node to infected, setting awareness based on
+     * INITIAL_AWARENESS_PROB.
+     *
+     * A node can be infected and not aware.
+     *
+     * This method calls Main.changeState if the node is newly infected.
+     * @param node
      */
-    private double getRandomNumber(double max) {
-        return Math.random() * max;
+    private void infectNode(Node node) {
+        if (node.getPhysicalState() == PhysicalState.INFECTED) {
+            return;
+        }
+        Logger.log(3, String.format("Node %d is now infected.", node.getID()));
+        node.setPhysicalState(PhysicalState.INFECTED);
+        node.setAwarenessState(getRandomAwarenessState());
+
+        Main.changeState(new ChangeMessage(
+                PhysicalState.INFECTED, node.getAwarenessState()), node.getID());
     }
 
     private double getRandomNumber() {
         return Math.random();
     }
 
+    /**
+     * Returns a random PhysicalState based on StateManager's configuration of
+     * INITIAL_INFECTED_PROB.
+     *
+     * @return
+     */
+    private PhysicalState getRandomPhysicalState() {
+        return getRandomNumber() < INITIAL_INFECTED_PROB ?
+                PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
+    }
+
+     /**
+     * Returns a random AwarenessState based on StateManager's configuration of
+     * INITIAL_AWARENESS_PROB.
+     *
+     * @return
+     */
+    private AwarenessState getRandomAwarenessState() {
+        return getRandomNumber() < INITIAL_AWARENESS_PROB ?
+                AwarenessState.AWARE : AwarenessState.UNAWARE;
+    }
+
+     /**
+     * Returns a random RoleState based on StateManager's configuration of EVIL_PROB.
+     *
+     * @return
+     */
+    private RoleState getRandomRoleState() {
+        return getRandomNumber() < EVIL_PROB ?
+                RoleState.INFECTOR : RoleState.HUMAN;
+    }
+
     private void increaseStateArrayCapacity() {
-        int new_capacity = array_capacity*2;
-        for (int i = 0; i < array_capacity; ++i) {
-            for (int j = array_capacity; j < new_capacity; ++j) {
+        int new_capacity = arrayCapacity *2;
+        for (int i = 0; i < arrayCapacity; ++i) {
+            for (int j = arrayCapacity; j < new_capacity; ++j) {
                 state.get(i).add(0.0);
             }
         }
 
-        for (int i = array_capacity; i < new_capacity; ++i) {
+        for (int i = arrayCapacity; i < new_capacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
-            distance_sums.add(0.0);
+            distanceSums.add(0.0);
             for (int j = 0; j < new_capacity; ++j) {
                new_array.add(0.0);
             }
             state.add(new_array);
         }
-        array_capacity = new_capacity;
+        arrayCapacity = new_capacity;
     }
 }
