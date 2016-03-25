@@ -10,6 +10,7 @@ import java.util.*;
 public final class StateManager {
     private final boolean DEBUG = true;
     private final boolean TIKZ_LOG = true;
+    private final Tikzer tikzer = new Tikzer(8000);
     private final List<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = 0.20;
