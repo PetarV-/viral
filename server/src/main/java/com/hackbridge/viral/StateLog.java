@@ -16,6 +16,18 @@ public class StateLog {
     private Map<Long, Integer> positionMap;
     private List<ArrayList<Double>> state;
 
+    public Map<Long, Node> getNodes() {
+        return nodes;
+    }
+
+    public Map<Long, Integer> getPositionMap() {
+        return positionMap;
+    }
+
+    public List<ArrayList<Double>> getState() {
+        return state;
+    }
+
     public StateLog(Map<Long, Node> nodes, Map<Long, Integer> positionMap, List<ArrayList<Double>> state) {
         this.nodes = new HashMap<Long, Node>();
         this.nodes.putAll(nodes);
