@@ -345,36 +345,15 @@ public final class StateManager {
     }
 
     /**
-     * Logs the current state with the following format:
+     * Creates a StateLog and writes the log to filename.
      *
-     * START followed by two integers N, M representing the number of nodes and dimension of the
-     * distance matrix. This is followed by N lines in the format "ID A P", where ID is the
-     * nodeID, A is the awareness state (A for aware, U for unaware), and P is the physical state
-     * (I for infected, V for vaccinated, S for susceptible). This is followed by a M*M matrix of
-     * node distance floats, followed by END.
+     * This method also adds the log to tikzer.
+     * @param filename
      */
     private void logState(String filename) {
-        try {
-            logfile = new BufferedWriter(new FileWriter(filename));
-            logfile.write("START\n");
-            logfile.write(String.format("%d %d\n", nodes.size(), nodeCtr));
-            for (Node node : nodes.values()) {
-                logfile.write(String.format(
-                        "%d %s %s\n", node.getID(), node.getAwarenessState().toString().charAt(0),
-                        node.getPhysicalState().toString().charAt(0)));
-            }
-            for (int i = 0; i < nodeCtr; ++i) {
-                String line = "";
-                for (int j = 0; j < nodeCtr; ++j) {
-                    line += String.format("%.7f ", state.get(i).get(j));
-                }
-                logfile.write(line + "\n");
-            }
-            logfile.write("END\n");
-            logfile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        StateLog log = new StateLog(nodes, statePosition, state);
+        log.writeToFile(filename);
+        tikzer.addLog(log);
     }
 
     /**

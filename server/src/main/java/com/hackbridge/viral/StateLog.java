@@ -51,7 +51,7 @@ public class StateLog {
      * U for unaware), and P is the physical state (I for infected, V for vaccinated, S for susceptible).
      * This is followed by a M*M matrix of node distance floats, followed by END.
      */
-    private void writeToFile(String filename) {
+    public void writeToFile(String filename) {
         try {
             BufferedWriter logfile = new BufferedWriter(new FileWriter(filename));
             logfile.write("START\n");
