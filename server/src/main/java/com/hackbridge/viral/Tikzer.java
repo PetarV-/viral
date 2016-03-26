@@ -144,18 +144,16 @@ class Tikzer {
             tikzFile.close();
         }
 
-        static void build_tikz(String tikzName, String pdfName, String pngName) throws IOException {
-            Runtime.getRuntime().exec("exec pdflatex " + tikzName + " &> /dev/null");
-            Runtime.getRuntime().exec("exec convert -density 300 " + pdfName + " -quality 90 " + pngName + " &> /dev/null");
+        static void build_tikz(String tikzName) throws IOException {
+            Runtime.getRuntime().exec("pdflatex " + tikzName + " &> /dev/null");
         }
 
         static String generate(StateLog log, int id) throws IOException {
             String tikzName = base + id + ".tex";
             String pdfName = base + id + ".pdf";
-            String pngName = base + id + ".png";
             gen_tikz(log, tikzName);
-            build_tikz(tikzName, pdfName, pngName);
-            return pngName;
+            build_tikz(tikzName);
+            return pdfName;
         }
     }
 

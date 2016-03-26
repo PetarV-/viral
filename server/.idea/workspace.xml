@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="34394869-8dfd-47de-947e-c7fc0651a61b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java" afterPath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java" />
     </list>
     <list id="a47ef8e6-120e-4cb5-8c5d-2bbddd265ea2" name="Rejected commit: Default" comment="Initial tikzer relocation.&#10;&#10;# Conflicts:&#10;#&#9;server/.idea/workspace.xml&#10;" />
     <ignored path="server.iws" />
@@ -63,28 +64,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tikzer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tikzer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+            <state relative-caret-position="266">
+              <caret line="154" column="31" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1442#2397#0" expanded="true" />
                 <element signature="e#2396#2397#0" expanded="true" />
-                <element signature="e#4568#4574#0" expanded="true" />
-                <element signature="e#6236#6237#0" expanded="true" />
-                <element signature="e#6339#6340#0" expanded="true" />
+                <element signature="e#4567#4573#0" expanded="true" />
+                <element signature="e#6006#6007#0" expanded="true" />
+                <element signature="e#6109#6110#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-739">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="150">
+              <caret line="99" column="61" selection-start-line="99" selection-start-column="61" selection-end-line="99" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#403#424#0" expanded="true" />
@@ -176,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/TikzerWorker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/TikzWorker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/StateLog.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/StateManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java" />
       </list>
     </option>
   </component>
@@ -854,7 +855,14 @@
       <option name="project" value="LOCAL" />
       <updated>1459032963561</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Stray backslash.&#10;">
+      <created>1459033513179</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1459033513179</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -930,7 +938,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ready for testing!" />
     <MESSAGE value="Ready for testing! v2" />
     <MESSAGE value="Now calling the correct method." />
     <MESSAGE value="Removed a single blank line." />
@@ -955,7 +962,8 @@
     <MESSAGE value="Added getters to the StateLog.&#10;&#10;# Conflicts:&#10;#&#9;server/.idea/workspace.xml&#10;" />
     <MESSAGE value="Tikzer reimplemented (fully in Java now).&#10;" />
     <MESSAGE value="StateManager should not expect a tikz filename.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="StateManager should not expect a tikz filename.&#10;" />
+    <MESSAGE value="Stray backslash.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stray backslash.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1289,21 +1297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1442#2397#0" expanded="true" />
-            <element signature="e#2396#2397#0" expanded="true" />
-            <element signature="e#4568#4574#0" expanded="true" />
-            <element signature="e#6236#6237#0" expanded="true" />
-            <element signature="e#6339#6340#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/StateLog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="947">
@@ -1337,11 +1330,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-739">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="150">
+          <caret line="99" column="61" selection-start-line="99" selection-start-column="61" selection-end-line="99" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#403#424#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hackbridge/viral/Tikzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="154" column="31" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1442#2397#0" expanded="true" />
+            <element signature="e#2396#2397#0" expanded="true" />
+            <element signature="e#4567#4573#0" expanded="true" />
+            <element signature="e#6006#6007#0" expanded="true" />
+            <element signature="e#6109#6110#0" expanded="true" />
           </folding>
         </state>
       </provider>
