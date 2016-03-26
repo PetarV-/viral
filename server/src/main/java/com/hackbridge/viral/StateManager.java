@@ -6,7 +6,7 @@ import java.util.*;
 
 public final class StateManager {
     private final boolean DEBUG = false;
-    private final boolean TIKZ_LOG = true;
+    private final boolean LOG = true;
 
     // The configurable parameters of the multiplex network.
     private final NetworkParameters parameters;
@@ -23,25 +23,15 @@ public final class StateManager {
 
     // Fields for logging.
     private final Tikzer tikzer = new Tikzer(8000);
-    private final String tikzFileName;
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private String logfileName;
 
     public StateManager() {
-        this(new NetworkParameters(), "../tikzer/final_log.log");
+        this(new NetworkParameters());
     }
 
     public StateManager(NetworkParameters parameters) {
-        this(parameters, "../tikzer/final_log.log");
-    }
-
-    public StateManager(String tikzFileName) {
-        this(new NetworkParameters(), tikzFileName);
-    }
-
-    public StateManager(NetworkParameters parameters, String tikzFileName) {
         this.parameters = parameters;
-        this.tikzFileName = tikzFileName;
         Date today = Calendar.getInstance().getTime();
         logfileName = dateFormat.format(today) + ".log";
 
@@ -170,9 +160,7 @@ public final class StateManager {
             }
         }
 
-        if (TIKZ_LOG) {
-            logState(tikzFileName);
-        } else {
+        if (LOG) {
             logState(logfileName);
         }
     }
