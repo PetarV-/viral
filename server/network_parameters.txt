@@ -1,0 +1,10 @@
+initialInfectedProbability 0.2
+initialAwareProbability 0.2
+initialSymptomaticProbability 0.2
+infectedIfVaccinatedProbability 0.05
+spontaneousRecoveryProbability 0.03
+activateEdgeProbability 0.1
+infectorProbability 0.25
+developSymptomsProbability 0.1
+lambdaFactor 0.002
+exponentialMultiplier 1000.0
