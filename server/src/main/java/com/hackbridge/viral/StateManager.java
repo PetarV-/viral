@@ -1,8 +1,5 @@
 package com.hackbridge.viral;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -10,37 +7,48 @@ import java.util.*;
 public final class StateManager {
     private final boolean DEBUG = false;
     private final boolean TIKZ_LOG = true;
-    private final Tikzer tikzer = new Tikzer(8000);
+
+    // The configurable parameters of the multiplex network.
+    private final NetworkParameters parameters;
+
+    // Fields for maintaining the internal network state.
     private final List<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
-    // TODO: tune parameters.
-    private final double INITIAL_INFECTED_PROB = 0.20;
-    private final double INITIAL_AWARENESS_PROB = 0.20;
-    private final double INITIAL_SYMPTOMATIC_PROB = 0.20;
-    private final double INFECTED_IF_VACCINATED_PROB = 0.01;
-    private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
-    private final double ACTIVATE_EDGE_PROB = 0.10;
-    private final double EVIL_PROB =  0.30;
-    // Parameters used in exponentiating to invert the distance.
-    // Inverted distance = EXPO_MULTIPLER*e^(-LAMBDA_FACTOR*distance)
-    private final double LAMBDA_FACTOR = 0.002;
-    private final double EXPO_MULTIPLIER = 1000.0;
-    private final String tikzFileName = "../tikzer/final_log.log";
-    private int arrayCapacity = 512;
     private List<Double> distanceSums;  // Internal calculation: sum of a row of state
     private Map<Long, Node> nodes;  // Map from node ID to Node
-    private Map<Long, Integer> statePosition;  // Map from node ID to array pos
-    private Map<Integer, Node> positionToNode; // Maps position in state array to node
+    private Map<Long, Integer> nodeToMatrixPos;  // Map from node ID to row index in state matrix
+    private Map<Integer, Node> matrixPosToNode; // Maps position in state matrix to node
     private double distanceTotal = 0;  // Total distances (= 2 * value of all bidirectional edges)
-    private int nodeCtr = 0;  // Counts nodes to add to position
-    // Logfile vars.
+    private int nodeCtr = 0;  // Counts the number of nodes: equivalent to the next available row index in the state matrix
+    private int arrayCapacity = 512;
+
+    // Fields for logging.
+    private final Tikzer tikzer = new Tikzer(8000);
+    private final String tikzFileName;
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private String logfileName;
 
     public StateManager() {
+        this(new NetworkParameters(), "../tikzer/final_log.log");
+    }
+
+    public StateManager(NetworkParameters parameters) {
+        this(parameters, "../tikzer/final_log.log");
+    }
+
+    public StateManager(String tikzFileName) {
+        this(new NetworkParameters(), tikzFileName);
+    }
+
+    public StateManager(NetworkParameters parameters, String tikzFileName) {
+        this.parameters = parameters;
+        this.tikzFileName = tikzFileName;
+        Date today = Calendar.getInstance().getTime();
+        logfileName = dateFormat.format(today) + ".log";
+
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
-        statePosition = new HashMap<Long, Integer>();
-        positionToNode = new HashMap<Integer, Node>();
+        nodeToMatrixPos = new HashMap<Long, Integer>();
+        matrixPosToNode = new HashMap<Integer, Node>();
         distanceSums = new ArrayList<Double>();
         for (int i = 0; i < arrayCapacity; ++i) {
             ArrayList<Double> new_array = new ArrayList<Double>();
@@ -50,8 +58,6 @@ public final class StateManager {
             }
             state.add(new_array);
         }
-        Date today = Calendar.getInstance().getTime();
-        logfileName = dateFormat.format(today) + ".log";
     }
 
     /**
@@ -72,8 +78,8 @@ public final class StateManager {
         Node newNode = new Node(physicalState, awarenessState, roleState);
 
         nodes.put(newNode.getID(), newNode);
-        statePosition.put(newNode.getID(), nodeCtr);
-        positionToNode.put(nodeCtr, newNode);
+        nodeToMatrixPos.put(newNode.getID(), nodeCtr);
+        matrixPosToNode.put(nodeCtr, newNode);
 
         if (nodeCtr >= arrayCapacity) {
             increaseStateArrayCapacity();
@@ -149,14 +155,14 @@ public final class StateManager {
         recomputeNeighbouringDistances(nodeID);
 
         // With probability ACTIVATE_EDGE_PROB, activate a random edge of the graph.
-        if (getRandomNumber() < ACTIVATE_EDGE_PROB) {
+        if (getRandomNumber() < parameters.getActivateEdgeProbability()) {
             activateRandomEdge();
         }
 
         // If the node is infected with the disease, with probability SPONTANEOUS_RECOVERY_PROB, the
         // node will spontaneously recover from the infection.
         if (node.hasDisease()) {
-            if (getRandomNumber() < SPONTANEOUS_RECOVERY_PROB) {
+            if (getRandomNumber() < parameters.getSpontaneousRecoveryProbability()) {
                 Logger.log(3, "Node " + node.getID() + " has recovered and is now susceptible.");
                 node.setPhysicalState(PhysicalState.SUSCEPTIBLE);
                 Main.changeState(new ChangeMessage(
@@ -269,22 +275,23 @@ public final class StateManager {
             return;
         }
 
-        int arrayPos = statePosition.get(nodeID);
+        int matrixPos = nodeToMatrixPos.get(nodeID);
 
         for (int i = 0; i < nodeCtr; ++i) {
-            if (i == arrayPos) {
+            if (i == matrixPos) {
                 continue;
             }
-            Node node = positionToNode.get(i);
+            Node node = matrixPosToNode.get(i);
             if (!node.isActive()) {
                 continue;
             }
             double distance =
-                    EXPO_MULTIPLIER*Math.exp(-LAMBDA_FACTOR * thisNode.getDistanceFrom(node));
+                    parameters.getExponentialMultiplier()*Math.exp(
+                            -parameters.getLambdaFactor()* thisNode.getDistanceFrom(node));
 
             debugPrint("Actual distance: " + thisNode.getDistanceFrom(node) + ", Exponentiated: " +
                     distance);
-            setArrayDistance(arrayPos, i, distance);
+            setArrayDistance(matrixPos, i, distance);
         }
 
         if (DEBUG) {
@@ -352,7 +359,7 @@ public final class StateManager {
      * @param filename
      */
     private void logState(String filename) {
-        StateLog log = new StateLog(nodes, statePosition, state);
+        StateLog log = new StateLog(nodes, nodeToMatrixPos, state);
         log.writeToFile(filename);
         tikzer.addLog(log);
     }
@@ -429,8 +436,8 @@ public final class StateManager {
             return;
         }
         try {
-            Node ni = positionToNode.get(i);
-            Node nj = positionToNode.get(j);
+            Node ni = matrixPosToNode.get(i);
+            Node nj = matrixPosToNode.get(j);
             if (!ni.isActive() || !nj.isActive()) {
                 return;
             }
@@ -439,16 +446,28 @@ public final class StateManager {
                 return;
             }
 
+            if (ni.getPhysicalState() == PhysicalState.CARRIER) {
+                if (getRandomNumber() < parameters.getDevelopSymptomsProbability()) {
+                    ni.setPhysicalState(PhysicalState.INFECTED);
+                }
+            }
+
+            if (nj.getPhysicalState() == PhysicalState.CARRIER) {
+                if (getRandomNumber() < parameters.getDevelopSymptomsProbability()) {
+                    nj.setPhysicalState(PhysicalState.INFECTED);
+                }
+            }
+
             if (ni.hasDisease()) {
                 if ((nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
                         ((nj.getPhysicalState() == PhysicalState.VACCINATED) &&
-                                getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
+                                getRandomNumber() < parameters.getInfectedIfVaccinatedProbability())) {
                     infectNode(nj);
                 }
             } else if (nj.hasDisease()) {
                 if ((ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
                         ((ni.getPhysicalState() == PhysicalState.VACCINATED) &&
-                                getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
+                                getRandomNumber() < parameters.getInfectedIfVaccinatedProbability())) {
                     infectNode(ni);
                 }
             }
@@ -459,7 +478,7 @@ public final class StateManager {
 
     private void outputNodes() {
         for (int i = 0; i < nodeCtr; ++i) {
-            System.out.println(positionToNode.get(i));
+            System.out.println(matrixPosToNode.get(i));
         }
     }
 
@@ -498,7 +517,7 @@ public final class StateManager {
      * @return
      */
     private PhysicalState getRandomPhysicalState() {
-        return getRandomNumber() < INITIAL_INFECTED_PROB ?
+        return getRandomNumber() < parameters.getInitialInfectedProbability()?
                 getRandomDiseasedPhysicalState() : PhysicalState.SUSCEPTIBLE;
     }
 
@@ -507,7 +526,7 @@ public final class StateManager {
      * @return
      */
     private PhysicalState getRandomDiseasedPhysicalState() {
-        return getRandomNumber() < INITIAL_SYMPTOMATIC_PROB ?
+        return getRandomNumber() < parameters.getInitialSymptomaticProbability()?
                 PhysicalState.INFECTED : PhysicalState.CARRIER;
     }
 
@@ -518,7 +537,7 @@ public final class StateManager {
      * @return
      */
     private AwarenessState getRandomAwarenessState() {
-        return getRandomNumber() < INITIAL_AWARENESS_PROB ?
+        return getRandomNumber() < parameters.getInitialAwareProbability()?
                 AwarenessState.AWARE : AwarenessState.UNAWARE;
     }
 
@@ -528,7 +547,7 @@ public final class StateManager {
      * @return
      */
     private RoleState getRandomRoleState() {
-        return getRandomNumber() < EVIL_PROB ?
+        return getRandomNumber() < parameters.getInfectorProbability()?
                 RoleState.INFECTOR : RoleState.HUMAN;
     }
 
