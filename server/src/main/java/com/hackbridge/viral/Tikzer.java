@@ -91,7 +91,7 @@ class Tikzer {
             BufferedWriter tikzFile = new BufferedWriter(new FileWriter(tikzName));
             tikzFile.write("\\documentclass[crop,tikz]{standalone}\n");
             tikzFile.write("\\definecolor{mygreen}{HTML}{006400}\n");
-            tikzFile.write("\\definecolor{myred}{HTML}{8B0000}\\n");
+            tikzFile.write("\\definecolor{myred}{HTML}{8B0000}\n");
             tikzFile.write("\\begin{document}\n");
             tikzFile.write("\\begin{tikzpicture}[transform shape,line width=2pt]\n");
 
