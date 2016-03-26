@@ -8,7 +8,7 @@ public class StateManagerTest {
         //  connectionTest();
         // locationChangeTest();
         // locationValueTest();
-        stepTest();
+         stepTest();
         // resetTest();
     }
 
@@ -49,7 +49,7 @@ public class StateManagerTest {
     private void stepTest() {
         System.out.println("Running location step test");
         StateManager stateManager = new StateManager();
-        int nMsgs = 20;
+        int nMsgs = 10;
         StartMessage sms[] = new StartMessage[nMsgs];
         for (int i = 0; i < nMsgs; ++i) {
             sms[i] = stateManager.onConnect();
@@ -75,6 +75,10 @@ public class StateManagerTest {
         stateManager.reset();
         StartMessage sm2 = stateManager.onConnect(start_msg.getId());
         System.out.println(sm2.getId());
+    }
+
+    public static void main(String[] args) {
+        new StateManagerTest();
     }
 
 }

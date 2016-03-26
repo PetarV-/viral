@@ -67,6 +67,15 @@ public class Node {
         this.physicalState = physicalState;
     }
 
+    /**
+     * Returns true if the node has the disease. A node has been infected if it's PhysicalState
+     * is INFECTED or CARRIER.
+     * @return
+     */
+    public boolean hasDisease() {
+        return physicalState == PhysicalState.INFECTED || physicalState == PhysicalState.CARRIER;
+    }
+
     public RoleState getRoleState() {
         return roleState;
     }

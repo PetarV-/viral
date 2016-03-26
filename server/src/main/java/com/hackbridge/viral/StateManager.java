@@ -8,13 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public final class StateManager {
-    private final boolean DEBUG = true;
+    private final boolean DEBUG = false;
     private final boolean TIKZ_LOG = true;
     private final Tikzer tikzer = new Tikzer(8000);
     private final List<ArrayList<Double>> state; // 2D state array, modify only through setArrayDistance
     // TODO: tune parameters.
     private final double INITIAL_INFECTED_PROB = 0.20;
     private final double INITIAL_AWARENESS_PROB = 0.20;
+    private final double INITIAL_SYMPTOMATIC_PROB = 0.20;
     private final double INFECTED_IF_VACCINATED_PROB = 0.01;
     private final double SPONTANEOUS_RECOVERY_PROB  = 0.01;
     private final double ACTIVATE_EDGE_PROB = 0.10;
@@ -33,7 +34,6 @@ public final class StateManager {
     private int nodeCtr = 0;  // Counts nodes to add to position
     // Logfile vars.
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-    private BufferedWriter logfile;
     private String logfileName;
 
     public StateManager() {
@@ -153,9 +153,9 @@ public final class StateManager {
             activateRandomEdge();
         }
 
-        // If the node is infected, with probability SPONTANEOUS_RECOVERY_PROB, the
+        // If the node is infected with the disease, with probability SPONTANEOUS_RECOVERY_PROB, the
         // node will spontaneously recover from the infection.
-        if (node.getPhysicalState() == PhysicalState.INFECTED) {
+        if (node.hasDisease()) {
             if (getRandomNumber() < SPONTANEOUS_RECOVERY_PROB) {
                 Logger.log(3, "Node " + node.getID() + " has recovered and is now susceptible.");
                 node.setPhysicalState(PhysicalState.SUSCEPTIBLE);
@@ -234,7 +234,8 @@ public final class StateManager {
 
     /**
      * Returns the percentage of active nodes (those that are connected and have sent at least one
-     * location update) that are infected.
+     * location update) that carry the disease agent (PhysicalState.INFECTED or
+     * PhysicalState.CARRIER)
      * @return
      */
     public double getPercentageInfected() {
@@ -244,7 +245,7 @@ public final class StateManager {
             if (!node.getConnected()) {
                 continue;
             }
-            if (node.getPhysicalState() == PhysicalState.INFECTED) {
+            if (node.hasDisease()) {
                 numInfectedNodes++;
             }
             totalActiveNodes++;
@@ -415,9 +416,9 @@ public final class StateManager {
      * if both i and j are active nodes.
      *
      * The PhysicalStates (A,B) of i and j change as follows:
-     * - (INFECTED, SUSCEPTIBLE) -> (INFECTED, INFECTED)
-     * - (INFECTED, VACCINATED) -> (INFECTED, INFECTED) if a random number is greater than
-     * INFECTED_IF_VACCINATED_PROB
+     * - (INFECTED/CARRIER, SUSCEPTIBLE) -> (INFECTED/CARRIER, INFECTED/CARRIER)
+     * - (INFECTED/CARRIER, VACCINATED) -> (INFECTED/CARRIER, INFECTED/CARRIER) if a random
+     * number is greater than INFECTED_IF_VACCINATED_PROB
      *
      * This method calls Main.changeState if a node changes state.
      * @param i
@@ -438,13 +439,13 @@ public final class StateManager {
                 return;
             }
 
-            if (ni.getPhysicalState() == PhysicalState.INFECTED) {
+            if (ni.hasDisease()) {
                 if ((nj.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
                         ((nj.getPhysicalState() == PhysicalState.VACCINATED) &&
                                 getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
                     infectNode(nj);
                 }
-            } else if (nj.getPhysicalState() == PhysicalState.INFECTED) {
+            } else if (nj.hasDisease()) {
                 if ((ni.getPhysicalState() == PhysicalState.SUSCEPTIBLE) ||
                         ((ni.getPhysicalState() == PhysicalState.VACCINATED) &&
                                 getRandomNumber() < INFECTED_IF_VACCINATED_PROB)) {
@@ -472,15 +473,18 @@ public final class StateManager {
      * @param node
      */
     private void infectNode(Node node) {
-        if (node.getPhysicalState() == PhysicalState.INFECTED) {
+        if (node == null) {
+            return;
+        }
+        if (node.hasDisease()) {
             return;
         }
         Logger.log(3, String.format("Node %d is now infected.", node.getID()));
-        node.setPhysicalState(PhysicalState.INFECTED);
+        node.setPhysicalState(getRandomDiseasedPhysicalState());
         node.setAwarenessState(getRandomAwarenessState());
 
         Main.changeState(new ChangeMessage(
-                PhysicalState.INFECTED, node.getAwarenessState()), node.getID());
+                node.getPhysicalState(), node.getAwarenessState()), node.getID());
     }
 
     private double getRandomNumber() {
@@ -495,7 +499,16 @@ public final class StateManager {
      */
     private PhysicalState getRandomPhysicalState() {
         return getRandomNumber() < INITIAL_INFECTED_PROB ?
-                PhysicalState.INFECTED : PhysicalState.SUSCEPTIBLE;
+                getRandomDiseasedPhysicalState() : PhysicalState.SUSCEPTIBLE;
+    }
+
+    /**
+     * Returns PhysicalState.INFECTED or PhysicalState.CARRIER based on INITIAL_SYMPTOMATIC_PROB.
+     * @return
+     */
+    private PhysicalState getRandomDiseasedPhysicalState() {
+        return getRandomNumber() < INITIAL_SYMPTOMATIC_PROB ?
+                PhysicalState.INFECTED : PhysicalState.CARRIER;
     }
 
      /**
