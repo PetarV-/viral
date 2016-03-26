@@ -1,5 +1,7 @@
 package com.hackbridge.viral;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by stella on 1/30/16.
  */
@@ -8,8 +10,24 @@ public class StateManagerTest {
         //  connectionTest();
         // locationChangeTest();
         // locationValueTest();
-         stepTest();
+         // stepTest();
         // resetTest();
+        networkParameterTest();
+    }
+
+    private void networkParameterTest() {
+        NetworkParameters parameters = new NetworkParameters("network_parameters.txt");
+        Class c = parameters.getClass();
+
+        Field[] fields = c.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                System.out.println(field.getName() + " " + field.getDouble(parameters));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void connectionTest() {

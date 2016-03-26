@@ -158,7 +158,7 @@ public class Node {
      * @return
      */
     private double gps2m(double lat_a, double lng_a, double lat_b, double lng_b) {
-        double pk = (double) (180.0/Math.PI);
+        double pk = 180.0/Math.PI;
 
         double a1 = lat_a / pk;
         double a2 = lng_a / pk;

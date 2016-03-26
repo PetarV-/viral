@@ -89,7 +89,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        stateManager = new StateManager();
+        stateManager = new StateManager(new NetworkParameters("network_parameters.txt"));
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();
         Thread input = new Thread() {

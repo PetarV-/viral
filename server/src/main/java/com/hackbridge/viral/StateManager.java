@@ -438,11 +438,13 @@ public final class StateManager {
         try {
             Node ni = matrixPosToNode.get(i);
             Node nj = matrixPosToNode.get(j);
-            if (!ni.isActive() || !nj.isActive()) {
-                return;
-            }
+
             if (ni == null || nj == null) {
                 Logger.logError(3, "Tried to active null nodes " + i + " " + j);
+                return;
+            }
+
+            if (!ni.isActive() || !nj.isActive()) {
                 return;
             }
 

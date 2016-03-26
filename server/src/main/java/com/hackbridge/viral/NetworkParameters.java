@@ -1,5 +1,10 @@
 package com.hackbridge.viral;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Field;
+
 /**
  * This represents the internal properties of the multiplex network used in StateManager, such as
  * the different transition probabilities.
@@ -40,6 +45,40 @@ public class NetworkParameters {
     private double exponentialMultiplier = 1000.0;
 
     public NetworkParameters() {}
+
+    /**
+     * Parameters can be read from the configuration file formatted as
+     * parameterName parameterValue
+     *
+     * Example:
+     * initialInfectedProbability 0.2
+     * initialAwareProbability 0.2
+     * @param configurationFile
+     */
+    public NetworkParameters(String configurationFile) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(configurationFile));
+            String line;
+
+            Class c = this.getClass();
+
+            while ((line = br.readLine()) != null) {
+                try {
+                    String[] str = line.split("\\s+");
+                    if (str.length < 2) {
+                        continue;
+                    }
+                    double value = Double.parseDouble(str[1]);
+                    Field field = c.getDeclaredField(str[0]);
+                    field.setDouble(this, value);
+                } catch (Exception e) {
+                    System.err.println("Failed to parse " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public double getInitialInfectedProbability() {
         return initialInfectedProbability;
