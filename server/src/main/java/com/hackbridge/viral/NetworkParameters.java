@@ -46,7 +46,7 @@ public class NetworkParameters {
 
     // Frequency of logging to file. The current state will be logged every loggingFrequency
     // updates.
-    private int loggingFrequency = 5;
+    private int loggingFrequency = 1;
 
     public NetworkParameters() {}
 
