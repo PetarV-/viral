@@ -348,7 +348,7 @@ public final class StateManager {
      */
     private void logState(String filename) {
         StateLog log = new StateLog(nodes, nodeToMatrixPos, state);
-        log.writeToFile(filename);
+        log.writeToFile(filename, true);
         tikzer.addLog(log);
     }
 

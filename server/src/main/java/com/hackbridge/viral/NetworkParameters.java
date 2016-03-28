@@ -44,6 +44,10 @@ public class NetworkParameters {
     private double lambdaFactor = 0.002;
     private double exponentialMultiplier = 1000.0;
 
+    // Frequency of logging to file. The current state will be logged every loggingFrequency
+    // updates.
+    private int loggingFrequency = 5;
+
     public NetworkParameters() {}
 
     /**
@@ -68,9 +72,16 @@ public class NetworkParameters {
                     if (str.length < 2) {
                         continue;
                     }
-                    double value = Double.parseDouble(str[1]);
+
                     Field field = c.getDeclaredField(str[0]);
-                    field.setDouble(this, value);
+                    Class<?> fieldClass = field.getType();
+                    if (fieldClass.isAssignableFrom(int.class)) {
+                        int value = Integer.parseInt(str[1]);
+                        field.setInt(this, value);
+                    } else if (fieldClass.isAssignableFrom(double.class)) {
+                        double value = Double.parseDouble(str[1]);
+                        field.setDouble(this, value);
+                    }
                 } catch (Exception e) {
                     System.err.println("Failed to parse " + line);
                 }

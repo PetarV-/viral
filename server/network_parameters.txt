@@ -8,3 +8,4 @@ infectorProbability 0.25
 developSymptomsProbability 0.1
 lambdaFactor 0.002
 exponentialMultiplier 1000.0
+loggingFrequency 5
