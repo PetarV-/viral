@@ -1,8 +1,6 @@
 /*
- * Sends simulated random-ish walk data to server, posing as
- * a client.
- * More detailed & useful comments coming soon.
- * Class currently being maintained by Andrej.
+ * Sends simulated data to server, posing as a client.
+ * Uses a random walk model.
  */
 
 package com.hackbridge.viral;
@@ -13,28 +11,34 @@ import java.net.Socket;
 
 public class GameBot extends Thread {
 
-    // static attributes, deal with TCP connection
-
-    private static String server;   // 188.166.154.60 default
-    private static int port;        // 25000 default
-
     // attributes
 
-    private long           id;          // unique ID of a client
-    private PhysicalState  physState;   // physical state
-    private AwarenessState awareState;  // awareness state
-    private RoleState      roleState;   // role in the game
-    private double         longit;      // position: longitude
-    private double         latit;       // position: latitude
-    private boolean        running;     // is a round on?
-    private MessageSender  ms;          // client side of connection
+    private String          server;     // string, server IP address
+    private int             port;       // port of server
+    private long            id;         // unique ID of a client
+    private PhysicalState   physState;  // physical state
+    private AwarenessState  awareState; // awareness state
+    private RoleState       roleState;  // role in the game
+    private double          longit;     // position: longitude
+    private double          latit;      // position: latitude
+    private double          speed;      // speed of bot
+    private int             rate;       // rate of updates
+    private int             ratedev;    // rate deviation of bot
+    private boolean         running;    // is a round on?
+    private MessageSender   ms;         // client side of connection
 
     // constructors
 
     // input is bot's initial position
-    public GameBot(double mLongit, double mLatit) {
-        longit = mLongit;
-        latit = mLatit;
+    public GameBot(double mLongit, double mLatit, double mSpeed,
+                   int mRate, int mRateDev, String mServer, int mPort) {
+        longit      = mLongit;
+        latit       = mLatit;
+        speed       = mSpeed;
+        rate        = mRate;
+        ratedev     = mRateDev;
+        server      = mServer;
+        port        = mPort;
         // default parameters
         physState = PhysicalState.SUSCEPTIBLE;
         awareState = AwarenessState.UNAWARE;
@@ -92,24 +96,21 @@ public class GameBot extends Thread {
                     System.out.println("About to get introduced");
                     ms.sendMessage(new HelloNewMessage());
                     System.out.println("HelloNewMessage object sent");
-                    // TODO: more general behaviour, specified in file?
-                    longit += 0.0004 * Math.random();
-                    latit += 0.0004 * Math.random();
                 } else if (running) {
                     // round is on, ID exists
                     System.out.println(id + " is about to send position");
-                    // TODO: more general behaviour, specified in file?
-                    longit += 0.00008 * Math.random();
-                    latit += 0.00008 * Math.random();
                     // send position message to server
                     ms.sendMessage(new PositionMessage(id,
                                    new LocationWrapper(longit, latit, 0.0)));
                 }
                 try {
+                    // move bot
+                    longit += (-speed + 2.0 * Math.random() * speed);
+                    latit += (-speed + 2.0 * Math.random() * speed);
                     // wait between updates, variable time, simulating some
                     // realistic inputs
-                    Thread.sleep(15000 + (int)(5000 * Math.random()));
-                    // TODO: write in a possibly more elegant way
+                    Thread.sleep((int)(rate - ratedev +
+                                        2 * ratedev * Math.random()));
                 }
                 catch (InterruptedException e) {
                     System.out.println("InterruptedException raised by bot");
@@ -123,44 +124,4 @@ public class GameBot extends Thread {
         }
     }
 
-    public static void main(String[] args) {
-        if (args.length != 3) {
-            // wrong usage
-            System.out.println("Usage: java com.hackbridge.viral.GameBot "
-                             + "<bot parameter file> <server> <port>");
-            return;
-        }
-        try {
-            String filename;
-            server = args[1];
-            port = Integer.parseInt(args[2]);
-        } catch (NumberFormatException e) {
-            // wrong usage
-            System.out.println("Usage: java com.hackbridge.viral.GameBot "
-                             + "<bot parameter file> <server> <port>");
-        }
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(args[0]);
-            // TODO: actually read from file and use it
-            for (int i = 0; i < 10; i++) {
-                GameBot bot = new GameBot(52.2042, 0.1198);
-                bot.setDaemon(false); // JVM must not exit!
-                bot.start();
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading from file " + args[0]);
-        } finally {
-            try {
-                fis.close();
-            } catch (IOException ioe) {
-                // ignore
-            }
-        }
-        // TODO: friendlier interface?
-        catch (ArrayIndexOutOfBoundsException | NumberFormatException e)
-        {
-            System.out.println("Usage: java com.hackbridge.viral.GameBot <#bots>");
-        }
-    }
 }
