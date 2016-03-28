@@ -123,6 +123,15 @@ class Tikzer {
 
             HashSet<Long> used = new HashSet<Long>();
 
+            double maxW = 0.0;
+            for (ArrayList<Double> row : state) {
+                for (Double d : row) {
+                    maxW = Math.max(d, maxW);
+                }
+            }
+
+            double lambda = Math.log(100.0) / maxW;
+
             for (Map.Entry<Long, Integer> i_entry : positions.entrySet()) {
                 Long i_id = i_entry.getKey();
                 int i_pos = i_entry.getValue();
@@ -131,7 +140,8 @@ class Tikzer {
                     Long j_id = j_entry.getKey();
                     int j_pos = j_entry.getValue();
                     if (used.contains(j_id)) continue;
-                    double w = Math.max(0.01, state.get(i_pos).get(j_pos));
+                    double wt = state.get(i_pos).get(j_pos);
+                    double w = Math.max(0.01, 0.01 * Math.exp(lambda * wt));
                     tikzFile.write(String.format(
                             "\\path(N-%d) edge[-, red, opacity=%f] (N-%d);\n",
                             i_id, w, j_id));
