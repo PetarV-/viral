@@ -13,8 +13,10 @@ public class Main {
     private static Map<Long, ClientHandler> handlers = new HashMap<Long, ClientHandler>();
 
     private static boolean isRunning = false;
-    private static long roundDuration = 900000; // 15 min = 900 s = 900000 ms
-    private static long delayBetweenRounds = 15000; // 15 s = 15000 ms
+    private static int port;
+    private static long roundDuration;
+    private static long delayBetweenRounds;
+    private static String networkParams;
     private static Timer timer = new Timer();
 
     private static Random random = new Random();
@@ -89,7 +91,22 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        stateManager = new StateManager(new NetworkParameters("network_parameters.txt"));
+        if (args.length != 4) {
+            System.out.println("Usage: java com.hackbridge.viral.Main "
+                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file>");
+            return;
+        }
+        try {
+            port = Integer.parseInt(args[0]);
+            roundDuration = Long.parseLong(args[1]);
+            delayBetweenRounds = Long.parseLong(args[2]);
+            networkParams = args[3];
+        } catch (Exception e) {
+            System.out.println("Usage: java com.hackbridge.viral.Main "
+                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file>");
+            return;
+        }
+        stateManager = new StateManager(new NetworkParameters(networkParams));
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();
         Thread input = new Thread() {
@@ -97,7 +114,7 @@ public class Main {
             public void run() {
                 try {
                     System.out.println(InetAddress.getLocalHost());
-                    ServerSocket ss = new ServerSocket(25000);
+                    ServerSocket ss = new ServerSocket(port);
                     while (true) {
                         System.out.println("Accepting...");
                         Socket s = ss.accept();
