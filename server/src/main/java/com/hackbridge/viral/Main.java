@@ -71,7 +71,7 @@ public class Main {
             }
             handler.sendMessage(new StopMessage(hasWon));
         }
-        queue = new ConcurrentLinkedQueue<Message>();
+        queue.clear();
         stateManager.reset();
         TimerTask startTask = new TimerTask() {
             @Override
