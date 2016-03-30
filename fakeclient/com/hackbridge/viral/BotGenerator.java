@@ -115,6 +115,5 @@ public class BotGenerator {
             bot[i].setDaemon(false); // JVM must not exit!
             bot[i].start();
         }
-        // TODO: friendlier interface?
     }
 }

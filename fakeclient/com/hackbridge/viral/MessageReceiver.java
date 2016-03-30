@@ -51,6 +51,7 @@ public class MessageReceiver extends Thread
                     {
                         System.out.println("Got a StartMessage");
                         ma.setIdentity(((StartMessage) mess).getId());
+                        ma.setRole(((StartMessage) mess).getRole());
                         ma.setRoundOn(((StartMessage) mess).isRunning());
 
                         StartMessage sm = (StartMessage) mess;
