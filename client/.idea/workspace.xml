@@ -10,18 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27893266-0dd4-4de6-957f-2142b8346f6b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/circle_gray.png.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/circle_blue.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/circle_green.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/circle_red.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/circle_unedited.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/graphics.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/syringe_edited.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/graphics/syringe_unedited.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
     <ignored path="client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,8 +37,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-446">
-              <caret line="294" column="17" selection-start-line="294" selection-start-column="17" selection-end-line="294" selection-end-column="17" />
+            <state relative-caret-position="306">
+              <caret line="218" column="17" selection-start-line="218" selection-start-column="17" selection-end-line="218" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -56,7 +47,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="289">
               <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
               <folding />
             </state>
@@ -68,60 +59,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1428">
               <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#30954#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#4519#4520#0" expanded="false" />
-                <element signature="e#4552#4553#0" expanded="false" />
-                <element signature="e#5003#5004#0" expanded="false" />
-                <element signature="e#5040#5041#0" expanded="false" />
-                <element signature="e#5218#5219#0" expanded="false" />
-                <element signature="e#5259#5260#0" expanded="false" />
-                <element signature="e#5605#5606#0" expanded="false" />
-                <element signature="e#5650#5651#0" expanded="false" />
-                <element signature="e#6444#6445#0" expanded="false" />
-                <element signature="e#6477#6478#0" expanded="false" />
-                <element signature="e#10264#10265#0" expanded="false" />
-                <element signature="e#10307#10308#0" expanded="false" />
-                <element signature="e#10620#10621#0" expanded="false" />
-                <element signature="e#10669#10670#0" expanded="false" />
-                <element signature="e#11092#11093#0" expanded="false" />
-                <element signature="e#11146#11147#0" expanded="false" />
-                <element signature="e#11644#11645#0" expanded="false" />
-                <element signature="e#11705#11706#0" expanded="false" />
-                <element signature="e#12865#12866#0" expanded="false" />
-                <element signature="e#12928#12929#0" expanded="false" />
-                <element signature="e#17072#17073#0" expanded="false" />
-                <element signature="e#17139#17140#0" expanded="false" />
-                <element signature="e#19898#19899#0" expanded="false" />
-                <element signature="e#19950#19951#0" expanded="false" />
-                <element signature="e#20229#20230#0" expanded="false" />
-                <element signature="e#20282#20283#0" expanded="false" />
-                <element signature="e#20793#20794#0" expanded="false" />
-                <element signature="e#20842#20843#0" expanded="false" />
-                <element signature="e#21199#21200#0" expanded="false" />
-                <element signature="e#21254#21255#0" expanded="false" />
-                <element signature="e#26280#26281#0" expanded="false" />
-                <element signature="e#26335#26336#0" expanded="false" />
-                <element signature="e#26609#26610#0" expanded="false" />
-                <element signature="e#26666#26667#0" expanded="false" />
-                <element signature="e#26941#26942#0" expanded="false" />
-                <element signature="e#27003#27004#0" expanded="false" />
-                <element signature="e#27171#27172#0" expanded="false" />
-                <element signature="e#27230#27231#0" expanded="false" />
-                <element signature="e#27439#27440#0" expanded="false" />
-                <element signature="e#27500#27501#0" expanded="false" />
-                <element signature="e#27691#27692#0" expanded="false" />
-                <element signature="e#27747#27748#0" expanded="false" />
-                <element signature="e#27928#27929#0" expanded="false" />
-                <element signature="e#27958#27959#0" expanded="false" />
-                <element signature="e#28796#28797#0" expanded="false" />
-                <element signature="e#28849#28850#0" expanded="false" />
-                <element signature="e#29237#29238#0" expanded="false" />
-                <element signature="e#29275#29276#0" expanded="false" />
-                <element signature="e#29613#29614#0" expanded="false" />
-                <element signature="e#29649#29650#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,35 +102,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1989">
               <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#10781#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1946#1954#0" expanded="false" />
-                <element signature="e#2450#2451#0" expanded="false" />
-                <element signature="e#2479#2480#0" expanded="false" />
-                <element signature="e#5714#5715#0" expanded="false" />
-                <element signature="e#5755#5756#0" expanded="false" />
-                <element signature="e#6214#6215#0" expanded="false" />
-                <element signature="e#6248#6249#0" expanded="false" />
-                <element signature="e#6503#6504#0" expanded="false" />
-                <element signature="e#6543#6544#0" expanded="false" />
-                <element signature="e#6818#6819#0" expanded="false" />
-                <element signature="e#6874#6875#0" expanded="false" />
-                <element signature="e#7574#7575#0" expanded="false" />
-                <element signature="e#7608#7609#0" expanded="false" />
-                <element signature="e#8203#8204#0" expanded="false" />
-                <element signature="e#8236#8237#0" expanded="false" />
-                <element signature="e#9492#9493#0" expanded="false" />
-                <element signature="e#9568#9569#0" expanded="false" />
-                <element signature="e#9884#9885#0" expanded="false" />
-                <element signature="e#9931#9932#0" expanded="false" />
-                <element signature="e#10034#10035#0" expanded="false" />
-                <element signature="e#10064#10065#0" expanded="false" />
-                <element signature="e#10119#10120#0" expanded="false" />
-                <element signature="e#10148#10149#0" expanded="false" />
-                <element signature="e#10402#10403#0" expanded="false" />
-                <element signature="e#10442#10443#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -319,16 +229,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoleState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -348,8 +248,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -384,7 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -423,12 +323,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/!!!/!MILOS/Cambridge/Part IB project stuff" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server/server.iml" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Project" />
@@ -461,6 +361,24 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -484,6 +402,22 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -503,6 +437,73 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Viral" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -527,6 +528,34 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -598,23 +627,22 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21481876" sideWeight="0.5121163" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21481876" sideWeight="0.4878837" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21481876" sideWeight="0.5121163" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21481876" sideWeight="0.5121163" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869988" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -624,6 +652,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -649,706 +678,707 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#30954#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4519#4520#0" expanded="false" />
-            <element signature="e#4552#4553#0" expanded="false" />
-            <element signature="e#5003#5004#0" expanded="false" />
-            <element signature="e#5040#5041#0" expanded="false" />
-            <element signature="e#5218#5219#0" expanded="false" />
-            <element signature="e#5259#5260#0" expanded="false" />
-            <element signature="e#5605#5606#0" expanded="false" />
-            <element signature="e#5650#5651#0" expanded="false" />
-            <element signature="e#6444#6445#0" expanded="false" />
-            <element signature="e#6477#6478#0" expanded="false" />
-            <element signature="e#10264#10265#0" expanded="false" />
-            <element signature="e#10307#10308#0" expanded="false" />
-            <element signature="e#10620#10621#0" expanded="false" />
-            <element signature="e#10669#10670#0" expanded="false" />
-            <element signature="e#11092#11093#0" expanded="false" />
-            <element signature="e#11146#11147#0" expanded="false" />
-            <element signature="e#11644#11645#0" expanded="false" />
-            <element signature="e#11705#11706#0" expanded="false" />
-            <element signature="e#12865#12866#0" expanded="false" />
-            <element signature="e#12928#12929#0" expanded="false" />
-            <element signature="e#17072#17073#0" expanded="false" />
-            <element signature="e#17139#17140#0" expanded="false" />
-            <element signature="e#19898#19899#0" expanded="false" />
-            <element signature="e#19950#19951#0" expanded="false" />
-            <element signature="e#20229#20230#0" expanded="false" />
-            <element signature="e#20282#20283#0" expanded="false" />
-            <element signature="e#20793#20794#0" expanded="false" />
-            <element signature="e#20842#20843#0" expanded="false" />
-            <element signature="e#21199#21200#0" expanded="false" />
-            <element signature="e#21254#21255#0" expanded="false" />
-            <element signature="e#26280#26281#0" expanded="false" />
-            <element signature="e#26335#26336#0" expanded="false" />
-            <element signature="e#26609#26610#0" expanded="false" />
-            <element signature="e#26666#26667#0" expanded="false" />
-            <element signature="e#26941#26942#0" expanded="false" />
-            <element signature="e#27003#27004#0" expanded="false" />
-            <element signature="e#27171#27172#0" expanded="false" />
-            <element signature="e#27230#27231#0" expanded="false" />
-            <element signature="e#27439#27440#0" expanded="false" />
-            <element signature="e#27500#27501#0" expanded="false" />
-            <element signature="e#27691#27692#0" expanded="false" />
-            <element signature="e#27747#27748#0" expanded="false" />
-            <element signature="e#27928#27929#0" expanded="false" />
-            <element signature="e#27958#27959#0" expanded="false" />
-            <element signature="e#28796#28797#0" expanded="false" />
-            <element signature="e#28849#28850#0" expanded="false" />
-            <element signature="e#29237#29238#0" expanded="false" />
-            <element signature="e#29275#29276#0" expanded="false" />
-            <element signature="e#29613#29614#0" expanded="false" />
-            <element signature="e#29649#29650#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7769">
-          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21019#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2132#3102#0" expanded="false" />
-            <element signature="e#3101#3102#0" expanded="false" />
-            <element signature="e#4750#4751#0" expanded="false" />
-            <element signature="e#4787#4788#0" expanded="false" />
-            <element signature="e#9377#9378#0" expanded="false" />
-            <element signature="e#9444#9445#0" expanded="false" />
-            <element signature="e#12915#12916#0" expanded="false" />
-            <element signature="e#12975#12976#0" expanded="false" />
-            <element signature="e#14313#14314#0" expanded="false" />
-            <element signature="e#14350#14351#0" expanded="false" />
-            <element signature="e#14993#14994#0" expanded="false" />
-            <element signature="e#15056#15057#0" expanded="false" />
-            <element signature="e#15317#15318#0" expanded="false" />
-            <element signature="e#15344#15345#0" expanded="false" />
-            <element signature="e#15642#15643#0" expanded="false" />
-            <element signature="e#15687#15688#0" expanded="false" />
-            <element signature="e#15868#15869#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="false" />
-            <element signature="e#16240#16241#0" expanded="false" />
-            <element signature="e#16278#16279#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10781#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1946#1954#0" expanded="false" />
-            <element signature="e#2450#2451#0" expanded="false" />
-            <element signature="e#2479#2480#0" expanded="false" />
-            <element signature="e#5714#5715#0" expanded="false" />
-            <element signature="e#5755#5756#0" expanded="false" />
-            <element signature="e#6214#6215#0" expanded="false" />
-            <element signature="e#6248#6249#0" expanded="false" />
-            <element signature="e#6503#6504#0" expanded="false" />
-            <element signature="e#6543#6544#0" expanded="false" />
-            <element signature="e#6818#6819#0" expanded="false" />
-            <element signature="e#6874#6875#0" expanded="false" />
-            <element signature="e#7574#7575#0" expanded="false" />
-            <element signature="e#7608#7609#0" expanded="false" />
-            <element signature="e#8203#8204#0" expanded="false" />
-            <element signature="e#8236#8237#0" expanded="false" />
-            <element signature="e#9492#9493#0" expanded="false" />
-            <element signature="e#9568#9569#0" expanded="false" />
-            <element signature="e#9884#9885#0" expanded="false" />
-            <element signature="e#9931#9932#0" expanded="false" />
-            <element signature="e#10034#10035#0" expanded="false" />
-            <element signature="e#10064#10065#0" expanded="false" />
-            <element signature="e#10119#10120#0" expanded="false" />
-            <element signature="e#10148#10149#0" expanded="false" />
-            <element signature="e#10402#10403#0" expanded="false" />
-            <element signature="e#10442#10443#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23613">
-          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#81352#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13710#13711#0" expanded="false" />
-            <element signature="e#13760#13761#0" expanded="false" />
-            <element signature="e#13805#13806#0" expanded="false" />
-            <element signature="e#13852#13853#0" expanded="false" />
-            <element signature="e#15179#15180#0" expanded="false" />
-            <element signature="e#15228#15229#0" expanded="false" />
-            <element signature="e#15410#15411#0" expanded="false" />
-            <element signature="e#15460#15461#0" expanded="false" />
-            <element signature="e#15614#15615#0" expanded="false" />
-            <element signature="e#15667#15668#0" expanded="false" />
-            <element signature="e#15961#15962#0" expanded="false" />
-            <element signature="e#16014#16015#0" expanded="false" />
-            <element signature="e#16329#16330#0" expanded="false" />
-            <element signature="e#16380#16381#0" expanded="false" />
-            <element signature="e#16597#16598#0" expanded="false" />
-            <element signature="e#16651#16652#0" expanded="false" />
-            <element signature="e#16969#16970#0" expanded="false" />
-            <element signature="e#17024#17025#0" expanded="false" />
-            <element signature="e#17100#17101#0" expanded="false" />
-            <element signature="e#17163#17164#0" expanded="false" />
-            <element signature="e#17240#17241#0" expanded="false" />
-            <element signature="e#17300#17301#0" expanded="false" />
-            <element signature="e#17893#17894#0" expanded="false" />
-            <element signature="e#17942#17943#0" expanded="false" />
-            <element signature="e#18456#18457#0" expanded="false" />
-            <element signature="e#18515#18516#0" expanded="false" />
-            <element signature="e#18940#18941#0" expanded="false" />
-            <element signature="e#19005#19006#0" expanded="false" />
-            <element signature="e#19247#19248#0" expanded="false" />
-            <element signature="e#19311#19312#0" expanded="false" />
-            <element signature="e#20055#20056#0" expanded="false" />
-            <element signature="e#20102#20103#0" expanded="false" />
-            <element signature="e#20285#20286#0" expanded="false" />
-            <element signature="e#20333#20334#0" expanded="false" />
-            <element signature="e#20520#20521#0" expanded="false" />
-            <element signature="e#20569#20570#0" expanded="false" />
-            <element signature="e#20775#20776#0" expanded="false" />
-            <element signature="e#20825#20826#0" expanded="false" />
-            <element signature="e#21006#21007#0" expanded="false" />
-            <element signature="e#21056#21057#0" expanded="false" />
-            <element signature="e#21268#21269#0" expanded="false" />
-            <element signature="e#21321#21322#0" expanded="false" />
-            <element signature="e#21504#21505#0" expanded="false" />
-            <element signature="e#21560#21561#0" expanded="false" />
-            <element signature="e#21749#21750#0" expanded="false" />
-            <element signature="e#21819#21820#0" expanded="false" />
-            <element signature="e#22402#22403#0" expanded="false" />
-            <element signature="e#22460#22461#0" expanded="false" />
-            <element signature="e#22635#22636#0" expanded="false" />
-            <element signature="e#22664#22665#0" expanded="false" />
-            <element signature="e#23264#23265#0" expanded="false" />
-            <element signature="e#23323#23324#0" expanded="false" />
-            <element signature="e#52407#52408#0" expanded="false" />
-            <element signature="e#52455#52456#0" expanded="false" />
-            <element signature="e#52587#52588#0" expanded="false" />
-            <element signature="e#52636#52637#0" expanded="false" />
-            <element signature="e#52779#52780#0" expanded="false" />
-            <element signature="e#52829#52830#0" expanded="false" />
-            <element signature="e#52991#52992#0" expanded="false" />
-            <element signature="e#53042#53043#0" expanded="false" />
-            <element signature="e#53172#53173#0" expanded="false" />
-            <element signature="e#53223#53224#0" expanded="false" />
-            <element signature="e#53384#53385#0" expanded="false" />
-            <element signature="e#53461#53462#0" expanded="false" />
-            <element signature="e#53593#53594#0" expanded="false" />
-            <element signature="e#53650#53651#0" expanded="false" />
-            <element signature="e#54019#54020#0" expanded="false" />
-            <element signature="e#54078#54079#0" expanded="false" />
-            <element signature="e#54633#54634#0" expanded="false" />
-            <element signature="e#54680#54681#0" expanded="false" />
-            <element signature="e#56274#56275#0" expanded="false" />
-            <element signature="e#56313#56314#0" expanded="false" />
-            <element signature="e#57140#57141#0" expanded="false" />
-            <element signature="e#57196#57197#0" expanded="false" />
-            <element signature="e#63288#63296#0" expanded="false" />
-            <element signature="e#64034#64043#0" expanded="false" />
-            <element signature="e#67000#67001#0" expanded="false" />
-            <element signature="e#67042#67043#0" expanded="false" />
-            <element signature="e#76670#76718#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lint.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lint.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lint.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lint.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10781#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1946#1954#0" expanded="false" />
-            <element signature="e#2450#2451#0" expanded="false" />
-            <element signature="e#2479#2480#0" expanded="false" />
-            <element signature="e#5714#5715#0" expanded="false" />
-            <element signature="e#5755#5756#0" expanded="false" />
-            <element signature="e#6214#6215#0" expanded="false" />
-            <element signature="e#6248#6249#0" expanded="false" />
-            <element signature="e#6503#6504#0" expanded="false" />
-            <element signature="e#6543#6544#0" expanded="false" />
-            <element signature="e#6818#6819#0" expanded="false" />
-            <element signature="e#6874#6875#0" expanded="false" />
-            <element signature="e#7574#7575#0" expanded="false" />
-            <element signature="e#7608#7609#0" expanded="false" />
-            <element signature="e#8203#8204#0" expanded="false" />
-            <element signature="e#8236#8237#0" expanded="false" />
-            <element signature="e#9492#9493#0" expanded="false" />
-            <element signature="e#9568#9569#0" expanded="false" />
-            <element signature="e#9884#9885#0" expanded="false" />
-            <element signature="e#9931#9932#0" expanded="false" />
-            <element signature="e#10034#10035#0" expanded="false" />
-            <element signature="e#10064#10065#0" expanded="false" />
-            <element signature="e#10119#10120#0" expanded="false" />
-            <element signature="e#10148#10149#0" expanded="false" />
-            <element signature="e#10402#10403#0" expanded="false" />
-            <element signature="e#10442#10443#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23613">
-          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#81352#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13710#13711#0" expanded="false" />
-            <element signature="e#13760#13761#0" expanded="false" />
-            <element signature="e#13805#13806#0" expanded="false" />
-            <element signature="e#13852#13853#0" expanded="false" />
-            <element signature="e#15179#15180#0" expanded="false" />
-            <element signature="e#15228#15229#0" expanded="false" />
-            <element signature="e#15410#15411#0" expanded="false" />
-            <element signature="e#15460#15461#0" expanded="false" />
-            <element signature="e#15614#15615#0" expanded="false" />
-            <element signature="e#15667#15668#0" expanded="false" />
-            <element signature="e#15961#15962#0" expanded="false" />
-            <element signature="e#16014#16015#0" expanded="false" />
-            <element signature="e#16329#16330#0" expanded="false" />
-            <element signature="e#16380#16381#0" expanded="false" />
-            <element signature="e#16597#16598#0" expanded="false" />
-            <element signature="e#16651#16652#0" expanded="false" />
-            <element signature="e#16969#16970#0" expanded="false" />
-            <element signature="e#17024#17025#0" expanded="false" />
-            <element signature="e#17100#17101#0" expanded="false" />
-            <element signature="e#17163#17164#0" expanded="false" />
-            <element signature="e#17240#17241#0" expanded="false" />
-            <element signature="e#17300#17301#0" expanded="false" />
-            <element signature="e#17893#17894#0" expanded="false" />
-            <element signature="e#17942#17943#0" expanded="false" />
-            <element signature="e#18456#18457#0" expanded="false" />
-            <element signature="e#18515#18516#0" expanded="false" />
-            <element signature="e#18940#18941#0" expanded="false" />
-            <element signature="e#19005#19006#0" expanded="false" />
-            <element signature="e#19247#19248#0" expanded="false" />
-            <element signature="e#19311#19312#0" expanded="false" />
-            <element signature="e#20055#20056#0" expanded="false" />
-            <element signature="e#20102#20103#0" expanded="false" />
-            <element signature="e#20285#20286#0" expanded="false" />
-            <element signature="e#20333#20334#0" expanded="false" />
-            <element signature="e#20520#20521#0" expanded="false" />
-            <element signature="e#20569#20570#0" expanded="false" />
-            <element signature="e#20775#20776#0" expanded="false" />
-            <element signature="e#20825#20826#0" expanded="false" />
-            <element signature="e#21006#21007#0" expanded="false" />
-            <element signature="e#21056#21057#0" expanded="false" />
-            <element signature="e#21268#21269#0" expanded="false" />
-            <element signature="e#21321#21322#0" expanded="false" />
-            <element signature="e#21504#21505#0" expanded="false" />
-            <element signature="e#21560#21561#0" expanded="false" />
-            <element signature="e#21749#21750#0" expanded="false" />
-            <element signature="e#21819#21820#0" expanded="false" />
-            <element signature="e#22402#22403#0" expanded="false" />
-            <element signature="e#22460#22461#0" expanded="false" />
-            <element signature="e#22635#22636#0" expanded="false" />
-            <element signature="e#22664#22665#0" expanded="false" />
-            <element signature="e#23264#23265#0" expanded="false" />
-            <element signature="e#23323#23324#0" expanded="false" />
-            <element signature="e#52407#52408#0" expanded="false" />
-            <element signature="e#52455#52456#0" expanded="false" />
-            <element signature="e#52587#52588#0" expanded="false" />
-            <element signature="e#52636#52637#0" expanded="false" />
-            <element signature="e#52779#52780#0" expanded="false" />
-            <element signature="e#52829#52830#0" expanded="false" />
-            <element signature="e#52991#52992#0" expanded="false" />
-            <element signature="e#53042#53043#0" expanded="false" />
-            <element signature="e#53172#53173#0" expanded="false" />
-            <element signature="e#53223#53224#0" expanded="false" />
-            <element signature="e#53384#53385#0" expanded="false" />
-            <element signature="e#53461#53462#0" expanded="false" />
-            <element signature="e#53593#53594#0" expanded="false" />
-            <element signature="e#53650#53651#0" expanded="false" />
-            <element signature="e#54019#54020#0" expanded="false" />
-            <element signature="e#54078#54079#0" expanded="false" />
-            <element signature="e#54633#54634#0" expanded="false" />
-            <element signature="e#54680#54681#0" expanded="false" />
-            <element signature="e#56274#56275#0" expanded="false" />
-            <element signature="e#56313#56314#0" expanded="false" />
-            <element signature="e#57140#57141#0" expanded="false" />
-            <element signature="e#57196#57197#0" expanded="false" />
-            <element signature="e#63288#63296#0" expanded="false" />
-            <element signature="e#64034#64043#0" expanded="false" />
-            <element signature="e#67000#67001#0" expanded="false" />
-            <element signature="e#67042#67043#0" expanded="false" />
-            <element signature="e#76670#76718#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#30954#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4519#4520#0" expanded="false" />
-            <element signature="e#4552#4553#0" expanded="false" />
-            <element signature="e#5003#5004#0" expanded="false" />
-            <element signature="e#5040#5041#0" expanded="false" />
-            <element signature="e#5218#5219#0" expanded="false" />
-            <element signature="e#5259#5260#0" expanded="false" />
-            <element signature="e#5605#5606#0" expanded="false" />
-            <element signature="e#5650#5651#0" expanded="false" />
-            <element signature="e#6444#6445#0" expanded="false" />
-            <element signature="e#6477#6478#0" expanded="false" />
-            <element signature="e#10264#10265#0" expanded="false" />
-            <element signature="e#10307#10308#0" expanded="false" />
-            <element signature="e#10620#10621#0" expanded="false" />
-            <element signature="e#10669#10670#0" expanded="false" />
-            <element signature="e#11092#11093#0" expanded="false" />
-            <element signature="e#11146#11147#0" expanded="false" />
-            <element signature="e#11644#11645#0" expanded="false" />
-            <element signature="e#11705#11706#0" expanded="false" />
-            <element signature="e#12865#12866#0" expanded="false" />
-            <element signature="e#12928#12929#0" expanded="false" />
-            <element signature="e#17072#17073#0" expanded="false" />
-            <element signature="e#17139#17140#0" expanded="false" />
-            <element signature="e#19898#19899#0" expanded="false" />
-            <element signature="e#19950#19951#0" expanded="false" />
-            <element signature="e#20229#20230#0" expanded="false" />
-            <element signature="e#20282#20283#0" expanded="false" />
-            <element signature="e#20793#20794#0" expanded="false" />
-            <element signature="e#20842#20843#0" expanded="false" />
-            <element signature="e#21199#21200#0" expanded="false" />
-            <element signature="e#21254#21255#0" expanded="false" />
-            <element signature="e#26280#26281#0" expanded="false" />
-            <element signature="e#26335#26336#0" expanded="false" />
-            <element signature="e#26609#26610#0" expanded="false" />
-            <element signature="e#26666#26667#0" expanded="false" />
-            <element signature="e#26941#26942#0" expanded="false" />
-            <element signature="e#27003#27004#0" expanded="false" />
-            <element signature="e#27171#27172#0" expanded="false" />
-            <element signature="e#27230#27231#0" expanded="false" />
-            <element signature="e#27439#27440#0" expanded="false" />
-            <element signature="e#27500#27501#0" expanded="false" />
-            <element signature="e#27691#27692#0" expanded="false" />
-            <element signature="e#27747#27748#0" expanded="false" />
-            <element signature="e#27928#27929#0" expanded="false" />
-            <element signature="e#27958#27959#0" expanded="false" />
-            <element signature="e#28796#28797#0" expanded="false" />
-            <element signature="e#28849#28850#0" expanded="false" />
-            <element signature="e#29237#29238#0" expanded="false" />
-            <element signature="e#29275#29276#0" expanded="false" />
-            <element signature="e#29613#29614#0" expanded="false" />
-            <element signature="e#29649#29650#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7769">
-          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21019#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2132#3102#0" expanded="false" />
-            <element signature="e#3101#3102#0" expanded="false" />
-            <element signature="e#4750#4751#0" expanded="false" />
-            <element signature="e#4787#4788#0" expanded="false" />
-            <element signature="e#9377#9378#0" expanded="false" />
-            <element signature="e#9444#9445#0" expanded="false" />
-            <element signature="e#12915#12916#0" expanded="false" />
-            <element signature="e#12975#12976#0" expanded="false" />
-            <element signature="e#14313#14314#0" expanded="false" />
-            <element signature="e#14350#14351#0" expanded="false" />
-            <element signature="e#14993#14994#0" expanded="false" />
-            <element signature="e#15056#15057#0" expanded="false" />
-            <element signature="e#15317#15318#0" expanded="false" />
-            <element signature="e#15344#15345#0" expanded="false" />
-            <element signature="e#15642#15643#0" expanded="false" />
-            <element signature="e#15687#15688#0" expanded="false" />
-            <element signature="e#15868#15869#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="false" />
-            <element signature="e#16240#16241#0" expanded="false" />
-            <element signature="e#16278#16279#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="289">
           <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7769">
+          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21019#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2132#3102#0" expanded="false" />
+            <element signature="e#3101#3102#0" expanded="false" />
+            <element signature="e#4750#4751#0" expanded="false" />
+            <element signature="e#4787#4788#0" expanded="false" />
+            <element signature="e#9377#9378#0" expanded="false" />
+            <element signature="e#9444#9445#0" expanded="false" />
+            <element signature="e#12915#12916#0" expanded="false" />
+            <element signature="e#12975#12976#0" expanded="false" />
+            <element signature="e#14313#14314#0" expanded="false" />
+            <element signature="e#14350#14351#0" expanded="false" />
+            <element signature="e#14993#14994#0" expanded="false" />
+            <element signature="e#15056#15057#0" expanded="false" />
+            <element signature="e#15317#15318#0" expanded="false" />
+            <element signature="e#15344#15345#0" expanded="false" />
+            <element signature="e#15642#15643#0" expanded="false" />
+            <element signature="e#15687#15688#0" expanded="false" />
+            <element signature="e#15868#15869#0" expanded="false" />
+            <element signature="e#15901#15902#0" expanded="false" />
+            <element signature="e#16240#16241#0" expanded="false" />
+            <element signature="e#16278#16279#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23613">
+          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#81352#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#13710#13711#0" expanded="false" />
+            <element signature="e#13760#13761#0" expanded="false" />
+            <element signature="e#13805#13806#0" expanded="false" />
+            <element signature="e#13852#13853#0" expanded="false" />
+            <element signature="e#15179#15180#0" expanded="false" />
+            <element signature="e#15228#15229#0" expanded="false" />
+            <element signature="e#15410#15411#0" expanded="false" />
+            <element signature="e#15460#15461#0" expanded="false" />
+            <element signature="e#15614#15615#0" expanded="false" />
+            <element signature="e#15667#15668#0" expanded="false" />
+            <element signature="e#15961#15962#0" expanded="false" />
+            <element signature="e#16014#16015#0" expanded="false" />
+            <element signature="e#16329#16330#0" expanded="false" />
+            <element signature="e#16380#16381#0" expanded="false" />
+            <element signature="e#16597#16598#0" expanded="false" />
+            <element signature="e#16651#16652#0" expanded="false" />
+            <element signature="e#16969#16970#0" expanded="false" />
+            <element signature="e#17024#17025#0" expanded="false" />
+            <element signature="e#17100#17101#0" expanded="false" />
+            <element signature="e#17163#17164#0" expanded="false" />
+            <element signature="e#17240#17241#0" expanded="false" />
+            <element signature="e#17300#17301#0" expanded="false" />
+            <element signature="e#17893#17894#0" expanded="false" />
+            <element signature="e#17942#17943#0" expanded="false" />
+            <element signature="e#18456#18457#0" expanded="false" />
+            <element signature="e#18515#18516#0" expanded="false" />
+            <element signature="e#18940#18941#0" expanded="false" />
+            <element signature="e#19005#19006#0" expanded="false" />
+            <element signature="e#19247#19248#0" expanded="false" />
+            <element signature="e#19311#19312#0" expanded="false" />
+            <element signature="e#20055#20056#0" expanded="false" />
+            <element signature="e#20102#20103#0" expanded="false" />
+            <element signature="e#20285#20286#0" expanded="false" />
+            <element signature="e#20333#20334#0" expanded="false" />
+            <element signature="e#20520#20521#0" expanded="false" />
+            <element signature="e#20569#20570#0" expanded="false" />
+            <element signature="e#20775#20776#0" expanded="false" />
+            <element signature="e#20825#20826#0" expanded="false" />
+            <element signature="e#21006#21007#0" expanded="false" />
+            <element signature="e#21056#21057#0" expanded="false" />
+            <element signature="e#21268#21269#0" expanded="false" />
+            <element signature="e#21321#21322#0" expanded="false" />
+            <element signature="e#21504#21505#0" expanded="false" />
+            <element signature="e#21560#21561#0" expanded="false" />
+            <element signature="e#21749#21750#0" expanded="false" />
+            <element signature="e#21819#21820#0" expanded="false" />
+            <element signature="e#22402#22403#0" expanded="false" />
+            <element signature="e#22460#22461#0" expanded="false" />
+            <element signature="e#22635#22636#0" expanded="false" />
+            <element signature="e#22664#22665#0" expanded="false" />
+            <element signature="e#23264#23265#0" expanded="false" />
+            <element signature="e#23323#23324#0" expanded="false" />
+            <element signature="e#52407#52408#0" expanded="false" />
+            <element signature="e#52455#52456#0" expanded="false" />
+            <element signature="e#52587#52588#0" expanded="false" />
+            <element signature="e#52636#52637#0" expanded="false" />
+            <element signature="e#52779#52780#0" expanded="false" />
+            <element signature="e#52829#52830#0" expanded="false" />
+            <element signature="e#52991#52992#0" expanded="false" />
+            <element signature="e#53042#53043#0" expanded="false" />
+            <element signature="e#53172#53173#0" expanded="false" />
+            <element signature="e#53223#53224#0" expanded="false" />
+            <element signature="e#53384#53385#0" expanded="false" />
+            <element signature="e#53461#53462#0" expanded="false" />
+            <element signature="e#53593#53594#0" expanded="false" />
+            <element signature="e#53650#53651#0" expanded="false" />
+            <element signature="e#54019#54020#0" expanded="false" />
+            <element signature="e#54078#54079#0" expanded="false" />
+            <element signature="e#54633#54634#0" expanded="false" />
+            <element signature="e#54680#54681#0" expanded="false" />
+            <element signature="e#56274#56275#0" expanded="false" />
+            <element signature="e#56313#56314#0" expanded="false" />
+            <element signature="e#57140#57141#0" expanded="false" />
+            <element signature="e#57196#57197#0" expanded="false" />
+            <element signature="e#63288#63296#0" expanded="false" />
+            <element signature="e#64034#64043#0" expanded="false" />
+            <element signature="e#67000#67001#0" expanded="false" />
+            <element signature="e#67042#67043#0" expanded="false" />
+            <element signature="e#76670#76718#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-446">
-          <caret line="294" column="17" selection-start-line="294" selection-start-column="17" selection-end-line="294" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7769">
+          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21019#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2132#3102#0" expanded="false" />
+            <element signature="e#3101#3102#0" expanded="false" />
+            <element signature="e#4750#4751#0" expanded="false" />
+            <element signature="e#4787#4788#0" expanded="false" />
+            <element signature="e#9377#9378#0" expanded="false" />
+            <element signature="e#9444#9445#0" expanded="false" />
+            <element signature="e#12915#12916#0" expanded="false" />
+            <element signature="e#12975#12976#0" expanded="false" />
+            <element signature="e#14313#14314#0" expanded="false" />
+            <element signature="e#14350#14351#0" expanded="false" />
+            <element signature="e#14993#14994#0" expanded="false" />
+            <element signature="e#15056#15057#0" expanded="false" />
+            <element signature="e#15317#15318#0" expanded="false" />
+            <element signature="e#15344#15345#0" expanded="false" />
+            <element signature="e#15642#15643#0" expanded="false" />
+            <element signature="e#15687#15688#0" expanded="false" />
+            <element signature="e#15868#15869#0" expanded="false" />
+            <element signature="e#15901#15902#0" expanded="false" />
+            <element signature="e#16240#16241#0" expanded="false" />
+            <element signature="e#16278#16279#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23613">
+          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#81352#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#13710#13711#0" expanded="false" />
+            <element signature="e#13760#13761#0" expanded="false" />
+            <element signature="e#13805#13806#0" expanded="false" />
+            <element signature="e#13852#13853#0" expanded="false" />
+            <element signature="e#15179#15180#0" expanded="false" />
+            <element signature="e#15228#15229#0" expanded="false" />
+            <element signature="e#15410#15411#0" expanded="false" />
+            <element signature="e#15460#15461#0" expanded="false" />
+            <element signature="e#15614#15615#0" expanded="false" />
+            <element signature="e#15667#15668#0" expanded="false" />
+            <element signature="e#15961#15962#0" expanded="false" />
+            <element signature="e#16014#16015#0" expanded="false" />
+            <element signature="e#16329#16330#0" expanded="false" />
+            <element signature="e#16380#16381#0" expanded="false" />
+            <element signature="e#16597#16598#0" expanded="false" />
+            <element signature="e#16651#16652#0" expanded="false" />
+            <element signature="e#16969#16970#0" expanded="false" />
+            <element signature="e#17024#17025#0" expanded="false" />
+            <element signature="e#17100#17101#0" expanded="false" />
+            <element signature="e#17163#17164#0" expanded="false" />
+            <element signature="e#17240#17241#0" expanded="false" />
+            <element signature="e#17300#17301#0" expanded="false" />
+            <element signature="e#17893#17894#0" expanded="false" />
+            <element signature="e#17942#17943#0" expanded="false" />
+            <element signature="e#18456#18457#0" expanded="false" />
+            <element signature="e#18515#18516#0" expanded="false" />
+            <element signature="e#18940#18941#0" expanded="false" />
+            <element signature="e#19005#19006#0" expanded="false" />
+            <element signature="e#19247#19248#0" expanded="false" />
+            <element signature="e#19311#19312#0" expanded="false" />
+            <element signature="e#20055#20056#0" expanded="false" />
+            <element signature="e#20102#20103#0" expanded="false" />
+            <element signature="e#20285#20286#0" expanded="false" />
+            <element signature="e#20333#20334#0" expanded="false" />
+            <element signature="e#20520#20521#0" expanded="false" />
+            <element signature="e#20569#20570#0" expanded="false" />
+            <element signature="e#20775#20776#0" expanded="false" />
+            <element signature="e#20825#20826#0" expanded="false" />
+            <element signature="e#21006#21007#0" expanded="false" />
+            <element signature="e#21056#21057#0" expanded="false" />
+            <element signature="e#21268#21269#0" expanded="false" />
+            <element signature="e#21321#21322#0" expanded="false" />
+            <element signature="e#21504#21505#0" expanded="false" />
+            <element signature="e#21560#21561#0" expanded="false" />
+            <element signature="e#21749#21750#0" expanded="false" />
+            <element signature="e#21819#21820#0" expanded="false" />
+            <element signature="e#22402#22403#0" expanded="false" />
+            <element signature="e#22460#22461#0" expanded="false" />
+            <element signature="e#22635#22636#0" expanded="false" />
+            <element signature="e#22664#22665#0" expanded="false" />
+            <element signature="e#23264#23265#0" expanded="false" />
+            <element signature="e#23323#23324#0" expanded="false" />
+            <element signature="e#52407#52408#0" expanded="false" />
+            <element signature="e#52455#52456#0" expanded="false" />
+            <element signature="e#52587#52588#0" expanded="false" />
+            <element signature="e#52636#52637#0" expanded="false" />
+            <element signature="e#52779#52780#0" expanded="false" />
+            <element signature="e#52829#52830#0" expanded="false" />
+            <element signature="e#52991#52992#0" expanded="false" />
+            <element signature="e#53042#53043#0" expanded="false" />
+            <element signature="e#53172#53173#0" expanded="false" />
+            <element signature="e#53223#53224#0" expanded="false" />
+            <element signature="e#53384#53385#0" expanded="false" />
+            <element signature="e#53461#53462#0" expanded="false" />
+            <element signature="e#53593#53594#0" expanded="false" />
+            <element signature="e#53650#53651#0" expanded="false" />
+            <element signature="e#54019#54020#0" expanded="false" />
+            <element signature="e#54078#54079#0" expanded="false" />
+            <element signature="e#54633#54634#0" expanded="false" />
+            <element signature="e#54680#54681#0" expanded="false" />
+            <element signature="e#56274#56275#0" expanded="false" />
+            <element signature="e#56313#56314#0" expanded="false" />
+            <element signature="e#57140#57141#0" expanded="false" />
+            <element signature="e#57196#57197#0" expanded="false" />
+            <element signature="e#63288#63296#0" expanded="false" />
+            <element signature="e#64034#64043#0" expanded="false" />
+            <element signature="e#67000#67001#0" expanded="false" />
+            <element signature="e#67042#67043#0" expanded="false" />
+            <element signature="e#76670#76718#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lint.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lint.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lint.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lint.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/RoleState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23613">
+          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#81352#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#13710#13711#0" expanded="false" />
+            <element signature="e#13760#13761#0" expanded="false" />
+            <element signature="e#13805#13806#0" expanded="false" />
+            <element signature="e#13852#13853#0" expanded="false" />
+            <element signature="e#15179#15180#0" expanded="false" />
+            <element signature="e#15228#15229#0" expanded="false" />
+            <element signature="e#15410#15411#0" expanded="false" />
+            <element signature="e#15460#15461#0" expanded="false" />
+            <element signature="e#15614#15615#0" expanded="false" />
+            <element signature="e#15667#15668#0" expanded="false" />
+            <element signature="e#15961#15962#0" expanded="false" />
+            <element signature="e#16014#16015#0" expanded="false" />
+            <element signature="e#16329#16330#0" expanded="false" />
+            <element signature="e#16380#16381#0" expanded="false" />
+            <element signature="e#16597#16598#0" expanded="false" />
+            <element signature="e#16651#16652#0" expanded="false" />
+            <element signature="e#16969#16970#0" expanded="false" />
+            <element signature="e#17024#17025#0" expanded="false" />
+            <element signature="e#17100#17101#0" expanded="false" />
+            <element signature="e#17163#17164#0" expanded="false" />
+            <element signature="e#17240#17241#0" expanded="false" />
+            <element signature="e#17300#17301#0" expanded="false" />
+            <element signature="e#17893#17894#0" expanded="false" />
+            <element signature="e#17942#17943#0" expanded="false" />
+            <element signature="e#18456#18457#0" expanded="false" />
+            <element signature="e#18515#18516#0" expanded="false" />
+            <element signature="e#18940#18941#0" expanded="false" />
+            <element signature="e#19005#19006#0" expanded="false" />
+            <element signature="e#19247#19248#0" expanded="false" />
+            <element signature="e#19311#19312#0" expanded="false" />
+            <element signature="e#20055#20056#0" expanded="false" />
+            <element signature="e#20102#20103#0" expanded="false" />
+            <element signature="e#20285#20286#0" expanded="false" />
+            <element signature="e#20333#20334#0" expanded="false" />
+            <element signature="e#20520#20521#0" expanded="false" />
+            <element signature="e#20569#20570#0" expanded="false" />
+            <element signature="e#20775#20776#0" expanded="false" />
+            <element signature="e#20825#20826#0" expanded="false" />
+            <element signature="e#21006#21007#0" expanded="false" />
+            <element signature="e#21056#21057#0" expanded="false" />
+            <element signature="e#21268#21269#0" expanded="false" />
+            <element signature="e#21321#21322#0" expanded="false" />
+            <element signature="e#21504#21505#0" expanded="false" />
+            <element signature="e#21560#21561#0" expanded="false" />
+            <element signature="e#21749#21750#0" expanded="false" />
+            <element signature="e#21819#21820#0" expanded="false" />
+            <element signature="e#22402#22403#0" expanded="false" />
+            <element signature="e#22460#22461#0" expanded="false" />
+            <element signature="e#22635#22636#0" expanded="false" />
+            <element signature="e#22664#22665#0" expanded="false" />
+            <element signature="e#23264#23265#0" expanded="false" />
+            <element signature="e#23323#23324#0" expanded="false" />
+            <element signature="e#52407#52408#0" expanded="false" />
+            <element signature="e#52455#52456#0" expanded="false" />
+            <element signature="e#52587#52588#0" expanded="false" />
+            <element signature="e#52636#52637#0" expanded="false" />
+            <element signature="e#52779#52780#0" expanded="false" />
+            <element signature="e#52829#52830#0" expanded="false" />
+            <element signature="e#52991#52992#0" expanded="false" />
+            <element signature="e#53042#53043#0" expanded="false" />
+            <element signature="e#53172#53173#0" expanded="false" />
+            <element signature="e#53223#53224#0" expanded="false" />
+            <element signature="e#53384#53385#0" expanded="false" />
+            <element signature="e#53461#53462#0" expanded="false" />
+            <element signature="e#53593#53594#0" expanded="false" />
+            <element signature="e#53650#53651#0" expanded="false" />
+            <element signature="e#54019#54020#0" expanded="false" />
+            <element signature="e#54078#54079#0" expanded="false" />
+            <element signature="e#54633#54634#0" expanded="false" />
+            <element signature="e#54680#54681#0" expanded="false" />
+            <element signature="e#56274#56275#0" expanded="false" />
+            <element signature="e#56313#56314#0" expanded="false" />
+            <element signature="e#57140#57141#0" expanded="false" />
+            <element signature="e#57196#57197#0" expanded="false" />
+            <element signature="e#63288#63296#0" expanded="false" />
+            <element signature="e#64034#64043#0" expanded="false" />
+            <element signature="e#67000#67001#0" expanded="false" />
+            <element signature="e#67042#67043#0" expanded="false" />
+            <element signature="e#76670#76718#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7769">
+          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21019#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2132#3102#0" expanded="false" />
+            <element signature="e#3101#3102#0" expanded="false" />
+            <element signature="e#4750#4751#0" expanded="false" />
+            <element signature="e#4787#4788#0" expanded="false" />
+            <element signature="e#9377#9378#0" expanded="false" />
+            <element signature="e#9444#9445#0" expanded="false" />
+            <element signature="e#12915#12916#0" expanded="false" />
+            <element signature="e#12975#12976#0" expanded="false" />
+            <element signature="e#14313#14314#0" expanded="false" />
+            <element signature="e#14350#14351#0" expanded="false" />
+            <element signature="e#14993#14994#0" expanded="false" />
+            <element signature="e#15056#15057#0" expanded="false" />
+            <element signature="e#15317#15318#0" expanded="false" />
+            <element signature="e#15344#15345#0" expanded="false" />
+            <element signature="e#15642#15643#0" expanded="false" />
+            <element signature="e#15687#15688#0" expanded="false" />
+            <element signature="e#15868#15869#0" expanded="false" />
+            <element signature="e#15901#15902#0" expanded="false" />
+            <element signature="e#16240#16241#0" expanded="false" />
+            <element signature="e#16278#16279#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../server/server.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="218" column="17" selection-start-line="218" selection-start-column="17" selection-end-line="218" selection-end-column="17" />
           <folding />
         </state>
       </provider>

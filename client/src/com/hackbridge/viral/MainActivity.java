@@ -42,7 +42,7 @@ public class MainActivity extends Activity
     private AwarenessState awareness;
     private PhysicalState physical;
     private long identity;
-    private String server = "fd84:dbac:7e56:8f00:8d91:922f:b09b:13dc";//"77.46.191.59";//"188.166.154.60";
+    private String server = "192.168.0.30";//"77.46.191.59";//"188.166.154.60";
     private int port = 25000;
     private Socket sock;
 
