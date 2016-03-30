@@ -35,7 +35,12 @@ public class ClientHandler {
             } else if (m instanceof HelloMessage) {
                 HelloMessage hm = (HelloMessage)m;
                 smsg = stateManager.onConnect(hm.getId());
-                id = hm.getId();
+                if (smsg == null) { // if this ID wasn't recognised, give a new one
+                    smsg = stateManager.onConnect();
+                    id = smsg.getId();
+                } else {
+                    id = hm.getId();
+                }
             } else {
                 ois.close();
                 oos.close();
