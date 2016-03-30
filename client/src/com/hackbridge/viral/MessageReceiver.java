@@ -8,7 +8,6 @@ import android.util.Log;
 
 public class MessageReceiver extends Thread
 {
-
     private Message mess;
     private Socket s;
     private MainActivity ma;
@@ -39,8 +38,7 @@ public class MessageReceiver extends Thread
                     if (mess instanceof ChangeMessage)
                     {
                         Log.d("LAG-INPUT", "Got a ChangeMessage");
-                        MainActivity.handle.obtainMessage(0, (ChangeMessage) mess)
-                                .sendToTarget();
+                        MainActivity.handle.obtainMessage(0, (ChangeMessage) mess).sendToTarget();
                     }
                     else if (mess instanceof StopMessage)
                     {
@@ -48,9 +46,7 @@ public class MessageReceiver extends Thread
                         ma.setRoundOn(false);
 
                         // fill out with dummy data
-                        ChangeMessage tmp =
-                                new ChangeMessage(PhysicalState.SUSCEPTIBLE,
-                                        AwarenessState.AWARE);
+                        ChangeMessage tmp = new ChangeMessage(PhysicalState.SUSCEPTIBLE, AwarenessState.AWARE);
                         if (((StopMessage) mess).isHasWon())
                         {
                             tmp.setCode("+");
@@ -68,15 +64,13 @@ public class MessageReceiver extends Thread
                         ma.setRoundOn(((StartMessage) mess).isRunning());
 
                         StartMessage sm = (StartMessage) mess;
-                        ChangeMessage tmp =
-                                new ChangeMessage(sm.getInfected(), sm.getAware());
+                        ChangeMessage tmp = new ChangeMessage(sm.getInfected(), sm.getAware());
                         if (sm.isRunning())
                         {
                             // regular start message
                             tmp.setCode(sm.getCode());
                             if (sm.getRole() == RoleState.HUMAN)
                             {
-
                                 MainActivity.handle.obtainMessage(1, tmp).sendToTarget();
                             }
                             else

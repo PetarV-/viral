@@ -40,15 +40,16 @@ public class MainActivity extends Activity
     private Socket sock;
     final MainActivity ma = this;
 
+    /**
+     * Setter for isOn
+     */
     public void setRoundOn(boolean isOn)
     {
         round_on = isOn;
     }
 
     /**
-     * creates a new instance of the sender and receiver threads
-     *
-     * @return true on success
+     * Initialises all the necessary threads
      */
     public synchronized void restartEverything()
     {
@@ -104,7 +105,7 @@ public class MainActivity extends Activity
     private void fail()
     {
         // FAILURE, so we notify the user and exit
-        Toast.makeText(MainActivity.this, "Failed to connect to server, please try again later!", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Fatal error, please try again later!", Toast.LENGTH_LONG).show();
         System.exit(1);
     }
 
@@ -127,7 +128,7 @@ public class MainActivity extends Activity
     }
 
     /**
-     * Repeatedly Aattempts to reconnect to the defined server and port with exponential backoff
+     * Repeatedly attempts to reconnect to the defined server and port with exponential backoff
      */
     private boolean reatemptConnection()
     {
@@ -352,9 +353,7 @@ public class MainActivity extends Activity
             }
         });
 
-        /*
-         * Main UI thread
-         */
+        // Main UI thread
         handle = new Handler(Looper.getMainLooper())
         {
             @Override
@@ -469,8 +468,8 @@ public class MainActivity extends Activity
         }
         else
         {
-            // TODO ADD ERROR HANDLING FOR NO NETWORK OR GPS PROVIDER AVAILABLE
-            return;
+            // no network or gps, so we fail
+            fail();
         }
         // the last known location of this provider
         Location location = locationManager.getLastKnownLocation(provider);

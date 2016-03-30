@@ -16,6 +16,11 @@
           <theme>@android:style/Theme.Holo</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
@@ -23,11 +28,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27893266-0dd4-4de6-957f-2142b8346f6b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/OutsideTaskActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/ViewFromOtherTaskActivity.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
     <ignored path="client.iws" />
@@ -53,17 +57,31 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="380" column="87" selection-start-line="380" selection-start-column="84" selection-end-line="380" selection-end-column="87" />
+            <state relative-caret-position="-778">
+              <caret line="162" column="32" selection-start-line="162" selection-start-column="32" selection-end-line="162" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-                <element signature="e#1619#2956#0" expanded="true" />
-                <element signature="e#2955#2956#0" expanded="true" />
+                <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#1600#2937#0" expanded="true" />
+                <element signature="e#2936#2937#0" expanded="true" />
+                <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#11364#11629#0" expanded="true" />
-                <element signature="e#11628#11629#0" expanded="true" />
+                <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#11328#11593#0" expanded="true" />
+                <element signature="e#11592#11593#0" expanded="true" />
+                <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InputActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+            <state relative-caret-position="1088">
+              <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
               <folding>
                 <element signature="e#2798#3435#0" expanded="true" />
                 <element signature="e#3434#3435#0" expanded="true" />
@@ -112,7 +130,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_input.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_input.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -138,21 +156,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhysicalState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
+      <file leaf-file-name="MessageReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="-425">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageReceiver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
+      <file leaf-file-name="MessageSender.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="51" column="75" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="75" />
+            <state relative-caret-position="340">
+              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -195,14 +213,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" />
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_input.xml" />
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
       </list>
     </option>
   </component>
@@ -614,7 +632,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -624,7 +642,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
@@ -656,7 +674,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -671,13 +689,27 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1600#2937#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11364#11629#0" expanded="true" />
-            <element signature="e#11628#11629#0" expanded="true" />
+            <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11328#11593#0" expanded="true" />
+            <element signature="e#11592#11593#0" expanded="true" />
+            <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -885,13 +917,27 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1600#2937#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11364#11629#0" expanded="true" />
-            <element signature="e#11628#11629#0" expanded="true" />
+            <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11328#11593#0" expanded="true" />
+            <element signature="e#11592#11593#0" expanded="true" />
+            <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -946,13 +992,27 @@
           <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1600#2937#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11364#11629#0" expanded="true" />
-            <element signature="e#11628#11629#0" expanded="true" />
+            <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11328#11593#0" expanded="true" />
+            <element signature="e#11592#11593#0" expanded="true" />
+            <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -999,13 +1059,27 @@
           <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1600#2937#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11364#11629#0" expanded="true" />
-            <element signature="e#11628#11629#0" expanded="true" />
+            <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11328#11593#0" expanded="true" />
+            <element signature="e#11592#11593#0" expanded="true" />
+            <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1198,14 +1272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="71" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PhysicalState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1218,14 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="51" column="75" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -1259,6 +1317,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
+          <folding>
+            <element signature="e#2798#3435#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-778">
+          <caret line="162" column="32" selection-start-line="162" selection-start-column="32" selection-end-line="162" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#restartEverything#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1600#2937#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="method#fail#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reconnect#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setupSenderAndREceiver#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#writeNotification#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setPhysicalState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setCode#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#loadIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setIdentity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11328#11593#0" expanded="true" />
+            <element signature="e#11592#11593#0" expanded="true" />
+            <element signature="method#onLocationChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MyLocationListener#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1279,42 +1403,6 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="380" column="87" selection-start-line="380" selection-start-column="84" selection-end-line="380" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11364#11629#0" expanded="true" />
-            <element signature="e#11628#11629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-          <folding>
-            <element signature="e#2798#3435#0" expanded="true" />
-            <element signature="e#3434#3435#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
   </component>

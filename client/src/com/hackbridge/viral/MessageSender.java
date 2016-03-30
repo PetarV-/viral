@@ -23,13 +23,14 @@ public class MessageSender
     {
         if (s.isClosed() || s.isInputShutdown() || s.isOutputShutdown())
         {
+            // checks if the socket was closed
             ma.restartEverything();
         }
         try
         {
-            System.out.println("Sent message: " + mess.toString());
             oos.writeObject(mess);
             oos.flush();
+            System.out.println("Sent message: " + mess.toString());
         }
         catch (IOException e)
         {
