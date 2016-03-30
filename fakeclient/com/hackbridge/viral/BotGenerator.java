@@ -39,8 +39,7 @@ public class BotGenerator {
         double longitude;
         double latitude;
         double speed;
-        int rate;
-        int ratedev; 
+        double meanTime;
         try {
             // file I/O
             file = new File(filename);
@@ -79,13 +78,9 @@ public class BotGenerator {
                 while (sc.hasNext("#")) {
                     sc.nextLine();
                 }
-                rate = sc.nextInt();
-                while (sc.hasNext("#")) {
-                    sc.nextLine();
-                }
-                ratedev = sc.nextInt();
+                meanTime = sc.nextDouble();
                 bot[i] = new GameBot(longitude, latitude, speed, 
-                                     rate, ratedev, server, port);
+                                     meanTime, server, port);
             }
         } catch (IOException e) {
             System.out.println("Error reading from file " + filename);

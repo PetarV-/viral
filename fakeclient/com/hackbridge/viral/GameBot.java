@@ -22,8 +22,7 @@ public class GameBot extends Thread {
     private double          longit;     // position: longitude
     private double          latit;      // position: latitude
     private double          speed;      // speed of bot
-    private int             rate;       // rate of updates
-    private int             ratedev;    // rate deviation of bot
+    private double          meanTime;   // mean time between sending messages
     private boolean         running;    // is a round on?
     private MessageSender   ms;         // client side of connection
 
@@ -31,12 +30,11 @@ public class GameBot extends Thread {
 
     // input is bot's initial position
     public GameBot(double mLongit, double mLatit, double mSpeed,
-                   int mRate, int mRateDev, String mServer, int mPort) {
+                   double mMeanTime, String mServer, int mPort) {
         longit      = mLongit;
         latit       = mLatit;
         speed       = mSpeed;
-        rate        = mRate;
-        ratedev     = mRateDev;
+        meanTime    = mMeanTime;
         server      = mServer;
         port        = mPort;
         // default parameters
@@ -78,6 +76,7 @@ public class GameBot extends Thread {
     public void run() {
         System.out.println("Creating a bot");
         running = false;
+        double waitTime = 0.0;
         try {
             // handle TCP setup
             System.out.println("Creating a Socket...");
@@ -104,13 +103,16 @@ public class GameBot extends Thread {
                                    new LocationWrapper(longit, latit, 0.0)));
                 }
                 try {
+                    // find time between updates
+                    waitTime = -meanTime * Math.log(1.0 - Math.random());
                     // move bot
-                    longit += (-speed + 2.0 * Math.random() * speed);
-                    latit += (-speed + 2.0 * Math.random() * speed);
+                    longit += (-speed + 2.0 * Math.random() * speed)
+                                * waitTime / 1000.0;
+                    latit += (-speed + 2.0 * Math.random() * speed)
+                                * waitTime / 1000.0;
                     // wait between updates, variable time, simulating some
                     // realistic inputs
-                    Thread.sleep((int)(rate - ratedev +
-                                        2 * ratedev * Math.random()));
+                    Thread.sleep((int) waitTime);
                 }
                 catch (InterruptedException e) {
                     System.out.println("InterruptedException raised by bot");

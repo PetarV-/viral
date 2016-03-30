@@ -17,6 +17,8 @@ public class Main {
     private static long roundDuration;
     private static long delayBetweenRounds;
     private static String networkParams;
+    private static boolean runTikzer;
+    private static int tikzerPort;
     private static Timer timer = new Timer();
 
     private static Random random = new Random();
@@ -71,7 +73,7 @@ public class Main {
             }
             handler.sendMessage(new StopMessage(hasWon));
         }
-        queue = new ConcurrentLinkedQueue<Message>();
+        queue.clear();
         stateManager.reset();
         TimerTask startTask = new TimerTask() {
             @Override
@@ -91,9 +93,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        if (args.length != 4) {
+        if (args.length != 5 && args.length != 6) {
             System.out.println("Usage: java com.hackbridge.viral.Main "
-                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file>");
+                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file> <run_tikzer? [true/false]> (<tikzer_port>)");
             return;
         }
         try {
@@ -101,12 +103,16 @@ public class Main {
             roundDuration = Long.parseLong(args[1]);
             delayBetweenRounds = Long.parseLong(args[2]);
             networkParams = args[3];
+            runTikzer = Boolean.parseBoolean(args[4]);
+            if (runTikzer) {
+                tikzerPort = Integer.parseInt(args[5]);
+            }
         } catch (Exception e) {
             System.out.println("Usage: java com.hackbridge.viral.Main "
-                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file>");
+                    + "<port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file> <run_tikzer? [true/false]> (<tikzer_port>)");
             return;
         }
-        stateManager = new StateManager(new NetworkParameters(networkParams));
+        stateManager = new StateManager(new NetworkParameters(networkParams), runTikzer, tikzerPort);
         queue = new ConcurrentLinkedQueue<Message>();
         startRound();
         Thread input = new Thread() {
