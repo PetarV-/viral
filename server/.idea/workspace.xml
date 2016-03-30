@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34394869-8dfd-47de-947e-c7fc0651a61b" name="Default" comment="Fixed a queue-related error.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/.idea/misc.xml" afterPath="$PROJECT_DIR$/../client/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../client/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../client/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MessageReceiver.java" afterPath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MessageReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MessageSender.java" afterPath="$PROJECT_DIR$/../client/src/com/hackbridge/viral/MessageSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/ClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/hackbridge/viral/ClientHandler.java" />
     </list>
     <list id="a47ef8e6-120e-4cb5-8c5d-2bbddd265ea2" name="Rejected commit: Default" comment="Initial tikzer relocation.&#10;&#10;# Conflicts:&#10;#&#9;server/.idea/workspace.xml&#10;" />
     <ignored path="server.iws" />

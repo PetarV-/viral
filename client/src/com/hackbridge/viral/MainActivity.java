@@ -243,6 +243,7 @@ public class MainActivity extends Activity
         switch (physicalState)
         {
             case SUSCEPTIBLE:
+            case CARRIER:
                 editor.putInt("physical", 0);
                 break;
             case VACCINATED:
@@ -401,6 +402,7 @@ public class MainActivity extends Activity
                         switch (physical)
                         {
                             case SUSCEPTIBLE:
+                            case CARRIER:
                                 orb.setImageResource(R.drawable.circle_blue);
                                 stateLabel.setText("SUSCEPTIBLE");
                                 break;
