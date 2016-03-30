@@ -23,9 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27893266-0dd4-4de6-957f-2142b8346f6b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/OutsideTaskActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/ViewFromOtherTaskActivity.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_input.xml" afterPath="$PROJECT_DIR$/res/layout/activity_input.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
     </list>
     <ignored path="client.iws" />
@@ -51,8 +53,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="326" column="12" selection-start-line="326" selection-start-column="12" selection-end-line="326" selection-end-column="12" />
+            <state relative-caret-position="187">
+              <caret line="380" column="87" selection-start-line="380" selection-start-column="84" selection-end-line="380" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1323#1324#0" expanded="true" />
@@ -60,9 +62,19 @@
                 <element signature="e#1619#2956#0" expanded="true" />
                 <element signature="e#2955#2956#0" expanded="true" />
                 <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#11367#11632#0" expanded="true" />
-                <element signature="e#11631#11632#0" expanded="true" />
+                <element signature="e#11364#11629#0" expanded="true" />
+                <element signature="e#11628#11629#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationWrapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,30 +99,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InputActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+            <state relative-caret-position="385">
+              <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
               <folding>
-                <element signature="e#1413#1925#0" expanded="true" />
-                <element signature="e#1924#1925#0" expanded="true" />
+                <element signature="e#2798#3435#0" expanded="true" />
+                <element signature="e#3434#3435#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewFromOtherTaskActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/ViewFromOtherTaskActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_input.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_input.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -197,10 +199,10 @@
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_input.xml" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
       </list>
     </option>
   </component>
@@ -663,14 +665,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -682,8 +676,8 @@
             <element signature="e#1619#2956#0" expanded="true" />
             <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11367#11632#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
+            <element signature="e#11364#11629#0" expanded="true" />
+            <element signature="e#11628#11629#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -896,8 +890,8 @@
             <element signature="e#1619#2956#0" expanded="true" />
             <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11367#11632#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
+            <element signature="e#11364#11629#0" expanded="true" />
+            <element signature="e#11628#11629#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -957,8 +951,8 @@
             <element signature="e#1619#2956#0" expanded="true" />
             <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11367#11632#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
+            <element signature="e#11364#11629#0" expanded="true" />
+            <element signature="e#11628#11629#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1010,8 +1004,8 @@
             <element signature="e#1619#2956#0" expanded="true" />
             <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11367#11632#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
+            <element signature="e#11364#11629#0" expanded="true" />
+            <element signature="e#11628#11629#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1257,34 +1251,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-          <folding>
-            <element signature="e#1413#1925#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="326" column="12" selection-start-line="326" selection-start-column="12" selection-end-line="326" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1619#2956#0" expanded="true" />
-            <element signature="e#2955#2956#0" expanded="true" />
-            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#11367#11632#0" expanded="true" />
-            <element signature="e#11631#11632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -1313,6 +1279,42 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="380" column="87" selection-start-line="380" selection-start-column="84" selection-end-line="380" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11364#11629#0" expanded="true" />
+            <element signature="e#11628#11629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/LocationWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+          <folding>
+            <element signature="e#2798#3435#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

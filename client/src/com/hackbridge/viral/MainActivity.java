@@ -254,7 +254,7 @@ public class MainActivity extends Activity
                 editor.putInt("physical", 2);
                 break;
         }
-        editor.commit();
+        editor.apply();
         Log.d("LAG-LOGIC", "Physiscal State is: " + physical);
         physical = physicalState;
     }
@@ -279,7 +279,7 @@ public class MainActivity extends Activity
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("code", code);
-        editor.commit();
+        editor.apply();
         Log.d("LAG-LOGIC", "Code is: " + code);
     }
 
@@ -302,7 +302,7 @@ public class MainActivity extends Activity
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putLong("identity", ident);
-        editor.commit();
+        editor.apply();
         identity = ident;
         Log.d("LAG-LOGIC", "Identity is: " + identity);
     }
