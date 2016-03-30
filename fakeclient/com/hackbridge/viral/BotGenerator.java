@@ -96,7 +96,7 @@ public class BotGenerator {
         if (args.length != 3) {
             // wrong usage
             System.out.println("Usage: java com.hackbridge.viral.BotGenerator "
-                             + "<bot parameter file> <server> <port>");
+                             + "<bot_parameter_file> <server> <port>");
             return;
         }
         String filename = "";
@@ -107,7 +107,7 @@ public class BotGenerator {
         } catch (NumberFormatException e) {
             // wrong usage
             System.out.println("Usage: java com.hackbridge.viral.BotGenerator "
-                             + "<bot parameter file> <server> <port>");
+                             + "<bot_parameter_file> <server> <port>");
             return;
         }
         readBotFile(filename);
