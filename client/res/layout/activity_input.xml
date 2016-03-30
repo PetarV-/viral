@@ -4,17 +4,42 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:weightSum="1">
 
-    <EditText
+    <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ipText" android:layout_gravity="center_horizontal"/>
-    <EditText
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal" android:layout_weight="0.30"/>
+    <TextView
+            android:layout_width="249dp"
             android:layout_height="wrap_content"
-            android:id="@+id/portTest" android:layout_gravity="center_horizontal"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Please enter the host address and port of the server to which you wish to connect."
+            android:id="@+id/textView" android:layout_gravity="center_horizontal"
+            android:textAlignment="gravity" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Host Address"
+            android:id="@+id/textView2" android:layout_gravity="center_horizontal" android:layout_weight="0.10"
+            android:textAlignment="gravity" android:gravity="bottom"/>
+    <EditText
+            android:layout_width="268dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ipText" android:layout_gravity="center_horizontal" android:gravity="center_horizontal"
+            android:textAlignment="gravity" android:text="192.168.1.12" android:singleLine="true"
+    />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceMedium" android:text="Port Number"
+              android:id="@+id/textView3" android:layout_gravity="center_horizontal"
+              android:textAlignment="gravity" android:gravity="bottom" android:layout_weight="0.05"/>
+    <EditText
+            android:layout_width="268dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/portTest" android:layout_gravity="center_horizontal" android:gravity="center_horizontal"
+            android:singleLine="true" android:text="25000" android:inputType="number"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Initiate Connection"
             android:id="@+id/acceptButton" android:layout_gravity="center_horizontal"/>
 </LinearLayout>

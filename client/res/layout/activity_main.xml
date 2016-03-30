@@ -39,12 +39,13 @@
             android:src="@drawable/icon_syringe_right" />
 
         <EditText
-            android:id="@+id/codeInputTextBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rightSyringe"
-            android:layout_centerHorizontal="true"
-            android:ems="10" >
+				android:id="@+id/codeInputTextBox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/rightSyringe"
+				android:layout_centerHorizontal="true"
+				android:ems="10" android:gravity="center_horizontal" android:inputType="number"
+				android:textAlignment="gravity" android:singleLine="true">
 
             <requestFocus />
         </EditText>

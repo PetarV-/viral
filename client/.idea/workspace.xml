@@ -23,12 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27893266-0dd4-4de6-957f-2142b8346f6b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/activity_input.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_input.xml" afterPath="$PROJECT_DIR$/res/layout/activity_input.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
     </list>
     <ignored path="client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,7 +114,20 @@
         <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+              <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,16 +166,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageSender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" column="71" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -194,11 +195,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_input.xml" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_input.xml" />
       </list>
     </option>
   </component>
@@ -335,6 +337,7 @@
     <property name="project.structure.side.proportion" value="0.33587787" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4100b33cf2a79199" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="316" />
   </component>
   <component name="RunManager" selected="Android Application.Viral">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -660,14 +663,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1298,10 +1293,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
           <folding />
         </state>
       </provider>
