@@ -20,20 +20,31 @@ public final class StateManager {
     private double distanceTotal = 0;  // Total distances (= 2 * value of all bidirectional edges)
     private int nodeCtr = 0;  // Counts the number of nodes: equivalent to the next available row index in the state matrix
     private int arrayCapacity = 512;
+    private boolean runTikzer;
 
     // Fields for logging.
-    private final Tikzer tikzer = new Tikzer(8000);
+    private Tikzer tikzer = null;
     private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
     private String logfileName;
 
     public StateManager() {
-        this(new NetworkParameters());
+        this(new NetworkParameters(), false, 0);
     }
 
     public StateManager(NetworkParameters parameters) {
+        this(parameters, false, 0);
+    }
+
+    public StateManager(NetworkParameters parameters, boolean runTikzer, int tikzerPort) {
         this.parameters = parameters;
         Date today = Calendar.getInstance().getTime();
         logfileName = dateFormat.format(today) + ".log";
+
+        this.runTikzer = runTikzer;
+
+        if (runTikzer) {
+            tikzer = new Tikzer(tikzerPort);
+        }
 
         state = new ArrayList<ArrayList<Double>>();
         nodes = new HashMap<Long, Node>();
@@ -349,7 +360,9 @@ public final class StateManager {
     private void logState(String filename) {
         StateLog log = new StateLog(nodes, nodeToMatrixPos, state);
         log.writeToFile(filename, true);
-        tikzer.addLog(log);
+        if (runTikzer) {
+            tikzer.addLog(log);
+        }
     }
 
     /**
