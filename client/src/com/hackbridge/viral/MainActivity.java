@@ -31,22 +31,20 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity
 {
-    private LocationManager        locationManager;
-    private String                 provider;
-    private MyLocationListener     mylistener;
-    private Criteria               criteria;
-
-    private boolean                round_on;
-    private AwarenessState         awareness;
-    private PhysicalState          physical;
-    private long                   identity;
-    private String                 server = "188.166.154.60";
-    private int                    port   = 25000;
-    private static MessageSender   ms;
+    public static Handler handle;
+    private static MessageSender ms;
     private static MessageReceiver mr;
-    private Socket                 sock;
-
-    public static Handler          handle;
+    private LocationManager locationManager;
+    private String provider;
+    private MyLocationListener mylistener;
+    private Criteria criteria;
+    private boolean round_on;
+    private AwarenessState awareness;
+    private PhysicalState physical;
+    private long identity;
+    private String server = "fd84:dbac:7e56:8f00:8d91:922f:b09b:13dc";//"77.46.191.59";//"188.166.154.60";
+    private int port = 25000;
+    private Socket sock;
 
     public void setRoundOn(boolean isOn)
     {
@@ -56,30 +54,31 @@ public class MainActivity extends Activity
     public void writeNotification(String title, String body)
     {
         Notification.Builder mBuilder =
-            new Notification.Builder(this)
-                    .setSmallIcon(R.drawable.icon_syringe_left)
-                    .setContentTitle(title)
-                    .setContentText(body);
-        // Creates an explicit intent for an Activity in your app
+                new Notification.Builder(this)
+                        .setSmallIcon(R.drawable.icon_syringe_left)
+                        .setContentTitle(title)
+                        .setContentText(body);
+        // Creates an explicit intent for an Activity in the app
         Intent resultIntent = new Intent(this, MainActivity.class);
-        //
-        // // The stack builder object will contain an artificial back stack for the
-        // // started Activity.
-        // // This ensures that navigating backward from the Activity leads out of
-        // // your application to the Home screen.
+
+        // The stack builder object will contain an artificial back stack for the
+        // started Activity.
+        // This ensures that navigating backward from the Activity leads out of
+        // the application to the Home screen.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        // // Adds the back stack for the Intent (but not the Intent itself)
+        // Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(MainActivity.class);
-        // // Adds the Intent that starts the Activity to the top of the stack
+        // Adds the Intent that starts the Activity to the top of the stack
         stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-            stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(1, mBuilder.build());
     }
 
+    /**
+     * Loads the physical state from the saved state
+     */
     public PhysicalState loadPhysicalState()
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -101,6 +100,9 @@ public class MainActivity extends Activity
         return physical;
     }
 
+    /**
+     * Saves the given physical state in memory
+     */
     public void setPhysicalState(PhysicalState physicalState)
     {
         PhysicalState oldState = loadPhysicalState();
@@ -123,6 +125,9 @@ public class MainActivity extends Activity
         physical = physicalState;
     }
 
+    /**
+     * Loads the special code from the saved state if one exists
+     */
     private String loadCode()
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -132,6 +137,9 @@ public class MainActivity extends Activity
         return code;
     }
 
+    /**
+     * Saves the given code in memory
+     */
     public void setCode(String code)
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -139,9 +147,11 @@ public class MainActivity extends Activity
         editor.putString("code", code);
         editor.commit();
         Log.d("LAG-LOGIC", "Code is: " + code);
-        // TODO
     }
 
+    /**
+     * Loads the unique identity number
+     */
     private long loadIdentity()
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -150,6 +160,9 @@ public class MainActivity extends Activity
         return identity;
     }
 
+    /**
+     * Stores the unique identity number
+     */
     public void setIdentity(long ident)
     {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -158,12 +171,11 @@ public class MainActivity extends Activity
         editor.commit();
         identity = ident;
         Log.d("LAG-LOGIC", "Identity is: " + identity);
-        // TODO
-        //
     }
 
-    /** Called when the activity is first created. */
-
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -172,30 +184,30 @@ public class MainActivity extends Activity
 
         final ImageView orb = (ImageView) findViewById(R.id.orb);
         final ImageView leftSyringe = (ImageView) findViewById(R.id.leftSyringe);
-        final ImageView rightSyringe =
-            (ImageView) findViewById(R.id.rightSyringe);
-        final EditText codeInputTextBox =
-            (EditText) findViewById(R.id.codeInputTextBox);
-        final TextView vaccCodeLabel =
-            (TextView) findViewById(R.id.vaccCodeLabel);
+        final ImageView rightSyringe = (ImageView) findViewById(R.id.rightSyringe);
+        final EditText codeInputTextBox = (EditText) findViewById(R.id.codeInputTextBox);
+        final TextView vaccCodeLabel = (TextView) findViewById(R.id.vaccCodeLabel);
         final Button submitButton = (Button) findViewById(R.id.submitButton);
         final TextView stateLabel = (TextView) findViewById(R.id.stateLabel);
         final EditText codeGiver = (EditText) findViewById(R.id.codeGiver);
         final TextView instructionsLabel = (TextView) findViewById(R.id.instructionsLabel);
 
-        // bear with this for now
-        submitButton.setOnClickListener(new OnClickListener() {
+        // add a listener for the button
+        submitButton.setOnClickListener(new OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {
                 if (ms != null)
-                ms.sendMessage(new CodeMessage(identity, codeInputTextBox
-                        .getText()
-                        .toString()));
+                    ms.sendMessage(new CodeMessage(identity, codeInputTextBox.getText().toString()));
             }
         });
 
-        handle = new Handler(Looper.getMainLooper()) {
+        /*
+         * Main UI thread
+         */
+        handle = new Handler(Looper.getMainLooper())
+        {
             @Override
             public void handleMessage(android.os.Message inputMessage)
             {
@@ -211,17 +223,16 @@ public class MainActivity extends Activity
                     codeGiver.setText("");
                     setCode("");
                 }
-                else if(code.equals("-"))
+                else if (code.equals("-"))
                 {
                     orb.setImageResource(R.drawable.circle_gray);
                     stateLabel.setText("ROUND FINISHED");
                     instructionsLabel.setText("");
                     codeGiver.setText("");
-                    writeNotification("You have lost!",
-                            "You were unsuccessful in accomplishing your objective. Better luck next time!");
+                    writeNotification("You have lost!", "You were unsuccessful in accomplishing your objective. Better luck next time!");
                     setCode("");
                 }
-                else if(code.equals("+"))
+                else if (code.equals("+"))
                 {
                     orb.setImageResource(R.drawable.circle_gray);
                     stateLabel.setText("ROUND FINISHED");
@@ -233,20 +244,20 @@ public class MainActivity extends Activity
                 }
                 else
                 {
-                    if(inputMessage.what == 1)
+                    if (inputMessage.what == 1)
                     {
                         // human
                         String s = "You are a <b>HUMAN</b>!<br>Your objective is to finish the round without getting infected.";
                         instructionsLabel.setText(Html.fromHtml(s));
                     }
-                    else if(inputMessage.what == 2)
+                    else if (inputMessage.what == 2)
                     {
                         // infector
 
                         String s = "You are an <b>INFECTOR</b>!<br>Your objective is to help infect at least half of the population by the end of the round.";
                         instructionsLabel.setText(Html.fromHtml(s));
                     }
-                    
+
                     PhysicalState oldPhysical = loadPhysicalState();
 
                     if (oldPhysical != physical)
@@ -260,14 +271,12 @@ public class MainActivity extends Activity
                             case VACCINATED:
                                 orb.setImageResource(R.drawable.circle_green);
                                 stateLabel.setText("VACCINATED");
-                                writeNotification("You are VACCINATED!",
-                                        "Your vaccination has been successful!");
+                                writeNotification("You are VACCINATED!", "Your vaccination has been successful!");
                                 break;
                             case INFECTED:
                                 orb.setImageResource(R.drawable.circle_red);
                                 stateLabel.setText("INFECTED");
-                                writeNotification("You are INFECTED!",
-                                        "Visit Viral, and don't lose hope!");
+                                writeNotification("You are INFECTED!", "Visit Viral, and don't lose hope!");
                                 break;
                         }
                         setPhysicalState(physical);
@@ -276,33 +285,47 @@ public class MainActivity extends Activity
                     String oldCode = loadCode();
                     if (!code.equals(oldCode))
                     {
-                        // azurirati lable
                         setCode(code);
-                        codeGiver.setText("Your Viral code is:\n\n" + code
-                                          + "\n\nShare with care!");
+                        codeGiver.setText("Your Viral code is:\n\n" + code + "\n\nShare with care!");
                         if (!code.equals(""))
                         {
-                            writeNotification("You are AWARE!",
-                                    "Visit Viral for your vaccination code!");
+                            writeNotification("You are AWARE!", "Visit Viral for your vaccination code!");
                         }
                     }
                 }
             }
         };
 
+
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the location provider
-        criteria = new Criteria();
+/*        criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_LOW); // default
 
         criteria.setCostAllowed(false);
         // get the best provider depending on the criteria
         provider = locationManager.getBestProvider(criteria, false);
-
+*/
         // temporary solution!
-        provider = LocationManager.NETWORK_PROVIDER;
-
+        // provider = LocationManager.NETWORK_PROVIDER;
+        if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
+                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+        {
+            provider = LocationManager.GPS_PROVIDER;
+            Log.d("LAG-GPS", "GPS location provider selected");
+        }
+        else if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER) &&
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
+        {
+            provider = LocationManager.NETWORK_PROVIDER;
+            Log.d("LAG-GPS", "NETWORK location provider selected");
+        }
+        else
+        {
+            // TODO ADD ERROR HANDLING FOR NO NETWORK OR GPS PROVIDER AVAILABLE
+            return;
+        }
         // the last known location of this provider
         Location location = locationManager.getLastKnownLocation(provider);
 
@@ -325,16 +348,26 @@ public class MainActivity extends Activity
         identity = loadIdentity();
 
         final MainActivity ma = this;
-        Thread t = new Thread()
+        Thread messageThread = new Thread()
         {
             @Override
             public void run()
             {
                 try
                 {
-                    Log.d("LAG", "Precket created");
+                    Log.d("LAG", "Pre socket creation");
                     sock = new Socket(server, port);
                     Log.d("LAG", "Socket created");
+
+                } catch (IOException e)
+                {
+                    Log.d("LAG", "Cannot connect to " + server + ", port " + port);
+                    // TODO Add retry with time
+                    return; // TODO do not always return then!
+                }
+
+                try
+                {
                     mr = new MessageReceiver(ma, sock);
                     mr.setDaemon(true);
                     mr.start();
@@ -342,51 +375,46 @@ public class MainActivity extends Activity
 
                     if (identity == -1) ms.sendMessage(new HelloNewMessage());
                     else ms.sendMessage(new HelloMessage(identity));
-                }
-                catch (IOException e)
+                } catch (IOException e)
                 {
-                    Log.d("LAG", "Cannot connect to " + server + ", port " + port);
+                    Log.d("LAG", "Could not initialise sender and receiver threads");
                     return;
                 }
             }
         };
-        t.setDaemon(true);
-        t.start();
+        messageThread.setDaemon(true);
+        messageThread.start();
     }
 
+    /**
+     * Listener designated to fire off a wrapped location to the server, once position changes
+     */
     private class MyLocationListener implements LocationListener
     {
-
         @Override
         public void onLocationChanged(Location location)
         {
-            if (round_on && ms != null) ms.sendMessage(new PositionMessage(identity,
-                    new LocationWrapper(location.getLongitude(),
-                            location.getLatitude(),
-                            location.getAltitude())));
+            if (round_on && ms != null)
+                ms.sendMessage(new PositionMessage(identity, new LocationWrapper(location.getLongitude(), location.getLatitude(), location.getAltitude())));
         }
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras)
         {
-            Toast.makeText(MainActivity.this,
-                    provider + "'s status changed to " + status + "!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, provider + "'s status changed to " + status + "!", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onProviderEnabled(String provider)
         {
-            Toast.makeText(MainActivity.this, "Provider " + provider + " enabled!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Provider " + provider + " enabled!", Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void onProviderDisabled(String provider)
         {
-            Toast.makeText(MainActivity.this, "Provider " + provider + " disabled!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Provider " + provider + " disabled!", Toast.LENGTH_SHORT).show();
         }
     }
 }
