@@ -52,6 +52,11 @@ public class GameBot extends Thread {
         id = mId;
     }
 
+    // sets the bot's role
+    public void setRole(RoleState mRoleState) {
+        roleState = mRoleState;
+    }
+
     // this method changes the bot's physical state (both physical and
     // awareness)
     // also handles sending the code to the server
