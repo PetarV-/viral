@@ -1,13 +1,6 @@
 package com.hackbridge.viral;
 
-import java.io.IOException;
-import java.net.Socket;
-
-import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,11 +16,10 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
+
+import java.io.IOException;
+import java.net.Socket;
 
 public class MainActivity extends Activity
 {
@@ -42,15 +34,151 @@ public class MainActivity extends Activity
     private AwarenessState awareness;
     private PhysicalState physical;
     private long identity;
-    private String server = "192.168.0.30";//"77.46.191.59";//"188.166.154.60";
+    private String server = "192.168.1.12";//"192.168.0.30";//"77.46.191.59";//"188.166.154.60";
     private int port = 25000;
     private Socket sock;
+    final MainActivity ma = this;
 
     public void setRoundOn(boolean isOn)
     {
         round_on = isOn;
     }
 
+    /**
+     * creates a new instance of the sender and receiver threads
+     *
+     * @return true on success
+     */
+    public synchronized void restartEverything()
+    {
+            Log.d("LAG", "attempting reconnection");
+            Thread messageThread = new Thread()
+            {
+                @Override
+                public void run()
+                {
+                    ms = null;
+                    mr = null;
+                    try
+                    {
+                        Log.d("LAG", "Pre socket creation " + server + ", port " + port);
+                        sock = new Socket(server, port);
+                        Log.d("LAG", "Socket created");
+
+                    } catch (IOException e)
+                    {
+                        // we reattempt connection
+                        if (!reatemptConnection())
+                        {
+                            // we failed to reconnect
+                            fail();
+                        }
+                    }
+
+                    boolean success;
+                    do
+                    {
+                        // attempt to make the sender and receiver and restart on failure
+                        success = setupSenderAndREceiver();
+                    } while (!success && reatemptConnection());
+
+                    if (!success)
+                    {
+                        fail();
+                    }
+                    else
+                    {
+                        mr.setDaemon(true);
+                        mr.start();
+                    }
+                }
+            };
+            messageThread.setDaemon(true);
+            messageThread.start();
+    }
+
+    /**
+     * Notifies user about failure and kills the app
+     */
+    private void fail()
+    {
+        // FAILURE, so we notify the user and exit
+        Toast.makeText(MainActivity.this, "Failed to connect to server, please try again later!", Toast.LENGTH_LONG).show();
+        System.exit(1);
+    }
+
+    /**
+     * Attempts to reconnect to the defined server and port
+     *
+     * @return the socket if successful and null if not
+     */
+    private Socket reconnect()
+    {
+        try
+        {
+            sock = new Socket(server, port);
+            return sock;
+        } catch (IOException e)
+        {
+            Log.d("LAG", "Cannot connect to " + server + ", port " + port);
+            return null;
+        }
+    }
+
+    /**
+     * Repeatedly Aattempts to reconnect to the defined server and port with exponential backoff
+     */
+    private boolean reatemptConnection()
+    {
+        int backoff = 1;
+        boolean socket_is_alive = false;
+        for (int i = 0; i < 7 && !socket_is_alive; i++)
+        {
+            Log.d("LAG", "Retrying connection: " + i);
+            try
+            {
+                Thread.sleep(backoff * 1000); // sleep backoff seconds
+            } catch (InterruptedException e)
+            {
+                // silently ignore this
+            }
+            // attempt reconnection
+            if (reconnect() != null)
+            {
+                // success! we continue
+                socket_is_alive = true;
+            }
+            backoff *= 2;
+        }
+        return socket_is_alive;
+    }
+
+    /**
+     * Instantiates the sender and receiver threads
+     *
+     * @return true on success
+     */
+    private boolean setupSenderAndREceiver()
+    {
+        mr = new MessageReceiver(ma, sock);
+        try
+        {
+            ms = new MessageSender(ma, sock);
+        } catch (IOException e)
+        {
+            Log.d("LAG", "Could not initialise sender thread, retrying!");
+            return false;
+        }
+
+        if (identity == -1) ms.sendMessage(new HelloNewMessage());
+        else ms.sendMessage(new HelloMessage(identity));
+        Log.d("LAG", "Sending hello message with id " + identity);
+        return true;
+    }
+
+    /**
+     * Sends a pop-up notification
+     */
     public void writeNotification(String title, String body)
     {
         Notification.Builder mBuilder =
@@ -73,7 +201,11 @@ public class MainActivity extends Activity
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mBuilder.build());
+
+        Notification mNotification = mBuilder.build();
+        // We want to hide the notification after it was selected
+        mNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+        mNotificationManager.notify(1, mNotification);
     }
 
     /**
@@ -238,8 +370,7 @@ public class MainActivity extends Activity
                     stateLabel.setText("ROUND FINISHED");
                     instructionsLabel.setText("");
                     codeGiver.setText("");
-                    writeNotification("You have won!",
-                            "You have successfully accomplished your objective! Good work!");
+                    writeNotification("You have won!", "You have successfully accomplished your objective! Good work!");
                     setCode("");
                 }
                 else
@@ -247,13 +378,18 @@ public class MainActivity extends Activity
                     if (inputMessage.what == 1)
                     {
                         // human
+                        orb.setImageResource(R.drawable.circle_blue);
+                        stateLabel.setText("SUSCEPTIBLE");
+                        setPhysicalState(PhysicalState.SUSCEPTIBLE);
                         String s = "You are a <b>HUMAN</b>!<br>Your objective is to finish the round without getting infected.";
                         instructionsLabel.setText(Html.fromHtml(s));
                     }
                     else if (inputMessage.what == 2)
                     {
                         // infector
-
+                        orb.setImageResource(R.drawable.circle_blue);
+                        stateLabel.setText("SUSCEPTIBLE");
+                        setPhysicalState(PhysicalState.SUSCEPTIBLE);
                         String s = "You are an <b>INFECTOR</b>!<br>Your objective is to help infect at least half of the population by the end of the round.";
                         instructionsLabel.setText(Html.fromHtml(s));
                     }
@@ -299,15 +435,7 @@ public class MainActivity extends Activity
 
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        // Define the criteria how to select the location provider
-/*        criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_LOW); // default
 
-        criteria.setCostAllowed(false);
-        // get the best provider depending on the criteria
-        provider = locationManager.getBestProvider(criteria, false);
-*/
-        // temporary solution!
         // provider = LocationManager.NETWORK_PROVIDER;
         if (locationManager.getAllProviders().contains(LocationManager.GPS_PROVIDER) &&
                 locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
@@ -347,43 +475,8 @@ public class MainActivity extends Activity
         round_on = false;
         identity = loadIdentity();
 
-        final MainActivity ma = this;
-        Thread messageThread = new Thread()
-        {
-            @Override
-            public void run()
-            {
-                try
-                {
-                    Log.d("LAG", "Pre socket creation");
-                    sock = new Socket(server, port);
-                    Log.d("LAG", "Socket created");
-
-                } catch (IOException e)
-                {
-                    Log.d("LAG", "Cannot connect to " + server + ", port " + port);
-                    // TODO Add retry with time
-                    return; // TODO do not always return then!
-                }
-
-                try
-                {
-                    mr = new MessageReceiver(ma, sock);
-                    mr.setDaemon(true);
-                    mr.start();
-                    ms = new MessageSender(sock);
-
-                    if (identity == -1) ms.sendMessage(new HelloNewMessage());
-                    else ms.sendMessage(new HelloMessage(identity));
-                } catch (IOException e)
-                {
-                    Log.d("LAG", "Could not initialise sender and receiver threads");
-                    return;
-                }
-            }
-        };
-        messageThread.setDaemon(true);
-        messageThread.start();
+        final MainActivity m = this;
+        restartEverything();
     }
 
     /**

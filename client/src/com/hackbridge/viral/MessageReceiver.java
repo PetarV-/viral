@@ -9,8 +9,8 @@ import android.util.Log;
 public class MessageReceiver extends Thread
 {
 
-    private Message      mess;
-    private Socket       s;
+    private Message mess;
+    private Socket s;
     private MainActivity ma;
 
     public MessageReceiver(MainActivity ma, Socket s)
@@ -25,6 +25,7 @@ public class MessageReceiver extends Thread
         try
         {
             ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+            Log.d("LAG-INPUT", "Made object input stream");
             while (true)
             {
                 mess = null;
@@ -34,6 +35,7 @@ public class MessageReceiver extends Thread
                     {
                         mess = (Message) ois.readObject();
                     }
+                    Log.d("LAG-INPUT", "Have message");
                     if (mess instanceof ChangeMessage)
                     {
                         Log.d("LAG-INPUT", "Got a ChangeMessage");
@@ -47,8 +49,8 @@ public class MessageReceiver extends Thread
 
                         // fill out with dummy data
                         ChangeMessage tmp =
-                            new ChangeMessage(PhysicalState.SUSCEPTIBLE,
-                                    AwarenessState.AWARE);
+                                new ChangeMessage(PhysicalState.SUSCEPTIBLE,
+                                        AwarenessState.AWARE);
                         if (((StopMessage) mess).isHasWon())
                         {
                             tmp.setCode("+");
@@ -67,13 +69,14 @@ public class MessageReceiver extends Thread
 
                         StartMessage sm = (StartMessage) mess;
                         ChangeMessage tmp =
-                            new ChangeMessage(sm.getInfected(), sm.getAware());
+                                new ChangeMessage(sm.getInfected(), sm.getAware());
                         if (sm.isRunning())
                         {
                             // regular start message
                             tmp.setCode(sm.getCode());
-                            if(sm.getRole() == RoleState.HUMAN)
+                            if (sm.getRole() == RoleState.HUMAN)
                             {
+
                                 MainActivity.handle.obtainMessage(1, tmp).sendToTarget();
                             }
                             else
@@ -93,19 +96,17 @@ public class MessageReceiver extends Thread
                         Log.d("LAG-INPUT", "Unexpected Message object");
                         // treated silently
                     }
-                }
-                catch (ClassNotFoundException e)
+                } catch (ClassNotFoundException e)
                 {
                     Log.d("LAG-INPUT", "Unknown class received from server");
                     // we're doing this silently
                 }
             }
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
-            Log.d("LAG-INPUT", "IOException caught in MessageReceiver, thread exiting");
-            return;
+            Log.d("LAG-INPUT", "IOException caught in MessageReceiver, thread gracefully dying");
         }
+        ma.restartEverything();
     }
 
 }

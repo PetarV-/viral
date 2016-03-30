@@ -20,7 +20,7 @@
         package="com.hackbridge.viral">
 	
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="16"
         android:targetSdkVersion="19" />
     
     <uses-permission android:name="android.permission.INTERNET" />
