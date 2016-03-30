@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.text.Html;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -314,6 +315,21 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent mainIntent = getIntent();
+
+        String ipText =  mainIntent.getStringExtra("ip");
+        String portText = mainIntent.getStringExtra("port");
+        Log.d("LAG", "ip "+ ipText + "\nport " + portText);
+        try
+        {
+            server = ipText;
+            port = Integer.parseInt(portText);
+        } catch (NumberFormatException n)
+        {
+            // fails because the port was malformed
+            fail();
+        }
 
         final ImageView orb = (ImageView) findViewById(R.id.orb);
         final ImageView leftSyringe = (ImageView) findViewById(R.id.leftSyringe);

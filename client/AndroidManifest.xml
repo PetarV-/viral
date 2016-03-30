@@ -29,11 +29,18 @@
     
     <application android:label="Viral"
     			 android:icon="@drawable/icon_syringe_right">
-        <activity android:name="com.hackbridge.viral.MainActivity"
+        <activity android:name="com.hackbridge.viral.InputActivity"
                 android:label="Viral">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hackbridge.viral.MainActivity"
+                  android:label="Viral">
+            <intent-filter>
+                <action android:name="com.hackbridge.viral.MAIN_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

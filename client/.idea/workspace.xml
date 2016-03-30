@@ -2,17 +2,33 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <devices>
+          <device id="5.1in WVGA" />
+          <device id="Nexus 5" />
+        </devices>
+        <target>android-20</target>
+      </config>
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/res/layout/activity_input.xml">
+        <config>
+          <theme>@android:style/Theme.Holo</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27893266-0dd4-4de6-957f-2142b8346f6b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/activity_input.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" afterPath="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
     </list>
     <ignored path="client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,19 +53,75 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="244" column="28" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="28" />
+            <state relative-caret-position="272">
+              <caret line="326" column="12" selection-start-line="326" selection-start-column="12" selection-end-line="326" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1286#1287#0" expanded="true" />
-                <element signature="e#1317#1318#0" expanded="true" />
-                <element signature="e#1582#2919#0" expanded="true" />
-                <element signature="e#2918#2919#0" expanded="true" />
+                <element signature="e#1323#1324#0" expanded="true" />
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1619#2956#0" expanded="true" />
+                <element signature="e#2955#2956#0" expanded="true" />
                 <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#10876#11141#0" expanded="true" />
-                <element signature="e#11140#11141#0" expanded="true" />
+                <element signature="e#11367#11632#0" expanded="true" />
+                <element signature="e#11631#11632#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PeerActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PeerActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+              <folding>
+                <element signature="e#1413#1925#0" expanded="true" />
+                <element signature="e#1924#1925#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewFromOtherTaskActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/ViewFromOtherTaskActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_input.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -63,152 +135,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Handler.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Method.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7769">
-              <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#21019#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#2132#3102#0" expanded="false" />
-                <element signature="e#3101#3102#0" expanded="false" />
-                <element signature="e#4750#4751#0" expanded="false" />
-                <element signature="e#4787#4788#0" expanded="false" />
-                <element signature="e#9377#9378#0" expanded="false" />
-                <element signature="e#9444#9445#0" expanded="false" />
-                <element signature="e#12915#12916#0" expanded="false" />
-                <element signature="e#12975#12976#0" expanded="false" />
-                <element signature="e#14313#14314#0" expanded="false" />
-                <element signature="e#14350#14351#0" expanded="false" />
-                <element signature="e#14993#14994#0" expanded="false" />
-                <element signature="e#15056#15057#0" expanded="false" />
-                <element signature="e#15317#15318#0" expanded="false" />
-                <element signature="e#15344#15345#0" expanded="false" />
-                <element signature="e#15642#15643#0" expanded="false" />
-                <element signature="e#15687#15688#0" expanded="false" />
-                <element signature="e#15868#15869#0" expanded="false" />
-                <element signature="e#15901#15902#0" expanded="false" />
-                <element signature="e#16240#16241#0" expanded="false" />
-                <element signature="e#16278#16279#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parcel.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23613">
-              <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#81352#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#13710#13711#0" expanded="false" />
-                <element signature="e#13760#13761#0" expanded="false" />
-                <element signature="e#13805#13806#0" expanded="false" />
-                <element signature="e#13852#13853#0" expanded="false" />
-                <element signature="e#15179#15180#0" expanded="false" />
-                <element signature="e#15228#15229#0" expanded="false" />
-                <element signature="e#15410#15411#0" expanded="false" />
-                <element signature="e#15460#15461#0" expanded="false" />
-                <element signature="e#15614#15615#0" expanded="false" />
-                <element signature="e#15667#15668#0" expanded="false" />
-                <element signature="e#15961#15962#0" expanded="false" />
-                <element signature="e#16014#16015#0" expanded="false" />
-                <element signature="e#16329#16330#0" expanded="false" />
-                <element signature="e#16380#16381#0" expanded="false" />
-                <element signature="e#16597#16598#0" expanded="false" />
-                <element signature="e#16651#16652#0" expanded="false" />
-                <element signature="e#16969#16970#0" expanded="false" />
-                <element signature="e#17024#17025#0" expanded="false" />
-                <element signature="e#17100#17101#0" expanded="false" />
-                <element signature="e#17163#17164#0" expanded="false" />
-                <element signature="e#17240#17241#0" expanded="false" />
-                <element signature="e#17300#17301#0" expanded="false" />
-                <element signature="e#17893#17894#0" expanded="false" />
-                <element signature="e#17942#17943#0" expanded="false" />
-                <element signature="e#18456#18457#0" expanded="false" />
-                <element signature="e#18515#18516#0" expanded="false" />
-                <element signature="e#18940#18941#0" expanded="false" />
-                <element signature="e#19005#19006#0" expanded="false" />
-                <element signature="e#19247#19248#0" expanded="false" />
-                <element signature="e#19311#19312#0" expanded="false" />
-                <element signature="e#20055#20056#0" expanded="false" />
-                <element signature="e#20102#20103#0" expanded="false" />
-                <element signature="e#20285#20286#0" expanded="false" />
-                <element signature="e#20333#20334#0" expanded="false" />
-                <element signature="e#20520#20521#0" expanded="false" />
-                <element signature="e#20569#20570#0" expanded="false" />
-                <element signature="e#20775#20776#0" expanded="false" />
-                <element signature="e#20825#20826#0" expanded="false" />
-                <element signature="e#21006#21007#0" expanded="false" />
-                <element signature="e#21056#21057#0" expanded="false" />
-                <element signature="e#21268#21269#0" expanded="false" />
-                <element signature="e#21321#21322#0" expanded="false" />
-                <element signature="e#21504#21505#0" expanded="false" />
-                <element signature="e#21560#21561#0" expanded="false" />
-                <element signature="e#21749#21750#0" expanded="false" />
-                <element signature="e#21819#21820#0" expanded="false" />
-                <element signature="e#22402#22403#0" expanded="false" />
-                <element signature="e#22460#22461#0" expanded="false" />
-                <element signature="e#22635#22636#0" expanded="false" />
-                <element signature="e#22664#22665#0" expanded="false" />
-                <element signature="e#23264#23265#0" expanded="false" />
-                <element signature="e#23323#23324#0" expanded="false" />
-                <element signature="e#52407#52408#0" expanded="false" />
-                <element signature="e#52455#52456#0" expanded="false" />
-                <element signature="e#52587#52588#0" expanded="false" />
-                <element signature="e#52636#52637#0" expanded="false" />
-                <element signature="e#52779#52780#0" expanded="false" />
-                <element signature="e#52829#52830#0" expanded="false" />
-                <element signature="e#52991#52992#0" expanded="false" />
-                <element signature="e#53042#53043#0" expanded="false" />
-                <element signature="e#53172#53173#0" expanded="false" />
-                <element signature="e#53223#53224#0" expanded="false" />
-                <element signature="e#53384#53385#0" expanded="false" />
-                <element signature="e#53461#53462#0" expanded="false" />
-                <element signature="e#53593#53594#0" expanded="false" />
-                <element signature="e#53650#53651#0" expanded="false" />
-                <element signature="e#54019#54020#0" expanded="false" />
-                <element signature="e#54078#54079#0" expanded="false" />
-                <element signature="e#54633#54634#0" expanded="false" />
-                <element signature="e#54680#54681#0" expanded="false" />
-                <element signature="e#56274#56275#0" expanded="false" />
-                <element signature="e#56313#56314#0" expanded="false" />
-                <element signature="e#57140#57141#0" expanded="false" />
-                <element signature="e#57196#57197#0" expanded="false" />
-                <element signature="e#63288#63296#0" expanded="false" />
-                <element signature="e#64034#64043#0" expanded="false" />
-                <element signature="e#67000#67001#0" expanded="false" />
-                <element signature="e#67042#67043#0" expanded="false" />
-                <element signature="e#76670#76718#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageReceiver.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MessageReceiver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -238,17 +165,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AwarenessState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/AwarenessState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile" />
+        <option value="layoutResourceFile_vertical" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -267,9 +192,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageSender.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_input.xml" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/SimpleUpActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java" />
         <option value="$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java" />
       </list>
     </option>
@@ -340,6 +268,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="viral" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -599,7 +577,7 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
+      <option name="MODE" value="specific_activity" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -609,7 +587,7 @@
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
+      <option name="ACTIVITY_CLASS" value="com.hackbridge.viral.InputActivity" />
       <method />
     </configuration>
     <list size="1">
@@ -631,7 +609,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -642,6 +620,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -681,151 +660,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7769">
-          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21019#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2132#3102#0" expanded="false" />
-            <element signature="e#3101#3102#0" expanded="false" />
-            <element signature="e#4750#4751#0" expanded="false" />
-            <element signature="e#4787#4788#0" expanded="false" />
-            <element signature="e#9377#9378#0" expanded="false" />
-            <element signature="e#9444#9445#0" expanded="false" />
-            <element signature="e#12915#12916#0" expanded="false" />
-            <element signature="e#12975#12976#0" expanded="false" />
-            <element signature="e#14313#14314#0" expanded="false" />
-            <element signature="e#14350#14351#0" expanded="false" />
-            <element signature="e#14993#14994#0" expanded="false" />
-            <element signature="e#15056#15057#0" expanded="false" />
-            <element signature="e#15317#15318#0" expanded="false" />
-            <element signature="e#15344#15345#0" expanded="false" />
-            <element signature="e#15642#15643#0" expanded="false" />
-            <element signature="e#15687#15688#0" expanded="false" />
-            <element signature="e#15868#15869#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="false" />
-            <element signature="e#16240#16241#0" expanded="false" />
-            <element signature="e#16278#16279#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Android/Android-sdk/sources/android-19/android/os/Parcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23613">
-          <caret line="1475" column="0" selection-start-line="1475" selection-start-column="0" selection-end-line="1475" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#81352#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#13710#13711#0" expanded="false" />
-            <element signature="e#13760#13761#0" expanded="false" />
-            <element signature="e#13805#13806#0" expanded="false" />
-            <element signature="e#13852#13853#0" expanded="false" />
-            <element signature="e#15179#15180#0" expanded="false" />
-            <element signature="e#15228#15229#0" expanded="false" />
-            <element signature="e#15410#15411#0" expanded="false" />
-            <element signature="e#15460#15461#0" expanded="false" />
-            <element signature="e#15614#15615#0" expanded="false" />
-            <element signature="e#15667#15668#0" expanded="false" />
-            <element signature="e#15961#15962#0" expanded="false" />
-            <element signature="e#16014#16015#0" expanded="false" />
-            <element signature="e#16329#16330#0" expanded="false" />
-            <element signature="e#16380#16381#0" expanded="false" />
-            <element signature="e#16597#16598#0" expanded="false" />
-            <element signature="e#16651#16652#0" expanded="false" />
-            <element signature="e#16969#16970#0" expanded="false" />
-            <element signature="e#17024#17025#0" expanded="false" />
-            <element signature="e#17100#17101#0" expanded="false" />
-            <element signature="e#17163#17164#0" expanded="false" />
-            <element signature="e#17240#17241#0" expanded="false" />
-            <element signature="e#17300#17301#0" expanded="false" />
-            <element signature="e#17893#17894#0" expanded="false" />
-            <element signature="e#17942#17943#0" expanded="false" />
-            <element signature="e#18456#18457#0" expanded="false" />
-            <element signature="e#18515#18516#0" expanded="false" />
-            <element signature="e#18940#18941#0" expanded="false" />
-            <element signature="e#19005#19006#0" expanded="false" />
-            <element signature="e#19247#19248#0" expanded="false" />
-            <element signature="e#19311#19312#0" expanded="false" />
-            <element signature="e#20055#20056#0" expanded="false" />
-            <element signature="e#20102#20103#0" expanded="false" />
-            <element signature="e#20285#20286#0" expanded="false" />
-            <element signature="e#20333#20334#0" expanded="false" />
-            <element signature="e#20520#20521#0" expanded="false" />
-            <element signature="e#20569#20570#0" expanded="false" />
-            <element signature="e#20775#20776#0" expanded="false" />
-            <element signature="e#20825#20826#0" expanded="false" />
-            <element signature="e#21006#21007#0" expanded="false" />
-            <element signature="e#21056#21057#0" expanded="false" />
-            <element signature="e#21268#21269#0" expanded="false" />
-            <element signature="e#21321#21322#0" expanded="false" />
-            <element signature="e#21504#21505#0" expanded="false" />
-            <element signature="e#21560#21561#0" expanded="false" />
-            <element signature="e#21749#21750#0" expanded="false" />
-            <element signature="e#21819#21820#0" expanded="false" />
-            <element signature="e#22402#22403#0" expanded="false" />
-            <element signature="e#22460#22461#0" expanded="false" />
-            <element signature="e#22635#22636#0" expanded="false" />
-            <element signature="e#22664#22665#0" expanded="false" />
-            <element signature="e#23264#23265#0" expanded="false" />
-            <element signature="e#23323#23324#0" expanded="false" />
-            <element signature="e#52407#52408#0" expanded="false" />
-            <element signature="e#52455#52456#0" expanded="false" />
-            <element signature="e#52587#52588#0" expanded="false" />
-            <element signature="e#52636#52637#0" expanded="false" />
-            <element signature="e#52779#52780#0" expanded="false" />
-            <element signature="e#52829#52830#0" expanded="false" />
-            <element signature="e#52991#52992#0" expanded="false" />
-            <element signature="e#53042#53043#0" expanded="false" />
-            <element signature="e#53172#53173#0" expanded="false" />
-            <element signature="e#53223#53224#0" expanded="false" />
-            <element signature="e#53384#53385#0" expanded="false" />
-            <element signature="e#53461#53462#0" expanded="false" />
-            <element signature="e#53593#53594#0" expanded="false" />
-            <element signature="e#53650#53651#0" expanded="false" />
-            <element signature="e#54019#54020#0" expanded="false" />
-            <element signature="e#54078#54079#0" expanded="false" />
-            <element signature="e#54633#54634#0" expanded="false" />
-            <element signature="e#54680#54681#0" expanded="false" />
-            <element signature="e#56274#56275#0" expanded="false" />
-            <element signature="e#56313#56314#0" expanded="false" />
-            <element signature="e#57140#57141#0" expanded="false" />
-            <element signature="e#57196#57197#0" expanded="false" />
-            <element signature="e#63288#63296#0" expanded="false" />
-            <element signature="e#64034#64043#0" expanded="false" />
-            <element signature="e#67000#67001#0" expanded="false" />
-            <element signature="e#67042#67043#0" expanded="false" />
-            <element signature="e#76670#76718#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -848,13 +682,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1317#1318#0" expanded="true" />
-            <element signature="e#1582#2919#0" expanded="true" />
-            <element signature="e#2918#2919#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#10876#11141#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
+            <element signature="e#11367#11632#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1062,13 +896,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1317#1318#0" expanded="true" />
-            <element signature="e#1582#2919#0" expanded="true" />
-            <element signature="e#2918#2919#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#10876#11141#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
+            <element signature="e#11367#11632#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1123,13 +957,13 @@
           <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1317#1318#0" expanded="true" />
-            <element signature="e#1582#2919#0" expanded="true" />
-            <element signature="e#2918#2919#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#10876#11141#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
+            <element signature="e#11367#11632#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1176,13 +1010,13 @@
           <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1317#1318#0" expanded="true" />
-            <element signature="e#1582#2919#0" expanded="true" />
-            <element signature="e#2918#2919#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
             <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#10876#11141#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
+            <element signature="e#11367#11632#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1356,14 +1190,6 @@
             <element signature="e#16240#16241#0" expanded="false" />
             <element signature="e#16278#16279#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1407,29 +1233,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="244" column="28" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1286#1287#0" expanded="true" />
-            <element signature="e#1317#1318#0" expanded="true" />
-            <element signature="e#1582#2919#0" expanded="true" />
-            <element signature="e#2918#2919#0" expanded="true" />
-            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#10876#11141#0" expanded="true" />
-            <element signature="e#11140#11141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MessageReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="51" column="75" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="75" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/PeerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/ViewFromOtherTaskActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/icon_syringe_left.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/InputActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+          <folding>
+            <element signature="e#1413#1925#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hackbridge/viral/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="326" column="12" selection-start-line="326" selection-start-column="12" selection-end-line="326" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1619#2956#0" expanded="true" />
+            <element signature="e#2955#2956#0" expanded="true" />
+            <element signature="method#reatemptConnection#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#11367#11632#0" expanded="true" />
+            <element signature="e#11631#11632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_input.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>
