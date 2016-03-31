@@ -144,3 +144,6 @@ following conventions:
         the distribution).
 
 
+License
+-------
+MIT
