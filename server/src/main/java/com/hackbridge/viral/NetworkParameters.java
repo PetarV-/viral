@@ -48,6 +48,23 @@ public class NetworkParameters {
     // updates.
     private int loggingFrequency = 1;
 
+
+    // Number of steps when selecting edges using Gibbs Sampling.
+    private int numStepsForGibbsSampling = 1000;
+
+    public enum EdgeSelectionAlgorithm {
+        // An edge with distance/weight d is selected exactly proportional to d.
+        // This requires storing the O(n^2) distances between every node.
+        ExactRandom,
+
+        // An edge (x,y) with distance d is maintained. x or y are changed uniformly at random.
+        // Assume wlog x is changed to x' st (x', y) has distance d'. If d' <= d, then accept
+        // this step. Otherwise accept with probability d/d'.
+        GibbsSampling,
+    }
+
+    private EdgeSelectionAlgorithm edgeSelectionAlgorithm = EdgeSelectionAlgorithm.ExactRandom;
+
     public NetworkParameters() {}
 
     /**
@@ -57,6 +74,7 @@ public class NetworkParameters {
      * Example:
      * initialInfectedProbability 0.2
      * initialAwareProbability 0.2
+     * edgeSelectionAlgorithm GibbsSampling
      * @param configurationFile
      */
     public NetworkParameters(String configurationFile) {
@@ -81,6 +99,8 @@ public class NetworkParameters {
                     } else if (fieldClass.isAssignableFrom(double.class)) {
                         double value = Double.parseDouble(str[1]);
                         field.setDouble(this, value);
+                    } else if (fieldClass.isAssignableFrom(EdgeSelectionAlgorithm.class)) {
+                        field.set(this, Enum.valueOf((Class<Enum>) field.getType(), str[1]));
                     }
                 } catch (Exception e) {
                     System.err.println("Failed to parse " + line);
@@ -170,4 +190,15 @@ public class NetworkParameters {
     public void setExponentialMultiplier(double exponentialMultiplier) {
         this.exponentialMultiplier = exponentialMultiplier;
     }
+
+    public EdgeSelectionAlgorithm getEdgeSelectionAlgorithm() {
+        return edgeSelectionAlgorithm;
+    }
+
+    public int getNumStepsForGibbsSampling() {
+        return numStepsForGibbsSampling;
+    }
+
+
+
 }

@@ -2,17 +2,18 @@ package com.hackbridge.viral;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by stella on 1/30/16.
- */
 public class StateManagerTest {
     public StateManagerTest() {
         //  connectionTest();
-        // locationChangeTest();
-        // locationValueTest();
-         // stepTest();
+        //locationChangeTest();
+        //locationValueTest();
+        stepTest();
         // resetTest();
-        networkParameterTest();
+        //networkParameterTest();
+    }
+
+    public static void main(String[] args) {
+        new StateManagerTest();
     }
 
     private void networkParameterTest() {
@@ -23,7 +24,7 @@ public class StateManagerTest {
         for (Field field : fields) {
             field.setAccessible(true);
             try {
-                System.out.println(field.getName() + " " + field.getDouble(parameters));
+                System.out.println(field.getName() + " " + field.get(parameters));
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -45,7 +46,7 @@ public class StateManagerTest {
         StartMessage start1 = stateManager.onConnect();
         StartMessage start2 = stateManager.onConnect();
         StartMessage start3 = stateManager.onConnect();
-        stateManager.onLocationChange(start1.getId(), new LocationWrapper(52.2008, 00.1198373,0.0));
+        stateManager.onLocationChange(start1.getId(), new LocationWrapper(52.2008, 00.1198373, 0.0));
         stateManager.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
         stateManager.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
         stateManager.onLocationChange(start2.getId(), new LocationWrapper(52.2040, 0.1198373, 0.0));
@@ -66,7 +67,9 @@ public class StateManagerTest {
 
     private void stepTest() {
         System.out.println("Running location step test");
-        StateManager stateManager = new StateManager();
+        StateManager stateManager = new StateManager(
+                new NetworkParameters("network_parameters" + ".txt"));
+        ;
         int nMsgs = 10;
         StartMessage sms[] = new StartMessage[nMsgs];
         for (int i = 0; i < nMsgs; ++i) {
@@ -93,10 +96,6 @@ public class StateManagerTest {
         stateManager.reset();
         StartMessage sm2 = stateManager.onConnect(start_msg.getId());
         System.out.println(sm2.getId());
-    }
-
-    public static void main(String[] args) {
-        new StateManagerTest();
     }
 
 }
