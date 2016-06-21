@@ -9,3 +9,5 @@ developSymptomsProbability 0.1
 lambdaFactor 0.002
 exponentialMultiplier 1000.0
 loggingFrequency 5
+edgeSelectionAlgorithm ExactRandom
+numStepsForGibbsSampling 1000
