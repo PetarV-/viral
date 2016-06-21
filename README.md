@@ -84,7 +84,7 @@ Parameter | Description
 
 Compiling the Android application from source is heavily dependent on the architecture of the host system as well as the IDE you are using, and therefore we do not recommend setting it up in this fashion. Should you still choose to do this, [Android Studio](https://developer.android.com/studio/index.html) will be required in the least, in order to gain access to all of the required packages for Android development. In all other cases, please proceed by downloading the precompiled `Viral.apk` file from the [latest release tag](https://github.com/PetarV-/viral/releases) of this repository.
 
-The Android device chosen to install the application should be newer
+The Android device chosen to install the application should be more recent
 than Android level 16. After installing the `Viral.apk` file, simply
 press on the *Viral* icon, and then input the hostname and port of the
 server set-up as outlined above. After a successful connection has been
@@ -100,7 +100,7 @@ participants), whom the server does not distinguish from users. In the
 current model, the bots perform random walks and periodically send
 position updates to the server. Sending the updates is modelled as a
 Poisson process i.e. the time *T* between updates is a random variable
-with an exponential distribution *E(λ)*, with the
+with an exponential distribution *Exp(λ)*, with the
 probability density function *f(t) = λ exp(-λt)*.
 No other behaviour is given to the bots, other than them vaccinating
 themselves if they have access to the valid vaccine code and have the
@@ -117,12 +117,12 @@ folder of the repository):
 
 The command line arguments that need to be provided are:
 
--   a path to a file that contains the bot parameters (the precise
+-   `<bot_parameter_file>`: a path to a file that contains the bot parameters (the precise
     format is described in detail in the next paragraph);
 
--   IP address of a *Viral* server;
+-   `<server>`: IP address of a *Viral* server;
 
--   the port on which a *Viral* server is accepting requests.
+-   `<port>`: the port on which a *Viral* server is listening for requests.
 
 ### Bot parameters
 
