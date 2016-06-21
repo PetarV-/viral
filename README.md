@@ -21,13 +21,13 @@ such synthetic experiments.
 Installation
 ------------
 
-Precompiled `.apk` and `.jar` files of the *Viral* server, Android client and "fake" client are readily available in the latest release tag of this repository.
+Precompiled `.apk` and `.jar` files of the *Viral* server, Android client and "fake" client are readily available in the [latest release tag](https://github.com/PetarV-/viral/releases) of this repository.
 
 The source may be downloaded as an archive from GitHub, or the
 repository may be directly cloned by running the following command
 within a terminal:
 
-    $ git clone https://github.com/PetarV-/viral.git`
+    $ git clone https://github.com/PetarV-/viral.git
 
 ### Server compilation and execution
 
