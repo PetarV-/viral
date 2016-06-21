@@ -42,19 +42,19 @@ repository, execute the following:
 The final command launches the server; the parameters that need to be
 provided are as follows:
 
--   the port the server will listen on for clients;
+-   `<port>`: the port the server will listen on for clients;
 
--   the duration of a single experiment in milliseconds;
+-   `<round_duration_ms>`: the duration of a single experiment in milliseconds;
 
--   the delay between experiments in milliseconds;
+-   `<delay_between_rounds_ms>`: the delay between experiments in milliseconds;
 
--   a path to a file containing the multiplex network’s parameters
+-   `<network_params_file>`: a path to a file containing the multiplex network’s parameters
     (described in more detail in the next paragraph);
 
--   a boolean string (`true` or `false`)
+-   `<run_tikzer?>`: a boolean string (`true` or `false`)
     specifying whether or not the visualisation utility should
     be launched. If `true`, an additional
-    `tikzer_port` parameter should be provided,
+    `<tikzer_port>` parameter should be provided,
     specifying the port at which the visualisation utility will be
     serving the latest visualisation.
 
@@ -139,7 +139,7 @@ following conventions:
 -   The next number is *n*, the number of bots that will be generated.
     This should be a non-negative integer not greater than 500.
 
--   The data for the $n$ bots should be placed in *n* distinct lines.
+-   The data for the *n* bots should be placed in *n* distinct lines.
     Each bot is described as a 4-tuple of whitespace-separated double
     precision floating-point numbers:
 
@@ -161,8 +161,6 @@ MIT
 
 References
 ----------
-
-## References
 
 If you make advantage of Viral or derive it within your research, please cite the following article:
 
