@@ -21,19 +21,24 @@ such synthetic experiments.
 Installation
 ------------
 
+Precompiled `.apk` and `.jar` files of the *Viral* server, Android client and "fake" client are readily available in the latest release tag of this repository.
+
 The source may be downloaded as an archive from GitHub, or the
 repository may be directly cloned by running the following command
-within a terminal: <span>\
-`$ git clone https://github.com/PetarV-/viral.git`</span>
+within a terminal:
+
+    $ git clone https://github.com/PetarV-/viral.git`
 
 ### Server compilation and execution.
 
 Once the source code has been cloned, it may be compiled by invoking
-<span>javac</span> on the relevant files. Once in the root folder of the
-repository, execute the following: <span>\
-`$ cd server/src/main/java`</span> <span>\
-`$ javac com/hackbridge/viral/*.java`</span> <span>\
-`$ java com.hackbridge.viral.Main <port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file> <run_tikzer?> (<tikzer_port>)`</span>
+`javac` on the relevant files. Once in the root folder of the
+repository, execute the following:
+    
+    $ cd server/src/main/java
+    $ javac com/hackbridge/viral/*.java
+    $ java com.hackbridge.viral.Main <port> <round_duration_ms> <delay_between_rounds_ms> <network_params_file> <run_tikzer?> (<tikzer_port>)
+
 The final command launches the server; the parameters that need to be
 provided are as follows:
 
@@ -46,31 +51,34 @@ provided are as follows:
 -   a path to a file containing the multiplex network’s parameters
     (described in more detail in the next paragraph);
 
--   a boolean string (<span>true</span> or <span>false</span>)
+-   a boolean string (`true` or `false`)
     specifying whether or not the visualisation utility should
-    be launched. If <span>true</span>, an additional
-    <span>&lt;tikzer\_port&gt;</span> parameter should be provided,
+    be launched. If `true`, an additional
+    `tikzer_port` parameter should be provided,
     specifying the port at which the visualisation utility will be
     serving the latest visualisation.
 
 ### Network parameters.
 
-The <span>network\_params\_file</span> contains lines in the format
-<span>&lt;parameter&gt; &lt;value&gt;</span>. The following parameters
+The `network_params_file` contains lines in the format
+`<parameter> <value>`. The following parameters
 are used to configure the properties of the multiplex network:
 
   Parameter                                         Description
   ------------------------------------------------- -----------------------------------------------------------------------------------------------------------------------------------------
-  <span>initialInfected</span> `Probability`        The probability a new node is initially diseased (with physical state <span>infected</span> or <span>carrier</span>)
-  <span>initialAware</span> `Probability`           The probability a new node has initial awareness state <span>aware</span> as opposed to <span>unaware</span>
-  <span>initialSymptomatic</span> ` Probability`    The probability that a newly infected node has physical state <span>infected</span> as opposed to <span>carrier</span>
-  <span>infectedIfVaccinated</span> `Probability`   The probability a vaccinated node becomes infected with the disease agent when one of its edges with another infected node is activated
-  <span>spontaneousRecovery</span> `Probability`    The probability that a diseased node spontaneously recovers when one of its edges is activated
-  <span>activateEdge</span> `Probability`           The probability that an edge is activated
-  <span>infectorProbability</span>                  The probability that a new node has the role <span>infector</span> as opposed to <span>human</span>
-  <span>developSymptoms</span> ` Probability`       The probability that a <span>carrier</span> node becomes <span>infected</span> when one of its edges is activated
-  <span>lambdaFactor</span>                         Used in equation \[eq:matrix\]. A larger value increases the rate at which an edge’s activation probability decreases with distance
-  <span>exponentialMultiplier</span>                Used in equation \[eq:matrix\] for scaling the edge weights.
+  - `initialInfectedProbability`        The probability a new node is initially diseased (with physical state `infected` or `carrier`)
+  - `initialAwareProbability`           The probability a new node has initial awareness state `aware`, as opposed to `unaware`
+  - `initialSymptomaticProbability`    The probability that a newly infected node has physical state `infected`, as opposed to `carrier`
+  - `infectedIfVaccinatedProbability`   The probability a vaccinated node becomes infected with the disease agent when one of its edges with another infected node is activated
+  - `spontaneousRecoveryProbability`    The probability that a diseased node spontaneously recovers when one of its edges is activated
+  - `activateEdgeProbability`           The probability that an edge is activated
+  - `infectorProbability`                  The probability that a new node has the role `infector`, as opposed to `human`
+  - `developSymptomsProbability`       The probability that a `carrier` node becomes `infected` when one of its edges is activated
+  - `lambdaFactor`                         Used in the distance expression. A larger value increases the rate at which an edge’s activation probability decreases with distance
+  - `exponentialMultiplier`                Used in the distance expression, for scaling the edge weights.
+  - `loggingFrequency` The frequency at which the network state is logged to a file (expressed in the number of steps between logs)
+  - `edgeSelectionAlgorithm` The algorithm used for edge selection (`ExactRandom` or `GibbsSampling`)
+  - `numStepsForGibbsSampling` If the `GibbsSampling` algorithm is used for edge selection, specifies the number of sampling steps it should make before reporting the edge to be activated.
 
 ### Android setup.
 
